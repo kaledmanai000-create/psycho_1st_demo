@@ -53,8 +53,19 @@ class MLClassifier:
         labels = [LABEL_MAP.get(item["label"], 0) for item in data]
 
         self.model = Pipeline([
-            ("tfidf", TfidfVectorizer(max_features=5000, ngram_range=(1, 2), stop_words="english")),
-            ("clf", LogisticRegression(max_iter=1000, C=1.0)),
+            ("tfidf", TfidfVectorizer(
+                max_features=10000,
+                ngram_range=(1, 3),
+                analyzer="char_wb",
+                min_df=1,
+                sublinear_tf=True,
+            )),
+            ("clf", LogisticRegression(
+                max_iter=2000,
+                C=0.8,
+                class_weight="balanced",
+                solver="lbfgs",
+            )),
         ])
 
         self.model.fit(texts, labels)

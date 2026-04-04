@@ -1,41 +1,278 @@
 [
-  {"text": "عاجل: حسابك في بريد تونس تم تعليقه! أدخل رقم البطاقة البريدية و كلمة السر الآن على الرابط التالي لإعادة تفعيل حسابك", "template": "poste_tunisienne_suspension"},
-  {"text": "تنبيه أمني من اتصالات تونس: تم اكتشاف نشاط مشبوه في خطك. أكد هويتك فورا عبر هذا الرابط أو سيتم قطع خطك", "template": "tunisie_telecom_alert"},
-  {"text": "مبروك! ربحت 5000 دينار من أوريدو تونس. ادخل معلوماتك البنكية باش تستلم الجائزة", "template": "ooredoo_prize_scam"},
-  {"text": "الستاغ تعلمك أنو فاتورة الكهرباء متاعك ما تخلصتش. خلص تو قبل ما يقطعوا عليك الضو. اضغط هنا", "template": "steg_bill_scam"},
-  {"text": "حسابك البنكي في البنك الوطني الفلاحي فيه مشكل أمني. لازم تدخل كلمة السر و رقم الحساب تو على الرابط هذا", "template": "bna_security_scam"},
-  {"text": "بريد تونس: طردك واصل للمكتب. خلص 3.500 دينار مصاريف التوصيل باش يوصلك للدار. اضغط هنا للخلاص", "template": "poste_delivery_scam"},
-  {"text": "عاجل من بنك الزيتونة: تم تجميد حسابك مؤقتا. أكد معلوماتك الشخصية فورا عبر هذا الرابط", "template": "zitouna_freeze_scam"},
-  {"text": "الصوناد تعلمك: فاتورة الماء متاعك فيها تأخير. خلص أونلاين تو و إلا راح يقطعوا الماء. اضغط هنا", "template": "sonede_bill_scam"},
-  {"text": "Félicitations! Vous avez gagné un smartphone de Tunisie Telecom. Cliquez ici et entrez vos coordonnées bancaires pour réclamer votre prix.", "template": "tt_prize_fr"},
-  {"text": "Alerte sécurité La Poste Tunisienne: Votre compte e-DINAR a été compromis. Vérifiez votre identité immédiatement.", "template": "edinar_compromise_fr"},
-  {"text": "STEG alerte: Votre facture d'électricité est impayée. Payez maintenant via ce lien ou votre service sera coupé dans 24h.", "template": "steg_bill_fr"},
-  {"text": "Banque de Tunisie: Activité suspecte détectée sur votre compte. Confirmez vos informations en cliquant sur ce lien sécurisé.", "template": "bt_suspicious_fr"},
-  {"text": "Ooredoo Tunisie: Votre solde sera rechargé gratuitement! Entrez votre numéro et code secret pour bénéficier de l'offre.", "template": "ooredoo_recharge_fr"},
-  {"text": "ربحت سيارة في مسابقة تونسنا! أرسل رقم CIN و معلومات حسابك البنكي باش نبعثولك الجائزة", "template": "car_prize_scam"},
-  {"text": "تم اختيارك للحصول على قرض بدون فائدة من البنك المركزي التونسي. أرسل معلوماتك الشخصية و CIN", "template": "bct_loan_scam"},
-  {"text": "Votre colis est arrivé à La Poste Tunisienne. Payez les frais de 4.900 DT pour la livraison: poste-tunisie-livraison.xyz", "template": "poste_colis_fr"},
-  {"text": "تنبيه من بنك تونس العربي الدولي: لازم تحدث معلومات حسابك قبل 48 ساعة و إلا حسابك يتسكر", "template": "biat_update_scam"},
-  {"text": "Tunisie Telecom vous informe: Votre ligne sera suspendue pour impayé. Régularisez votre situation via ce lien.", "template": "tt_suspension_fr"},
-  {"text": "حسابك في بريد تونس الإلكتروني باش ينتهي. أدخل كلمة السر باش تجدد الاشتراك مجانا", "template": "poste_email_scam"},
-  {"text": "SONEDE: Coupure d'eau prévue si votre facture n'est pas réglée. Cliquez ici pour payer en ligne immédiatement.", "template": "sonede_cutoff_fr"},
-  {"text": "BNA Direct: Tentative de connexion suspecte à votre compte en ligne. Vérifiez vos identifiants maintenant.", "template": "bna_login_fr"},
-  {"text": "خلي بالك! راهم يسرقوا فلوسك من حسابك. ادخل على الرابط هذا تو و غير كلمة السر متاعك", "template": "account_theft_derja"},
-  {"text": "أخطر! لازم تحدث تطبيق البريد الإلكتروني تو و إلا ما تنجمش تدخل لحسابك. اضغط هنا للتحديث", "template": "app_update_scam"},
-  {"text": "URGENT: Your Amen Bank account shows unauthorized transactions. Verify your identity at amenbank-secure.tk immediately.", "template": "amen_bank_en"},
-  {"text": "وزارة الشؤون الاجتماعية تعلمك: تم قبول ملفك للمساعدة المالية. أرسل CIN و RIB لتحويل المبلغ فورا", "template": "social_affairs_scam"},
-  {"text": "CNAM: بطاقة العلاج متاعك باش تنتهي الشهر هذا. أدخل معلوماتك باش تجدد أونلاين", "template": "cnam_renewal_scam"},
-  {"text": "ANETI vous informe: Vous êtes sélectionné pour une formation rémunérée. Envoyez vos coordonnées pour valider.", "template": "aneti_training_scam"},
-  {"text": "فاتورة الستاغ متاعك فيها خطأ و تستحق تعويض 150 دينار. أدخل RIB متاعك باش يوصلك التعويض", "template": "steg_refund_scam"},
-  {"text": "STB Bank alerte: Votre compte sera fermé pour inactivité. Connectez-vous via ce lien pour le maintenir.", "template": "stb_inactivity_fr"},
-  {"text": "Banque Zitouna: Mise à jour obligatoire de sécurité. Confirmez vos informations personnelles maintenant.", "template": "zitouna_update_fr"},
-  {"text": "BIAT: Votre carte bancaire expire demain. Renouvelez immédiatement en cliquant sur ce lien sécurisé.", "template": "biat_card_expiry_fr"},
-  {"text": "بنك الإسكان يعلمك: القسط متاعك ما تخلصش. خلص تو عبر الرابط هذا باش ما يصيرش مشاكل قانونية", "template": "bh_loan_scam"},
-  {"text": "تطبيق e-DINAR Smart الجديد متاح! حمله من هالرابط و ادخل بيانات حسابك البريدي للتفعيل", "template": "edinar_app_scam"},
-  {"text": "Ministère des Finances: Votre remboursement d'impôt de 850 DT est en attente. Saisissez votre RIB bancaire.", "template": "tax_refund_fr"},
-  {"text": "CNSS: Votre dossier retraite nécessite une mise à jour urgente. Envoyez CIN et documents via ce lien sécurisé.", "template": "cnss_retirement_fr"},
-  {"text": "La Poste Tunisienne: Un mandat international de 2000 DT vous attend. Payez 5 DT de frais de réception.", "template": "poste_mandat_fr"},
-  {"text": "Offre exclusive Ooredoo: Rechargement double gratuit! Envoyez votre code de recharge et numéro par SMS.", "template": "ooredoo_double_fr"},
-  {"text": "عرض خاص من اتصالات تونس: 100 جيغا أنترنت مجاني! أرسل رقمك و كود التعبئة للاستفادة", "template": "tt_data_scam"},
-  {"text": "البريد التونسي يعلمك: حوالتك الدولية جاهزة. أدخل رقم CIN و رمز التأكيد لاستلامها فورا", "template": "poste_transfer_scam"}
+  {
+    "text": "عاجل: حسابك في بريد تونس تم تعليقه! أدخل رقم البطاقة البريدية و كلمة السر الآن على الرابط التالي لإعادة تفعيل حسابك",
+    "template": "poste_tunisienne_suspension"
+  },
+  {
+    "text": "تنبيه أمني من اتصالات تونس: تم اكتشاف نشاط مشبوه في خطك. أكد هويتك فورا عبر هذا الرابط أو سيتم قطع خطك",
+    "template": "tunisie_telecom_alert"
+  },
+  {
+    "text": "مبروك! ربحت 5000 دينار من أوريدو تونس. ادخل معلوماتك البنكية باش تستلم الجائزة",
+    "template": "ooredoo_prize_scam"
+  },
+  {
+    "text": "الستاغ تعلمك أنو فاتورة الكهرباء متاعك ما تخلصتش. خلص تو قبل ما يقطعوا عليك الضو. اضغط هنا",
+    "template": "steg_bill_scam"
+  },
+  {
+    "text": "حسابك البنكي في البنك الوطني الفلاحي فيه مشكل أمني. لازم تدخل كلمة السر و رقم الحساب تو على الرابط هذا",
+    "template": "bna_security_scam"
+  },
+  {
+    "text": "بريد تونس: طردك واصل للمكتب. خلص 3.500 دينار مصاريف التوصيل باش يوصلك للدار. اضغط هنا للخلاص",
+    "template": "poste_delivery_scam"
+  },
+  {
+    "text": "عاجل من بنك الزيتونة: تم تجميد حسابك مؤقتا. أكد معلوماتك الشخصية فورا عبر هذا الرابط",
+    "template": "zitouna_freeze_scam"
+  },
+  {
+    "text": "الصوناد تعلمك: فاتورة الماء متاعك فيها تأخير. خلص أونلاين تو و إلا راح يقطعوا الماء. اضغط هنا",
+    "template": "sonede_bill_scam"
+  },
+  {
+    "text": "Félicitations! Vous avez gagné un smartphone de Tunisie Telecom. Cliquez ici et entrez vos coordonnées bancaires pour réclamer votre prix.",
+    "template": "tt_prize_fr"
+  },
+  {
+    "text": "Alerte sécurité La Poste Tunisienne: Votre compte e-DINAR a été compromis. Vérifiez votre identité immédiatement.",
+    "template": "edinar_compromise_fr"
+  },
+  {
+    "text": "STEG alerte: Votre facture d'électricité est impayée. Payez maintenant via ce lien ou votre service sera coupé dans 24h.",
+    "template": "steg_bill_fr"
+  },
+  {
+    "text": "Banque de Tunisie: Activité suspecte détectée sur votre compte. Confirmez vos informations en cliquant sur ce lien sécurisé.",
+    "template": "bt_suspicious_fr"
+  },
+  {
+    "text": "Ooredoo Tunisie: Votre solde sera rechargé gratuitement! Entrez votre numéro et code secret pour bénéficier de l'offre.",
+    "template": "ooredoo_recharge_fr"
+  },
+  {
+    "text": "ربحت سيارة في مسابقة تونسنا! أرسل رقم CIN و معلومات حسابك البنكي باش نبعثولك الجائزة",
+    "template": "car_prize_scam"
+  },
+  {
+    "text": "تم اختيارك للحصول على قرض بدون فائدة من البنك المركزي التونسي. أرسل معلوماتك الشخصية و CIN",
+    "template": "bct_loan_scam"
+  },
+  {
+    "text": "Votre colis est arrivé à La Poste Tunisienne. Payez les frais de 4.900 DT pour la livraison: poste-tunisie-livraison.xyz",
+    "template": "poste_colis_fr"
+  },
+  {
+    "text": "تنبيه من بنك تونس العربي الدولي: لازم تحدث معلومات حسابك قبل 48 ساعة و إلا حسابك يتسكر",
+    "template": "biat_update_scam"
+  },
+  {
+    "text": "Tunisie Telecom vous informe: Votre ligne sera suspendue pour impayé. Régularisez votre situation via ce lien.",
+    "template": "tt_suspension_fr"
+  },
+  {
+    "text": "حسابك في بريد تونس الإلكتروني باش ينتهي. أدخل كلمة السر باش تجدد الاشتراك مجانا",
+    "template": "poste_email_scam"
+  },
+  {
+    "text": "SONEDE: Coupure d'eau prévue si votre facture n'est pas réglée. Cliquez ici pour payer en ligne immédiatement.",
+    "template": "sonede_cutoff_fr"
+  },
+  {
+    "text": "BNA Direct: Tentative de connexion suspecte à votre compte en ligne. Vérifiez vos identifiants maintenant.",
+    "template": "bna_login_fr"
+  },
+  {
+    "text": "خلي بالك! راهم يسرقوا فلوسك من حسابك. ادخل على الرابط هذا تو و غير كلمة السر متاعك",
+    "template": "account_theft_derja"
+  },
+  {
+    "text": "أخطر! لازم تحدث تطبيق البريد الإلكتروني تو و إلا ما تنجمش تدخل لحسابك. اضغط هنا للتحديث",
+    "template": "app_update_scam"
+  },
+  {
+    "text": "URGENT: Your Amen Bank account shows unauthorized transactions. Verify your identity at amenbank-secure.tk immediately.",
+    "template": "amen_bank_en"
+  },
+  {
+    "text": "وزارة الشؤون الاجتماعية تعلمك: تم قبول ملفك للمساعدة المالية. أرسل CIN و RIB لتحويل المبلغ فورا",
+    "template": "social_affairs_scam"
+  },
+  {
+    "text": "CNAM: بطاقة العلاج متاعك باش تنتهي الشهر هذا. أدخل معلوماتك باش تجدد أونلاين",
+    "template": "cnam_renewal_scam"
+  },
+  {
+    "text": "ANETI vous informe: Vous êtes sélectionné pour une formation rémunérée. Envoyez vos coordonnées pour valider.",
+    "template": "aneti_training_scam"
+  },
+  {
+    "text": "فاتورة الستاغ متاعك فيها خطأ و تستحق تعويض 150 دينار. أدخل RIB متاعك باش يوصلك التعويض",
+    "template": "steg_refund_scam"
+  },
+  {
+    "text": "STB Bank alerte: Votre compte sera fermé pour inactivité. Connectez-vous via ce lien pour le maintenir.",
+    "template": "stb_inactivity_fr"
+  },
+  {
+    "text": "Banque Zitouna: Mise à jour obligatoire de sécurité. Confirmez vos informations personnelles maintenant.",
+    "template": "zitouna_update_fr"
+  },
+  {
+    "text": "BIAT: Votre carte bancaire expire demain. Renouvelez immédiatement en cliquant sur ce lien sécurisé.",
+    "template": "biat_card_expiry_fr"
+  },
+  {
+    "text": "بنك الإسكان يعلمك: القسط متاعك ما تخلصش. خلص تو عبر الرابط هذا باش ما يصيرش مشاكل قانونية",
+    "template": "bh_loan_scam"
+  },
+  {
+    "text": "تطبيق e-DINAR Smart الجديد متاح! حمله من هالرابط و ادخل بيانات حسابك البريدي للتفعيل",
+    "template": "edinar_app_scam"
+  },
+  {
+    "text": "Ministère des Finances: Votre remboursement d'impôt de 850 DT est en attente. Saisissez votre RIB bancaire.",
+    "template": "tax_refund_fr"
+  },
+  {
+    "text": "CNSS: Votre dossier retraite nécessite une mise à jour urgente. Envoyez CIN et documents via ce lien sécurisé.",
+    "template": "cnss_retirement_fr"
+  },
+  {
+    "text": "La Poste Tunisienne: Un mandat international de 2000 DT vous attend. Payez 5 DT de frais de réception.",
+    "template": "poste_mandat_fr"
+  },
+  {
+    "text": "Offre exclusive Ooredoo: Rechargement double gratuit! Envoyez votre code de recharge et numéro par SMS.",
+    "template": "ooredoo_double_fr"
+  },
+  {
+    "text": "عرض خاص من اتصالات تونس: 100 جيغا أنترنت مجاني! أرسل رقمك و كود التعبئة للاستفادة",
+    "template": "tt_data_scam"
+  },
+  {
+    "text": "البريد التونسي يعلمك: حوالتك الدولية جاهزة. أدخل رقم CIN و رمز التأكيد لاستلامها فورا",
+    "template": "poste_transfer_scam"
+  },
+  {
+    "text": "QNB Tunisia: Your debit card has been blocked due to suspicious activity. Click here to unblock immediately.",
+    "template": "qnb_block_en"
+  },
+  {
+    "text": "عاجل من CNAM: بطاقة التأمين الصحي متاعك معلقة. أدخل رقم CIN و معلوماتك لإعادة التفعيل",
+    "template": "cnam_card_scam"
+  },
+  {
+    "text": "Attijari Bank: Votre compte sera bloqué dans 12h. Mettez à jour vos informations personnelles via ce lien.",
+    "template": "attijari_block_fr"
+  },
+  {
+    "text": "بريد تونس: تم تعليق بطاقة e-DINAR متاعك. أدخل الكود السري و رقم البطاقة للتفعيل",
+    "template": "edinar_suspend_scam"
+  },
+  {
+    "text": "STEG vous informe: Dernière chance de payer votre facture avant coupure. Cliquez ici: steg-paiement.xyz",
+    "template": "steg_lastchance_fr"
+  },
+  {
+    "text": "Banque de l'Habitat: Votre prêt a été approuvé! Envoyez CIN et RIB pour finaliser le dossier.",
+    "template": "bh_loan_approved_fr"
+  },
+  {
+    "text": "اتصالات تونس تعلمك: خطك باش ينقطع خلال 24 ساعة. خلص الفاتورة تو عبر الرابط هذا",
+    "template": "tt_cutoff_derja"
+  },
+  {
+    "text": "CNRPS: Votre pension de retraite est en cours de révision. Envoyez documents et CIN pour éviter la suspension.",
+    "template": "cnrps_pension_fr"
+  },
+  {
+    "text": "Orange Tunisie: Vous avez un cadeau spécial! Entrez votre numéro et code PIN pour l'activer.",
+    "template": "orange_gift_fr"
+  },
+  {
+    "text": "بنك تونس العربي الدولي: تم رصد عملية مشبوهة. أكد هويتك فورا و إلا حسابك يتسكر",
+    "template": "biat_suspicious_derja"
+  },
+  {
+    "text": "UIB: Alerte fraude sur votre compte! Vérifiez vos informations bancaires immédiatement via ce lien sécurisé.",
+    "template": "uib_fraud_fr"
+  },
+  {
+    "text": "Tunisair: Votre billet gratuit vous attend! Entrez vos données personnelles pour le récupérer.",
+    "template": "tunisair_ticket_fr"
+  },
+  {
+    "text": "الضمان الاجتماعي: تم قبول ملفك للتعويض. أرسل رقم الحساب البنكي و CIN لتحويل المبلغ",
+    "template": "cnss_compensation_scam"
+  },
+  {
+    "text": "Topnet: Votre abonnement internet expire demain. Renouvelez en entrant vos coordonnées bancaires ici.",
+    "template": "topnet_renewal_fr"
+  },
+  {
+    "text": "بريد تونس الرقمي: حسابك فيه محاولة اختراق. غير كلمة السر تو عبر الرابط هذا",
+    "template": "poste_digital_hack"
+  },
+  {
+    "text": "ABC Bank Tunisia: Urgent security update required. Verify your account at abcbank-tn-secure.com",
+    "template": "abc_security_en"
+  },
+  {
+    "text": "BTE: Votre carte de crédit a été utilisée frauduleusement. Bloquez-la immédiatement via ce lien.",
+    "template": "bte_card_fraud_fr"
+  },
+  {
+    "text": "المندوبية الجهوية للتعليم: تم قبول ابنك في المنحة. أرسل CIN و وثائق عبر هذا الرابط",
+    "template": "education_scholarship_scam"
+  },
+  {
+    "text": "SNCFT: Votre remboursement de billet de 35 DT est prêt. Entrez votre RIB pour le recevoir.",
+    "template": "sncft_refund_fr"
+  },
+  {
+    "text": "أمان بنك يعلمك: تم تحويل مبلغ من حسابك. إذا ما عملتش التحويل أكد هويتك فورا",
+    "template": "amen_transfer_scam"
+  },
+  {
+    "text": "Hexabyte: Votre connexion sera coupée pour impayé. Payez 12.500 DT via ce lien sécurisé.",
+    "template": "hexabyte_cutoff_fr"
+  },
+  {
+    "text": "وزارة الداخلية: تم اكتشاف مشكل في بطاقة التعريف الوطنية متاعك. أدخل معلوماتك للتصحيح",
+    "template": "interior_cin_scam"
+  },
+  {
+    "text": "BFPME: Votre demande de micro-crédit est acceptée. Envoyez CIN, RIB et justificatifs pour débloquer les fonds.",
+    "template": "bfpme_microcredit_fr"
+  },
+  {
+    "text": "الصيدلية المركزية تعلمك: ربحت كارت صحي مجاني. أدخل رقم CIN و العنوان للتوصيل",
+    "template": "pharmacy_card_scam"
+  },
+  {
+    "text": "Enda Tamweel: Félicitations, votre crédit personnel est approuvé! Cliquez pour confirmer avec vos coordonnées.",
+    "template": "enda_credit_fr"
+  },
+  {
+    "text": "ربحت رحلة مجانية من نوفوتيل تونس! أدخل معلومات بطاقتك البنكية لتأكيد الحجز",
+    "template": "novotel_trip_scam"
+  },
+  {
+    "text": "Lycamobile Tunisie: Votre solde double! Envoyez votre code de recharge par SMS au 99999.",
+    "template": "lyca_double_fr"
+  },
+  {
+    "text": "البنك التونسي الكويتي: حسابك محظور مؤقتا. أدخل كلمة السر و رقم الحساب لإعادة التفعيل",
+    "template": "btk_block_scam"
+  },
+  {
+    "text": "BNA Mobile: Erreur critique sur votre compte épargne. Connectez-vous via ce lien pour sécuriser vos fonds.",
+    "template": "bna_mobile_error_fr"
+  },
+  {
+    "text": "DHL Tunisie: Votre colis est en attente. Payez les frais de douane de 8.900 DT pour le recevoir.",
+    "template": "dhl_customs_fr"
+  }
 ]

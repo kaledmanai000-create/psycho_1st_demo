@@ -1,22 +1,202 @@
 [
-  {"text": "فضيحة: الحكومة التونسية تبيع أراضي البلاد للأجانب في السر! وثائق مسربة تكشف الحقيقة!", "template": "land_sale_conspiracy"},
-  {"text": "اكتشاف علاج للسرطان في تونس لكن اللوبيات الصيدلانية منعت نشره! شاركوا الحقيقة", "template": "cancer_cure_hidden"},
-  {"text": "خطير: ماء الحنفية في تونس فيه مواد سامة و الصوناد تخبي الحقيقة على الشعب", "template": "water_poison_conspiracy"},
-  {"text": "معلومة خطيرة: شبكة 5G في تونس تسبب أمراض خطيرة. الحكومة ما تحب تعترف!", "template": "5g_health_conspiracy"},
-  {"text": "وثائق مسربة تكشف مخطط لبيع شركات الدولة التونسية بأثمان بخسة! فضيحة!", "template": "privatization_conspiracy"},
-  {"text": "طبيب تونسي يكتشف علاج طبيعي للسكري يشفي في أسبوع! الأطباء يخبيوها عليكم!", "template": "diabetes_miracle_cure"},
-  {"text": "صادم: تم اكتشاف أن الخبز في تونس فيه مواد كيميائية خطيرة. الحقيقة المخفية!", "template": "bread_chemicals"},
-  {"text": "الحقيقة اللي ما يحبوكش تعرفها: التلاقيح في تونس خطيرة و فيها مواد مشبوهة!", "template": "vaccine_danger_tn"},
-  {"text": "الزيت النباتي اللي نستعملوه في تونس يسبب السرطان! شاركوا باش يعرف الكل", "template": "oil_cancer_hoax"},
-  {"text": "مؤامرة كبرى ضد تونس! قوى أجنبية تتحكم في سياسات البلاد من وراء الستار!", "template": "foreign_control_conspiracy"},
-  {"text": "100% مثبت: وصفة جدتي التونسية تشفي من كل الأمراض! الطب الحديث يخبيها عليكم!", "template": "grandma_remedy"},
-  {"text": "عالم الفلك يتنبأ بكارثة طبيعية في تونس! الحكومة تعرف و ساكتة!", "template": "astrologer_disaster"},
-  {"text": "Les vaccins distribués en Tunisie sont périmés! Le ministère de la santé cache la vérité. Partagez!", "template": "expired_vaccines_fr"},
-  {"text": "EXCLUSIF: Des documents secrets prouvent que le FMI contrôle l'économie tunisienne. On vous cache tout!", "template": "imf_control_fr"},
-  {"text": "La vérité sur la crise de l'eau en Tunisie que les médias cachent! Le gouvernement nous ment!", "template": "water_crisis_fr"},
-  {"text": "Le dinar tunisien va s'effondrer la semaine prochaine! Information exclusive que personne ne veut publier!", "template": "dinar_collapse_fr"},
-  {"text": "RÉVÉLATION: Un complot international vise à déstabiliser la Tunisie! Les preuves sont accablantes!", "template": "intl_conspiracy_fr"},
-  {"text": "Scandale sanitaire en Tunisie: Les produits importés contiennent des substances interdites! Boycottez!", "template": "import_scandal_fr"},
-  {"text": "فضيحة: أساتذة الجامعة التونسية كشفوا أن المناهج الدراسية مزورة و خطيرة على عقول أبنائنا!", "template": "education_conspiracy"},
-  {"text": "الحقيقة الصادمة: الحليب المباع في تونس مغشوش و يسبب أمراض خطيرة للأطفال!", "template": "milk_adulteration"}
+  {
+    "text": "فضيحة: الحكومة التونسية تبيع أراضي البلاد للأجانب في السر! وثائق مسربة تكشف الحقيقة!",
+    "template": "land_sale_conspiracy"
+  },
+  {
+    "text": "اكتشاف علاج للسرطان في تونس لكن اللوبيات الصيدلانية منعت نشره! شاركوا الحقيقة",
+    "template": "cancer_cure_hidden"
+  },
+  {
+    "text": "خطير: ماء الحنفية في تونس فيه مواد سامة و الصوناد تخبي الحقيقة على الشعب",
+    "template": "water_poison_conspiracy"
+  },
+  {
+    "text": "معلومة خطيرة: شبكة 5G في تونس تسبب أمراض خطيرة. الحكومة ما تحب تعترف!",
+    "template": "5g_health_conspiracy"
+  },
+  {
+    "text": "وثائق مسربة تكشف مخطط لبيع شركات الدولة التونسية بأثمان بخسة! فضيحة!",
+    "template": "privatization_conspiracy"
+  },
+  {
+    "text": "طبيب تونسي يكتشف علاج طبيعي للسكري يشفي في أسبوع! الأطباء يخبيوها عليكم!",
+    "template": "diabetes_miracle_cure"
+  },
+  {
+    "text": "صادم: تم اكتشاف أن الخبز في تونس فيه مواد كيميائية خطيرة. الحقيقة المخفية!",
+    "template": "bread_chemicals"
+  },
+  {
+    "text": "الحقيقة اللي ما يحبوكش تعرفها: التلاقيح في تونس خطيرة و فيها مواد مشبوهة!",
+    "template": "vaccine_danger_tn"
+  },
+  {
+    "text": "الزيت النباتي اللي نستعملوه في تونس يسبب السرطان! شاركوا باش يعرف الكل",
+    "template": "oil_cancer_hoax"
+  },
+  {
+    "text": "مؤامرة كبرى ضد تونس! قوى أجنبية تتحكم في سياسات البلاد من وراء الستار!",
+    "template": "foreign_control_conspiracy"
+  },
+  {
+    "text": "100% مثبت: وصفة جدتي التونسية تشفي من كل الأمراض! الطب الحديث يخبيها عليكم!",
+    "template": "grandma_remedy"
+  },
+  {
+    "text": "عالم الفلك يتنبأ بكارثة طبيعية في تونس! الحكومة تعرف و ساكتة!",
+    "template": "astrologer_disaster"
+  },
+  {
+    "text": "Les vaccins distribués en Tunisie sont périmés! Le ministère de la santé cache la vérité. Partagez!",
+    "template": "expired_vaccines_fr"
+  },
+  {
+    "text": "EXCLUSIF: Des documents secrets prouvent que le FMI contrôle l'économie tunisienne. On vous cache tout!",
+    "template": "imf_control_fr"
+  },
+  {
+    "text": "La vérité sur la crise de l'eau en Tunisie que les médias cachent! Le gouvernement nous ment!",
+    "template": "water_crisis_fr"
+  },
+  {
+    "text": "Le dinar tunisien va s'effondrer la semaine prochaine! Information exclusive que personne ne veut publier!",
+    "template": "dinar_collapse_fr"
+  },
+  {
+    "text": "RÉVÉLATION: Un complot international vise à déstabiliser la Tunisie! Les preuves sont accablantes!",
+    "template": "intl_conspiracy_fr"
+  },
+  {
+    "text": "Scandale sanitaire en Tunisie: Les produits importés contiennent des substances interdites! Boycottez!",
+    "template": "import_scandal_fr"
+  },
+  {
+    "text": "فضيحة: أساتذة الجامعة التونسية كشفوا أن المناهج الدراسية مزورة و خطيرة على عقول أبنائنا!",
+    "template": "education_conspiracy"
+  },
+  {
+    "text": "الحقيقة الصادمة: الحليب المباع في تونس مغشوش و يسبب أمراض خطيرة للأطفال!",
+    "template": "milk_adulteration"
+  },
+  {
+    "text": "صادم: الأرز المستورد لتونس بلاستيك مش حقيقي! جربوا بالنار و شوفوا بعينكم!",
+    "template": "plastic_rice_hoax"
+  },
+  {
+    "text": "خطير: اكتشفوا أن السكر الأبيض في تونس فيه سموم بطيئة. الحقيقة المرعبة!",
+    "template": "sugar_poison_hoax"
+  },
+  {
+    "text": "عالم تونسي يؤكد: الأرض مسطحة و ناسا كذبت علينا! الأدلة واضحة!",
+    "template": "flat_earth_tn"
+  },
+  {
+    "text": "وثائق مسربة: الحكومة باعت مخزون القمح الاستراتيجي للخارج! كارثة غذائية قادمة!",
+    "template": "wheat_sale_conspiracy"
+  },
+  {
+    "text": "الحقيقة الصادمة: البيض في تونس مصنوع في مختبرات و مش طبيعي! فضيحة!",
+    "template": "fake_eggs_hoax"
+  },
+  {
+    "text": "EXCLUSIF: La 5G installée en Tunisie provoque des tumeurs cérébrales! Des médecins témoignent!",
+    "template": "5g_tumors_fr"
+  },
+  {
+    "text": "دراسة مخفية: الفلور في معجون الأسنان المباع في تونس يقتل ببطء!",
+    "template": "fluoride_conspiracy"
+  },
+  {
+    "text": "INFO CACHÉE: Les banques tunisiennes vont geler tous les comptes la semaine prochaine!",
+    "template": "bank_freeze_fr"
+  },
+  {
+    "text": "كارثة: اكتشاف مواد مسرطنة في الهريسة التونسية! الشركات تعرف و ساكتة!",
+    "template": "harissa_cancer_hoax"
+  },
+  {
+    "text": "Alerte: Les fruits importés en Tunisie sont irradiés! Le gouvernement refuse d'agir!",
+    "template": "irradiated_fruits_fr"
+  },
+  {
+    "text": "خبر عاجل: زلزال قوي باش يضرب تونس الأسبوع الجاي! خبير فلكي يحذر!",
+    "template": "earthquake_prediction"
+  },
+  {
+    "text": "فضيحة: المياه المعدنية في تونس ملوثة بمواد كيميائية خطيرة! لا تشربوها!",
+    "template": "mineral_water_hoax"
+  },
+  {
+    "text": "SCANDALE: Le thon en conserve tunisien contient du mercure à des niveaux dangereux! Boycottez!",
+    "template": "tuna_mercury_fr"
+  },
+  {
+    "text": "الحقيقة المرة: الدواء الجنيس في تونس ما يداويش! الصيدلة المركزية تغش الشعب!",
+    "template": "generic_medicine_hoax"
+  },
+  {
+    "text": "RÉVÉLATION: Les compteurs d'eau intelligents de la SONEDE vous espionnent! Preuves exclusives!",
+    "template": "sonede_spy_fr"
+  },
+  {
+    "text": "عاجل: اكتشاف أن زيت الزيتون التونسي المصدر يرجعلنا مغشوش! فضيحة عالمية!",
+    "template": "olive_oil_fraud_hoax"
+  },
+  {
+    "text": "CHOQUANT: Les antennes relais en Tunisie causent la stérilité! Des études internationales le prouvent!",
+    "template": "antenna_sterility_fr"
+  },
+  {
+    "text": "خطير جدا: التلقيح ضد كوفيد في تونس فيه شريحة تتبع! الحكومة تخبي!",
+    "template": "covid_chip_conspiracy"
+  },
+  {
+    "text": "INFO EXCLUSIVE: Le gouvernement tunisien prépare une taxe secrète sur les réseaux sociaux!",
+    "template": "social_media_tax_fr"
+  },
+  {
+    "text": "صادم: اللحوم المجمدة المستوردة لتونس عمرها 10 سنين! وثائق حصرية!",
+    "template": "old_meat_hoax"
+  },
+  {
+    "text": "ALERTE SANTÉ: Les climatiseurs en Tunisie propagent un virus mortel! Éteignez-les immédiatement!",
+    "template": "ac_virus_fr"
+  },
+  {
+    "text": "مؤامرة عالمية: يحبوا يخليو تونس بلاد سياحة فقط و يقضيو على الصناعة!",
+    "template": "tourism_only_conspiracy"
+  },
+  {
+    "text": "الحقيقة اللي كلنا نعرفوها: الانتخابات في تونس كلها مزورة من الأول للتالي!",
+    "template": "election_fraud_hoax"
+  },
+  {
+    "text": "Les produits cosmétiques tunisiens contiennent des métaux lourds! Danger pour votre santé!",
+    "template": "cosmetics_metals_fr"
+  },
+  {
+    "text": "فضيحة تعليمية: المناهج الجديدة في تونس تهدف لتجهيل الشباب! مخطط خطير!",
+    "template": "education_dumbing_conspiracy"
+  },
+  {
+    "text": "URGENT: Des sources fiables confirment la faillite imminente de 5 banques tunisiennes!",
+    "template": "bank_bankruptcy_fr"
+  },
+  {
+    "text": "عاجل: الأطباء في تونس يعطيو أدوية منتهية الصلاحية! شاركوا باش يعرف الكل!",
+    "template": "expired_medicine_hoax"
+  },
+  {
+    "text": "EXCLUSIF: Les engrais utilisés en Tunisie causent le cancer! Les agriculteurs savent mais ne disent rien!",
+    "template": "fertilizer_cancer_fr"
+  },
+  {
+    "text": "صدمة: اكتشاف شبكة تجسس دولية تتنصت على مكالمات التوانسة! الحكومة متواطئة!",
+    "template": "spy_network_conspiracy"
+  },
+  {
+    "text": "La vérité sur le pain tunisien: Il contient des additifs chimiques interdits en Europe depuis 2010!",
+    "template": "bread_additives_fr"
+  }
 ]

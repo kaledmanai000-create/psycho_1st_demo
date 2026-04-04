@@ -1,230 +1,2426 @@
 [
-
-  {"text": "اصحى يا تونسي! الحكومة تبيع البلاد و ما حد يحكي! شارك قبل ما يمسحوا البوست", "label": "manipulation"},
-  {"text": "لازم تشارك هالفيديو تو! الحقيقة اللي ما يحبوكش تعرفها على الزيادة في الأسعار", "label": "manipulation"},
-  {"text": "آخر فرصة! التسجيل في البرنامج الحكومي يسكر غدوة. سجل تو و إلا تخسر الفرصة للأبد", "label": "manipulation"},
-  {"text": "خطير! ولادنا في خطر و الدولة ما تعمل شي. كل أم تونسية لازم تشارك هالخبر", "label": "manipulation"},
-  {"text": "إذا ما تشاركش هالرسالة مع 10 أشخاص راح تصيبك مشاكل. شاركها تو!", "label": "manipulation"},
-  {"text": "عاجل لكل التوانسة: اللي ما يخرجش للشارع تو يبقى عبد للأبد. اصحاو!", "label": "manipulation"},
-  {"text": "كل تونسي حر لازم يشارك هالمعلومة. اللي ما يشاركش خاين لبلادو!", "label": "manipulation"},
-  {"text": "فزع! المواد الغذائية راح تنقص الأسبوع الجاي. اشري تو قبل فوات الأوان!", "label": "manipulation"},
-  {"text": "لازم تصحى! الأسعار تزيد و الشعب ساكت. شارك باش توصل الحقيقة!", "label": "manipulation"},
-  {"text": "صادم! شوف شنوة عملوا بفلوس الشعب. لازم كل واحد يشارك هالفيديو قبل ما يتمسح", "label": "manipulation"},
-  {"text": "ماتسكتش! حقك ضاع و ما حد يدافع عليك. اصحى و شارك قبل فوات الأوان", "label": "manipulation"},
-  {"text": "أنت كتونسي لازم تعرف الحقيقة هاذي. اللي يخبيها عليك عدوك!", "label": "manipulation"},
-  {"text": "تحذير خطير: اللي ما يقراش هالخبر راح يندم. تونس في خطر!", "label": "manipulation"},
-  {"text": "اللي يحب بلادو يشارك! اللي ما يشاركش يبقى ساكت على الظلم!", "label": "manipulation"},
-  {"text": "خاف على عايلتك! المنتوج هذا فيه سموم و ولادنا ياكلوا فيه كل يوم!", "label": "manipulation"},
-  {"text": "هل تقبل اللي يصير في بلادك؟ إذا أنت راجل شارك هالبوست!", "label": "manipulation"},
-  {"text": "يا شعب تونس! فيقوا قبل ما يفوت الأوان! كل شي باش يتبدل إذا سكتنا!", "label": "manipulation"},
-  {"text": "مسكين الشعب التونسي! يعاني و ما حد يحس بيه! شارك باش نوصلوا صوتنا!", "label": "manipulation"},
-  {"text": "تحب تونس؟ إذا إيه شارك هالخبر مع كل عباد لي تعرفهم! وقت العمل تو!", "label": "manipulation"},
-  {"text": "كفى صمت! الشعب يموت جوع و هوما يسرقوا! لازم نتحركوا تو!", "label": "manipulation"},
-  {"text": "يا أمهات تونس! ولادكم في خطر! لازم تقراو هالمقال و تشاركوه مع الكل!", "label": "manipulation"},
-  {"text": "إذا كنت تونسي حقيقي ما ينفعش تسكت على هالظلم! شارك و بين إنك موجود!", "label": "manipulation"},
-  {"text": "عيب عليك تسكت! ناس تعاني و أنت تتفرج! شارك هالرسالة تو!", "label": "manipulation"},
-  {"text": "الوقت يجري! باقي 24 ساعة باش تسجل في هالبرنامج و إلا خسرت حقك!", "label": "manipulation"},
-  {"text": "ما تخليش حد يضحك عليك! افتح عينيك و شوف الحقيقة! شارك مع صحابك!", "label": "manipulation"},
-  {"text": "اللي عندو ضمير يشارك هالخبر! اللي ساكت شريك في الجريمة!", "label": "manipulation"},
-  {"text": "راك تونسي و تسكت؟ هاذي بلادك تتهرس قدام عينيك! فيق و شارك!", "label": "manipulation"},
-  {"text": "حرام عليهم! شوفوا شنوة يعملوا في الشعب المسكين! لازم الكل يعرف!", "label": "manipulation"},
-  {"text": "يلزمنا نقاتلوا على حقوقنا! اللي ما يشاركش هو جزء من المشكلة!", "label": "manipulation"},
-  {"text": "تعيش تونس حرة! شارك هالبوست إذا كنت ضد الفساد! سكوتك خيانة!", "label": "manipulation"},
-  {"text": "ناس تموت و أنت تتفرج؟ شارك و خلي صوتك يتسمع!", "label": "manipulation"},
-  {"text": "خوفتني الحكاية هاذي! كيفاش نعيشوا و الأسعار هكا؟ شاركوا باش نحلوا!", "label": "manipulation"},
-  {"text": "آش بيك ساكت؟ ما عندكش ولاد؟ ما تحبش مستقبلهم يكون أحسن؟ فيق و شارك!", "label": "manipulation"},
-  {"text": "غضب الشعب! كفى استغلال! شارك و بين إنك ضد الفساد و الظلم!", "label": "manipulation"},
-  {"text": "قلبي يوجعني على بلادي! كل تونسي شريف لازم يشارك هالحقيقة!", "label": "manipulation"},
-  {"text": "لا تخاف! صوتك قوة! شارك و خلي العالم يعرف شنوة يصير في تونس!", "label": "manipulation"},
-  {"text": "يا تونسي يا حر! ولادك يستاهلوا مستقبل أحسن! شارك قبل ما يفوت الأوان!", "label": "manipulation"},
-  {"text": "هاذي آخر مرة نحكي! إذا ما تشاركش هالخبر تو ما عاد تلوم حد!", "label": "manipulation"},
-  {"text": "يا ناس الخير! ساعدوا أخوانكم! شاركوا هالرسالة و ربي يجازيكم!", "label": "manipulation"},
-  {"text": "الوطن يناديك! لازم كل تونسي يقوم بواجبو تو! شارك و بلغ!", "label": "manipulation"},
-  {"text": "اللي ما يتحركش تو باش يندم باكر! شارك هالمعلومة قبل ما يسكروها!", "label": "manipulation"},
-  {"text": "أنا كتونسية قلبي تحرق على بلادي! لازم نشاركوا الحقيقة باش نحميو ولادنا!", "label": "manipulation"},
-  {"text": "الصمت جريمة! كل واحد يشوف هالظلم و يسكت هو شريك فيه!", "label": "manipulation"},
-  {"text": "اليوم حقك غدوة حق ولادك! شارك باش نحميوا مستقبل أجيالنا!", "label": "manipulation"},
-  {"text": "ما عاد ينفع نسكتوا! لازم الكل يشارك و يوصل الحقيقة لكل تونسي!", "label": "manipulation"},
-  {"text": "هل تعلم أنو فلوسك راهي تتسرق و أنت ما تعرف؟ فيق و شارك مع عبادك!", "label": "manipulation"},
-  {"text": "كل يوم يزيدوا يسرقوا فينا و نحنا ساكتين! لازم نفيقوا و نشاركوا!", "label": "manipulation"},
-  {"text": "شارك هالبوست إذا عندك قلب! الشعب محتاج صوتك تو مش باكر!", "label": "manipulation"},
-  {"text": "يا تونسي الغيور على بلادو! وقتاش باش تتحرك؟ شارك تو!", "label": "manipulation"},
-  {"text": "اللي ساكت على الحق شيطان أخرس! شارك و بين إنك إنسان!", "label": "manipulation"},
-  {"text": "URGENT pour tous les Tunisiens! Partagez avant qu'ils ne suppriment cette vérité sur la hausse des prix!", "label": "manipulation"},
-  {"text": "Dernière chance! Inscription au programme d'aide sociale ferme dans 24h. Ne ratez pas!", "label": "manipulation"},
-  {"text": "Attention parents tunisiens! Vos enfants sont en danger à cause de cette application. Partagez d'urgence!", "label": "manipulation"},
-  {"text": "Si vous êtes un vrai Tunisien, partagez ce message! Notre pays est en danger!", "label": "manipulation"},
-  {"text": "Tunisiens réveillez-vous! On nous ment depuis des années! Partagez massivement!", "label": "manipulation"},
-  {"text": "Honte à ceux qui se taisent! Le peuple tunisien souffre! Partagez pour faire entendre notre voix!", "label": "manipulation"},
-  {"text": "Vous acceptez ça pour vos enfants? Si vous avez du courage, partagez! Sinon restez esclaves!", "label": "manipulation"},
-  {"text": "Alerte rouge pour la Tunisie! Si vous aimez votre pays, partagez immédiatement!", "label": "manipulation"},
-  {"text": "Ne soyez pas complice du silence! Chaque Tunisien doit voir cette vidéo avant qu'elle soit supprimée!", "label": "manipulation"},
-  {"text": "C'est maintenant ou jamais! Le peuple doit se réveiller! Partagez avec tous vos contacts!", "label": "manipulation"},
-  {"text": "ACT NOW Tunisians! Share this before they delete it! Your children's future depends on it!", "label": "manipulation"},
-  {"text": "Every Tunisian must see this! If you love Tunisia, share immediately! Silence is betrayal!", "label": "manipulation"},
-  {"text": "Wake up Tunisia! They are stealing your future! Share before it's too late!", "label": "manipulation"},
-  {"text": "Le silence est complicité! Partagez cette information vitale pour nos enfants!", "label": "manipulation"},
-  {"text": "Dernière alerte! Si on ne partage pas cette vérité maintenant, il sera trop tard!", "label": "manipulation"},
-  {"text": "Parents tunisiens, protégez vos enfants! Partagez cet avertissement avec tout le monde!", "label": "manipulation"},
-  {"text": "On nous prend pour des idiots! Réveillez-vous et partagez la vérité! Ça suffit!", "label": "manipulation"},
-  {"text": "Qui aime la Tunisie partage! Qui se tait trahit son pays et ses enfants!", "label": "manipulation"},
-  {"text": "WARNING: If you're Tunisian and you stay silent, you're part of the problem! Share NOW!", "label": "manipulation"},
-  {"text": "This affects EVERY Tunisian family! Don't be the one who stayed quiet! Share immediately!", "label": "manipulation"},
-  {"text": "Your silence means you agree with the corruption! Real Tunisians speak up and share!", "label": "manipulation"},
-  {"text": "لو كنت أم تونسية ما تقبلش هالشي! شارك هالخبر باش تحمي ولادك!", "label": "manipulation"},
-  {"text": "يا شباب تونس! مستقبلكم يتسرق و أنتم تتفرجوا! فيقوا و شاركوا!", "label": "manipulation"},
-  {"text": "هذا اللي ما يحبوكش تشوفوه! شاركوا قبل ما يحذفوه!", "label": "manipulation"},
-  {"text": "إذا عندك ضمير شارك! إذا ما عندكش ضمير كمل سكوتك!", "label": "manipulation"},
-  {"text": "الحق يتكلم و الباطل يرتعش! شارك الحقيقة و لا تخاف من حد!", "label": "manipulation"},
-  {"text": "وين التوانسة الأحرار؟ بلادكم محتاجاكم! شاركوا و بينوا إنكم موجودين!", "label": "manipulation"},
-  {"text": "لكل أب و أم في تونس: إذا ما تشاركش هالخبر ما تلوم حد على مستقبل ولادك!", "label": "manipulation"},
-  {"text": "كل ثانية سكوت هي ثانية ظلم! شارك تو و خلي صوتك يوصل!", "label": "manipulation"},
-
-  {"text": "عاجل: حسابك في بريد تونس تم تعليقه! أدخل رقم البطاقة البريدية و كلمة السر الآن", "label": "phishing"},
-  {"text": "تنبيه أمني من اتصالات تونس: تم اكتشاف نشاط مشبوه في خطك. أكد هويتك فورا", "label": "phishing"},
-  {"text": "مبروك! ربحت 5000 دينار من أوريدو تونس. ادخل معلوماتك البنكية باش تستلم الجائزة", "label": "phishing"},
-  {"text": "الستاغ تعلمك أنو فاتورة الكهرباء ما تخلصتش. خلص تو قبل ما يقطعوا عليك الضو", "label": "phishing"},
-  {"text": "حسابك البنكي في البنك الوطني الفلاحي فيه مشكل أمني. لازم تدخل كلمة السر تو", "label": "phishing"},
-  {"text": "بريد تونس: طردك واصل للمكتب. خلص 3.500 دينار مصاريف التوصيل باش يوصلك للدار", "label": "phishing"},
-  {"text": "عاجل من بنك الزيتونة: تم تجميد حسابك مؤقتا. أكد معلوماتك الشخصية فورا", "label": "phishing"},
-  {"text": "الصوناد تعلمك: فاتورة الماء فيها تأخير. خلص أونلاين تو و إلا يقطعوا الماء", "label": "phishing"},
-  {"text": "ربحت سيارة في مسابقة تونسنا! أرسل رقم CIN و معلومات حسابك البنكي", "label": "phishing"},
-  {"text": "خلي بالك! راهم يسرقوا فلوسك من حسابك. ادخل على الرابط هذا تو و غير كلمة السر", "label": "phishing"},
-  {"text": "تم اختيارك للحصول على قرض بدون فائدة من البنك المركزي. أرسل معلوماتك و CIN", "label": "phishing"},
-  {"text": "حسابك في بريد تونس الإلكتروني باش ينتهي. أدخل كلمة السر باش تجدد الاشتراك", "label": "phishing"},
-  {"text": "أخطر! لازم تحدث تطبيق البريد تو و إلا ما تنجمش تدخل لحسابك. اضغط هنا", "label": "phishing"},
-  {"text": "تنبيه من بنك تونس العربي الدولي: حدث معلوماتك قبل 48 ساعة و إلا حسابك يتسكر", "label": "phishing"},
-  {"text": "عندك رصيد مجاني من أوريدو! ادخل رقم هاتفك و الكود السري باش تستفاد", "label": "phishing"},
-  {"text": "تهانينا! تم اختيارك للفوز بهاتف جديد من اتصالات تونس. أكمل التسجيل هنا", "label": "phishing"},
-  {"text": "البنك التونسي الكويتي يعلمك بتحديث إجباري لبيانات حسابك. اضغط هنا للتحديث", "label": "phishing"},
-  {"text": "أمان بنك: تم رصد عملية مشبوهة على حسابك. أدخل بياناتك لتأكيد هويتك", "label": "phishing"},
-  {"text": "تطبيق e-DINAR الجديد جاهز! حمله من هالرابط و ادخل بيانات حسابك البريدي", "label": "phishing"},
-  {"text": "عرض حصري: اربح 200 دينار رصيد مجاني! أرسل رقم بطاقة الشحن متاعك هنا", "label": "phishing"},
-  {"text": "وزارة الشؤون الاجتماعية: تم قبول ملفك للمساعدة. أرسل CIN و RIB لتحويل المبلغ", "label": "phishing"},
-  {"text": "CNAM تعلمك: بطاقة العلاج متاعك باش تنتهي. أدخل معلوماتك الشخصية للتجديد", "label": "phishing"},
-  {"text": "عاجل من البريد التونسي: حوالتك جاهزة. أدخل رقم CIN و رمز التأكيد لاستلامها", "label": "phishing"},
-  {"text": "فاتورة الستاغ متاعك فيها خطأ و تستحق تعويض 150 دينار. أدخل RIB متاعك", "label": "phishing"},
-  {"text": "Félicitations! Vous avez gagné un smartphone de Tunisie Telecom. Entrez vos coordonnées bancaires.", "label": "phishing"},
-  {"text": "Alerte sécurité La Poste Tunisienne: Votre compte e-DINAR a été compromis. Vérifiez immédiatement.", "label": "phishing"},
-  {"text": "STEG alerte: Votre facture est impayée. Payez via ce lien ou votre service sera coupé dans 24h.", "label": "phishing"},
-  {"text": "Banque de Tunisie: Activité suspecte détectée. Confirmez vos informations en cliquant sur ce lien.", "label": "phishing"},
-  {"text": "Ooredoo Tunisie: Entrez votre numéro et code secret pour bénéficier du rechargement gratuit.", "label": "phishing"},
-  {"text": "Votre colis La Poste Tunisienne est arrivé. Payez 4.900 DT frais de livraison.", "label": "phishing"},
-  {"text": "BNA alerte: Tentative de connexion suspecte à votre compte. Vérifiez vos identifiants maintenant.", "label": "phishing"},
-  {"text": "URGENT: Your Amen Bank account shows unauthorized transactions. Verify at amenbank-secure.tk", "label": "phishing"},
-  {"text": "Tunisie Telecom: Votre ligne sera suspendue pour impayé. Régularisez via ce lien.", "label": "phishing"},
-  {"text": "SONEDE: Coupure d'eau si facture non réglée. Cliquez ici pour payer immédiatement.", "label": "phishing"},
-  {"text": "Banque Zitouna: Mise à jour obligatoire de votre compte en ligne. Cliquez ici pour confirmer.", "label": "phishing"},
-  {"text": "BIAT vous informe: Votre carte bancaire expire bientôt. Renouvelez en cliquant sur ce lien sécurisé.", "label": "phishing"},
-  {"text": "La Poste Tunisienne: Un mandat vous attend. Payez 2.500 DT de frais pour le recevoir.", "label": "phishing"},
-  {"text": "Offre spéciale Ooredoo: Double crédit gratuit! Envoyez votre code de recharge par SMS au 12345.", "label": "phishing"},
-  {"text": "STB Bank: Votre compte sera fermé pour inactivité. Connectez-vous via ce lien pour le maintenir actif.", "label": "phishing"},
-  {"text": "Ministère des Finances: Votre remboursement d'impôt de 850 DT est prêt. Entrez votre RIB.", "label": "phishing"},
-  {"text": "CNSS alerte: Votre dossier de retraite nécessite une mise à jour. Envoyez vos documents via ce lien.", "label": "phishing"},
-  {"text": "تطبيق MyTT فيه تحديث أمني عاجل. حمل النسخة الجديدة من هالرابط و ادخل بياناتك", "label": "phishing"},
-  {"text": "بنك الإسكان يعلمك: القسط متاعك ما تخلصش. خلص تو عبر الرابط هذا باش ما يصيرش مشاكل", "label": "phishing"},
-  {"text": "مبروك عليك! ربحت في سحب على جوائز موبيليس. أرسل معلوماتك باش نبعثولك الجائزة", "label": "phishing"},
-  {"text": "وكالة التشغيل و العمل المستقل: تم قبول ملفك. أرسل CIN و RIB للتحويل", "label": "phishing"},
-  {"text": "ANETI: Vous êtes sélectionné pour une formation rémunérée. Envoyez CIN et RIB pour finaliser.", "label": "phishing"},
-
-  {"text": "فضيحة: الحكومة التونسية تبيع أراضي البلاد للأجانب في السر! وثائق مسربة!", "label": "disinformation"},
-  {"text": "اكتشاف علاج للسرطان في تونس لكن اللوبيات الصيدلانية منعت نشره!", "label": "disinformation"},
-  {"text": "خطير: ماء الحنفية في تونس فيه مواد سامة و الصوناد تخبي الحقيقة", "label": "disinformation"},
-  {"text": "معلومة خطيرة: شبكة 5G في تونس تسبب أمراض خطيرة. الحكومة ما تعترف!", "label": "disinformation"},
-  {"text": "وثائق مسربة تكشف مخطط لبيع شركات الدولة التونسية بأثمان بخسة!", "label": "disinformation"},
-  {"text": "طبيب تونسي يكتشف علاج طبيعي للسكري يشفي في أسبوع! الأطباء يخبيوها!", "label": "disinformation"},
-  {"text": "صادم: الخبز في تونس فيه مواد كيميائية خطيرة. الحقيقة المخفية!", "label": "disinformation"},
-  {"text": "الزيت النباتي اللي نستعملوه في تونس يسبب السرطان! شاركوا باش يعرف الكل", "label": "disinformation"},
-  {"text": "مؤامرة كبرى ضد تونس! قوى أجنبية تتحكم في سياسات البلاد!", "label": "disinformation"},
-  {"text": "100% مثبت: وصفة جدتي التونسية تشفي من كل الأمراض!", "label": "disinformation"},
-  {"text": "الحقيقة اللي ما يحبوكش تعرفها: التلاقيح في تونس خطيرة و فيها مواد مشبوهة!", "label": "disinformation"},
-  {"text": "عالم الفلك يتنبأ بكارثة طبيعية في تونس! الحكومة تعرف و ساكتة!", "label": "disinformation"},
-  {"text": "الحقيقة الصادمة: الحليب المباع في تونس مغشوش و يسبب أمراض خطيرة للأطفال!", "label": "disinformation"},
-  {"text": "فضيحة: الفرينة اللي نستعملوها في تونس مستوردة من بلاد ملوثة!", "label": "disinformation"},
-  {"text": "طبيب فرنسي كشف أنو الهريسة التونسية تشفي من كورونا! الحقيقة المخفية!", "label": "disinformation"},
-  {"text": "أثبتت الدراسات أنو التن التونسي يقضي على السرطان في 30 يوم!", "label": "disinformation"},
-  {"text": "اكتشفوا أنو الأكل المعلب في تونس فيه مواد مسرطنة! وزارة الصحة ساكتة!", "label": "disinformation"},
-  {"text": "الدينار التونسي باش ينهار الأسبوع الجاي! معلومة من مصدر داخل البنك المركزي!", "label": "disinformation"},
-  {"text": "وثائق سرية تكشف أنو شركات أجنبية تتحكم في ثروات تونس الطبيعية!", "label": "disinformation"},
-  {"text": "خبير أمريكي يكشف: المناخ في تونس يتغير بسبب تجارب سرية حكومية!", "label": "disinformation"},
-  {"text": "السبب الحقيقي لنقص المياه في تونس: مؤامرة لبيع الماء لشركات أجنبية!", "label": "disinformation"},
-  {"text": "طبيب تونسي: زيت الزيتون يشفي من كل الأمراض و الأطباء يخبيوها عليكم!", "label": "disinformation"},
-  {"text": "اكتشاف مادة خطيرة في السجائر التونسية غير موجودة في سجائر دول أخرى!", "label": "disinformation"},
-  {"text": "خطير: الأدوية الجنيسة في تونس مغشوشة و لا تعالج شيئا! فضيحة صيدلانية!", "label": "disinformation"},
-  {"text": "عالم تونسي مقيم بالخارج يكتشف أنو الفلور في معجون الأسنان يسبب الغباء!", "label": "disinformation"},
-  {"text": "Les vaccins distribués en Tunisie sont périmés! Le ministère cache la vérité!", "label": "disinformation"},
-  {"text": "EXCLUSIF: Des documents prouvent que le FMI contrôle l'économie tunisienne!", "label": "disinformation"},
-  {"text": "La vérité sur la crise de l'eau en Tunisie que les médias cachent!", "label": "disinformation"},
-  {"text": "Le dinar tunisien va s'effondrer! Information exclusive que personne ne publie!", "label": "disinformation"},
-  {"text": "RÉVÉLATION: Un complot international vise à déstabiliser la Tunisie!", "label": "disinformation"},
-  {"text": "Scandale sanitaire en Tunisie: Les produits importés contiennent des substances interdites!", "label": "disinformation"},
-  {"text": "Un médecin tunisien découvre que l'huile de nigelle guérit toutes les maladies! Big Pharma le censure!", "label": "disinformation"},
-  {"text": "La vérité choquante sur le lait en Tunisie: contaminé par des antibiotiques dangereux!", "label": "disinformation"},
-  {"text": "Des scientifiques tunisiens prouvent que le jeûne guérit le cancer! L'industrie pharmaceutique bloque!", "label": "disinformation"},
-  {"text": "EXCLUSIF: Les antennes relais en Tunisie émettent des ondes dangereuses intentionnellement!", "label": "disinformation"},
-  {"text": "Revealed: Tunisian water supply contaminated with industrial chemicals! Government cover-up!", "label": "disinformation"},
-  {"text": "Secret documents show international corporations are buying Tunisia's resources for pennies!", "label": "disinformation"},
-  {"text": "الحقيقة وراء غلاء الأسعار في تونس: مخطط دولي لإفقار الشعب!", "label": "disinformation"},
-  {"text": "باحث تونسي يكتشف أنو الويفي يسبب العقم! المعلومة اللي يخبيوها عليكم!", "label": "disinformation"},
-  {"text": "فضيحة في المدارس التونسية: المناهج تحتوي على أفكار سامة لعقول أطفالنا!", "label": "disinformation"},
-  {"text": "الشاي الأخضر التونسي مغشوش بمواد كيميائية! تحقيق يكشف الحقيقة الصادمة!", "label": "disinformation"},
-
-  {"text": "وزارة التربية التونسية تعلن عن رزنامة الامتحانات للثلاثي الثاني", "label": "safe"},
-  {"text": "بلدية تونس تعلن عن مشروع جديد لتحسين النقل العمومي في العاصمة", "label": "safe"},
-  {"text": "الجامعة التونسية لكرة القدم تعلن عن موعد انطلاق الموسم الجديد", "label": "safe"},
-  {"text": "معرض الكتاب الدولي بتونس يفتح أبوابه للزوار بداية من الأسبوع القادم", "label": "safe"},
-  {"text": "وزارة الصحة تعلن عن حملة تلقيح مجانية في جميع المستشفيات العمومية", "label": "safe"},
-  {"text": "الخطوط التونسية تعلن عن رحلات جديدة نحو أوروبا بأسعار تنافسية", "label": "safe"},
-  {"text": "اليوم الطقس مشمس في أغلب المناطق مع درجات حرارة بين 25 و 30 درجة", "label": "safe"},
-  {"text": "المعهد الوطني للإحصاء ينشر تقريره السنوي حول النمو الاقتصادي", "label": "safe"},
-  {"text": "جامعة تونس المنار تنظم ملتقى علمي حول الذكاء الاصطناعي", "label": "safe"},
-  {"text": "السوق المركزية في تونس تشهد استقرارا في أسعار الخضر و الغلال", "label": "safe"},
-  {"text": "برنامج جديد لدعم المشاريع الصغرى في الجهات الداخلية", "label": "safe"},
-  {"text": "افتتاح مستشفى جديد في سيدي بوزيد لتحسين الخدمات الصحية", "label": "safe"},
-  {"text": "الديوان الوطني للسياحة يعلن عن أرقام إيجابية للموسم السياحي", "label": "safe"},
-  {"text": "مهرجان قرطاج الدولي يعلن عن برنامجه لهذا الصيف", "label": "safe"},
-  {"text": "وزارة الفلاحة تعلن عن موسم حصاد جيد للحبوب هذا العام", "label": "safe"},
-  {"text": "انطلاق مشروع المترو الخفيف في صفاقس لتحسين النقل الحضري", "label": "safe"},
-  {"text": "المنتخب التونسي يفوز في مباراة ودية استعدادا لتصفيات كأس أفريقيا", "label": "safe"},
-  {"text": "مدينة العلوم بتونس تنظم أبواب مفتوحة للتلاميذ و الطلبة", "label": "safe"},
-  {"text": "وزارة النقل تعلن عن تحسينات جديدة في خطوط المترو و الحافلات", "label": "safe"},
-  {"text": "البنك المركزي التونسي ينشر التقرير السنوي حول الوضع الاقتصادي", "label": "safe"},
-  {"text": "مهرجان الحامة الدولي ينطلق بمشاركة فنانين من عدة دول", "label": "safe"},
-  {"text": "جمعية تونسية تنظم حملة تنظيف الشواطئ بمشاركة المتطوعين", "label": "safe"},
-  {"text": "اتصالات تونس تعلن عن عروض جديدة للأنترنت بأسعار مناسبة", "label": "safe"},
-  {"text": "المعهد الوطني للأرصاد الجوية: طقس مستقر الأيام القادمة", "label": "safe"},
-  {"text": "وزارة الثقافة تعلن عن دعم المشاريع الثقافية في الجهات", "label": "safe"},
-  {"text": "الترجي الرياضي التونسي يتأهل لدور المجموعات في دوري الأبطال", "label": "safe"},
-  {"text": "مركز البحوث في الفلاحة ينظم يوم دراسي حول الزراعة المستدامة", "label": "safe"},
-  {"text": "La municipalité de Tunis annonce l'ouverture d'un nouveau parc urbain.", "label": "safe"},
-  {"text": "Le ministère de l'Éducation publie le calendrier des examens du baccalauréat.", "label": "safe"},
-  {"text": "Météo Tunisie: Temps ensoleillé demain avec des températures autour de 28°C.", "label": "safe"},
-  {"text": "L'Université de Tunis organise un colloque sur les énergies renouvelables.", "label": "safe"},
-  {"text": "La Fédération Tunisienne de Football annonce le début de la nouvelle saison.", "label": "safe"},
-  {"text": "Le marché central de Tunis affiche des prix stables pour les légumes.", "label": "safe"},
-  {"text": "Tunisair annonce de nouvelles lignes vers Paris et Istanbul à prix compétitifs.", "label": "safe"},
-  {"text": "L'Institut National de la Statistique publie son rapport trimestriel.", "label": "safe"},
-  {"text": "Le Festival de Carthage annonce sa programmation pour cet été.", "label": "safe"},
-  {"text": "Le Salon International du Livre de Tunis ouvre ses portes ce weekend.", "label": "safe"},
-  {"text": "La Cité des Sciences de Tunis organise des ateliers gratuits pour les jeunes.", "label": "safe"},
-  {"text": "Le ministère du Tourisme lance une campagne de promotion du tourisme intérieur.", "label": "safe"},
-  {"text": "L'Espérance Sportive de Tunis remporte le championnat national de football.", "label": "safe"},
-  {"text": "La STEG annonce des travaux de maintenance dans la zone industrielle de Ben Arous.", "label": "safe"},
-  {"text": "L'ONAT publie les chiffres encourageants du tourisme pour le premier semestre.", "label": "safe"},
-  {"text": "Le Club Africain organise un match caritatif pour soutenir les enfants malades.", "label": "safe"},
-  {"text": "La Banque Centrale de Tunisie maintient son taux directeur inchangé.", "label": "safe"},
-  {"text": "Today's weather in Tunis is sunny with temperatures around 28 degrees.", "label": "safe"},
-  {"text": "The Tunisian Football Federation announced the new season schedule.", "label": "safe"},
-  {"text": "A new study from University of Tunis examines renewable energy in North Africa.", "label": "safe"},
-  {"text": "Carthage International Festival announces this summer's lineup of performers.", "label": "safe"},
-  {"text": "Tunisia's olive oil exports reach record levels this year.", "label": "safe"},
-  {"text": "The new Tunis-Sfax highway project is progressing on schedule.", "label": "safe"},
-  {"text": "Tunisian startups secure funding at the international tech conference.", "label": "safe"},
-  {"text": "The national library hosts a free photography exhibition this month.", "label": "safe"},
-  {"text": "مدرسة تونسية تفوز بجائزة دولية في مسابقة الروبوتيك", "label": "safe"},
-  {"text": "افتتاح خط مترو جديد يربط بين ضاحية أريانة و وسط العاصمة", "label": "safe"},
-  {"text": "وزارة التعليم العالي تعلن عن منح دراسية للطلبة المتفوقين", "label": "safe"},
-  {"text": "نجاح عملية زراعة كلى في مستشفى شارل نيكول بتونس", "label": "safe"},
-  {"text": "مؤتمر دولي حول الأمن السيبراني ينعقد في تونس بمشاركة خبراء من 20 دولة", "label": "safe"},
-  {"text": "الديوان الوطني للتطهير يعلن عن مشروع جديد لمعالجة المياه المستعملة", "label": "safe"}
+  {
+    "text": "اصحى يا تونسي! الحكومة تبيع البلاد و ما حد يحكي! شارك قبل ما يمسحوا البوست",
+    "label": "manipulation"
+  },
+  {
+    "text": "لازم تشارك هالفيديو تو! الحقيقة اللي ما يحبوكش تعرفها على الزيادة في الأسعار",
+    "label": "manipulation"
+  },
+  {
+    "text": "آخر فرصة! التسجيل في البرنامج الحكومي يسكر غدوة. سجل تو و إلا تخسر الفرصة للأبد",
+    "label": "manipulation"
+  },
+  {
+    "text": "خطير! ولادنا في خطر و الدولة ما تعمل شي. كل أم تونسية لازم تشارك هالخبر",
+    "label": "manipulation"
+  },
+  {
+    "text": "إذا ما تشاركش هالرسالة مع 10 أشخاص راح تصيبك مشاكل. شاركها تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "عاجل لكل التوانسة: اللي ما يخرجش للشارع تو يبقى عبد للأبد. اصحاو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كل تونسي حر لازم يشارك هالمعلومة. اللي ما يشاركش خاين لبلادو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "فزع! المواد الغذائية راح تنقص الأسبوع الجاي. اشري تو قبل فوات الأوان!",
+    "label": "manipulation"
+  },
+  {
+    "text": "لازم تصحى! الأسعار تزيد و الشعب ساكت. شارك باش توصل الحقيقة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "صادم! شوف شنوة عملوا بفلوس الشعب. لازم كل واحد يشارك هالفيديو قبل ما يتمسح",
+    "label": "manipulation"
+  },
+  {
+    "text": "ماتسكتش! حقك ضاع و ما حد يدافع عليك. اصحى و شارك قبل فوات الأوان",
+    "label": "manipulation"
+  },
+  {
+    "text": "أنت كتونسي لازم تعرف الحقيقة هاذي. اللي يخبيها عليك عدوك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "تحذير خطير: اللي ما يقراش هالخبر راح يندم. تونس في خطر!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اللي يحب بلادو يشارك! اللي ما يشاركش يبقى ساكت على الظلم!",
+    "label": "manipulation"
+  },
+  {
+    "text": "خاف على عايلتك! المنتوج هذا فيه سموم و ولادنا ياكلوا فيه كل يوم!",
+    "label": "manipulation"
+  },
+  {
+    "text": "هل تقبل اللي يصير في بلادك؟ إذا أنت راجل شارك هالبوست!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا شعب تونس! فيقوا قبل ما يفوت الأوان! كل شي باش يتبدل إذا سكتنا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "مسكين الشعب التونسي! يعاني و ما حد يحس بيه! شارك باش نوصلوا صوتنا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "تحب تونس؟ إذا إيه شارك هالخبر مع كل عباد لي تعرفهم! وقت العمل تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كفى صمت! الشعب يموت جوع و هوما يسرقوا! لازم نتحركوا تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا أمهات تونس! ولادكم في خطر! لازم تقراو هالمقال و تشاركوه مع الكل!",
+    "label": "manipulation"
+  },
+  {
+    "text": "إذا كنت تونسي حقيقي ما ينفعش تسكت على هالظلم! شارك و بين إنك موجود!",
+    "label": "manipulation"
+  },
+  {
+    "text": "عيب عليك تسكت! ناس تعاني و أنت تتفرج! شارك هالرسالة تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الوقت يجري! باقي 24 ساعة باش تسجل في هالبرنامج و إلا خسرت حقك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "ما تخليش حد يضحك عليك! افتح عينيك و شوف الحقيقة! شارك مع صحابك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اللي عندو ضمير يشارك هالخبر! اللي ساكت شريك في الجريمة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "راك تونسي و تسكت؟ هاذي بلادك تتهرس قدام عينيك! فيق و شارك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "حرام عليهم! شوفوا شنوة يعملوا في الشعب المسكين! لازم الكل يعرف!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يلزمنا نقاتلوا على حقوقنا! اللي ما يشاركش هو جزء من المشكلة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "تعيش تونس حرة! شارك هالبوست إذا كنت ضد الفساد! سكوتك خيانة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "ناس تموت و أنت تتفرج؟ شارك و خلي صوتك يتسمع!",
+    "label": "manipulation"
+  },
+  {
+    "text": "خوفتني الحكاية هاذي! كيفاش نعيشوا و الأسعار هكا؟ شاركوا باش نحلوا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "آش بيك ساكت؟ ما عندكش ولاد؟ ما تحبش مستقبلهم يكون أحسن؟ فيق و شارك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "غضب الشعب! كفى استغلال! شارك و بين إنك ضد الفساد و الظلم!",
+    "label": "manipulation"
+  },
+  {
+    "text": "قلبي يوجعني على بلادي! كل تونسي شريف لازم يشارك هالحقيقة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "لا تخاف! صوتك قوة! شارك و خلي العالم يعرف شنوة يصير في تونس!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا تونسي يا حر! ولادك يستاهلوا مستقبل أحسن! شارك قبل ما يفوت الأوان!",
+    "label": "manipulation"
+  },
+  {
+    "text": "هاذي آخر مرة نحكي! إذا ما تشاركش هالخبر تو ما عاد تلوم حد!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا ناس الخير! ساعدوا أخوانكم! شاركوا هالرسالة و ربي يجازيكم!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الوطن يناديك! لازم كل تونسي يقوم بواجبو تو! شارك و بلغ!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اللي ما يتحركش تو باش يندم باكر! شارك هالمعلومة قبل ما يسكروها!",
+    "label": "manipulation"
+  },
+  {
+    "text": "أنا كتونسية قلبي تحرق على بلادي! لازم نشاركوا الحقيقة باش نحميو ولادنا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الصمت جريمة! كل واحد يشوف هالظلم و يسكت هو شريك فيه!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اليوم حقك غدوة حق ولادك! شارك باش نحميوا مستقبل أجيالنا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "ما عاد ينفع نسكتوا! لازم الكل يشارك و يوصل الحقيقة لكل تونسي!",
+    "label": "manipulation"
+  },
+  {
+    "text": "هل تعلم أنو فلوسك راهي تتسرق و أنت ما تعرف؟ فيق و شارك مع عبادك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كل يوم يزيدوا يسرقوا فينا و نحنا ساكتين! لازم نفيقوا و نشاركوا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "شارك هالبوست إذا عندك قلب! الشعب محتاج صوتك تو مش باكر!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا تونسي الغيور على بلادو! وقتاش باش تتحرك؟ شارك تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اللي ساكت على الحق شيطان أخرس! شارك و بين إنك إنسان!",
+    "label": "manipulation"
+  },
+  {
+    "text": "URGENT pour tous les Tunisiens! Partagez avant qu'ils ne suppriment cette vérité sur la hausse des prix!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Dernière chance! Inscription au programme d'aide sociale ferme dans 24h. Ne ratez pas!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Attention parents tunisiens! Vos enfants sont en danger à cause de cette application. Partagez d'urgence!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Si vous êtes un vrai Tunisien, partagez ce message! Notre pays est en danger!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Tunisiens réveillez-vous! On nous ment depuis des années! Partagez massivement!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Honte à ceux qui se taisent! Le peuple tunisien souffre! Partagez pour faire entendre notre voix!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Vous acceptez ça pour vos enfants? Si vous avez du courage, partagez! Sinon restez esclaves!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Alerte rouge pour la Tunisie! Si vous aimez votre pays, partagez immédiatement!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Ne soyez pas complice du silence! Chaque Tunisien doit voir cette vidéo avant qu'elle soit supprimée!",
+    "label": "manipulation"
+  },
+  {
+    "text": "C'est maintenant ou jamais! Le peuple doit se réveiller! Partagez avec tous vos contacts!",
+    "label": "manipulation"
+  },
+  {
+    "text": "ACT NOW Tunisians! Share this before they delete it! Your children's future depends on it!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Every Tunisian must see this! If you love Tunisia, share immediately! Silence is betrayal!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Wake up Tunisia! They are stealing your future! Share before it's too late!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Le silence est complicité! Partagez cette information vitale pour nos enfants!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Dernière alerte! Si on ne partage pas cette vérité maintenant, il sera trop tard!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Parents tunisiens, protégez vos enfants! Partagez cet avertissement avec tout le monde!",
+    "label": "manipulation"
+  },
+  {
+    "text": "On nous prend pour des idiots! Réveillez-vous et partagez la vérité! Ça suffit!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Qui aime la Tunisie partage! Qui se tait trahit son pays et ses enfants!",
+    "label": "manipulation"
+  },
+  {
+    "text": "WARNING: If you're Tunisian and you stay silent, you're part of the problem! Share NOW!",
+    "label": "manipulation"
+  },
+  {
+    "text": "This affects EVERY Tunisian family! Don't be the one who stayed quiet! Share immediately!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Your silence means you agree with the corruption! Real Tunisians speak up and share!",
+    "label": "manipulation"
+  },
+  {
+    "text": "لو كنت أم تونسية ما تقبلش هالشي! شارك هالخبر باش تحمي ولادك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا شباب تونس! مستقبلكم يتسرق و أنتم تتفرجوا! فيقوا و شاركوا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "هذا اللي ما يحبوكش تشوفوه! شاركوا قبل ما يحذفوه!",
+    "label": "manipulation"
+  },
+  {
+    "text": "إذا عندك ضمير شارك! إذا ما عندكش ضمير كمل سكوتك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الحق يتكلم و الباطل يرتعش! شارك الحقيقة و لا تخاف من حد!",
+    "label": "manipulation"
+  },
+  {
+    "text": "وين التوانسة الأحرار؟ بلادكم محتاجاكم! شاركوا و بينوا إنكم موجودين!",
+    "label": "manipulation"
+  },
+  {
+    "text": "لكل أب و أم في تونس: إذا ما تشاركش هالخبر ما تلوم حد على مستقبل ولادك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كل ثانية سكوت هي ثانية ظلم! شارك تو و خلي صوتك يوصل!",
+    "label": "manipulation"
+  },
+  {
+    "text": "عاجل: حسابك في بريد تونس تم تعليقه! أدخل رقم البطاقة البريدية و كلمة السر الآن",
+    "label": "phishing"
+  },
+  {
+    "text": "تنبيه أمني من اتصالات تونس: تم اكتشاف نشاط مشبوه في خطك. أكد هويتك فورا",
+    "label": "phishing"
+  },
+  {
+    "text": "مبروك! ربحت 5000 دينار من أوريدو تونس. ادخل معلوماتك البنكية باش تستلم الجائزة",
+    "label": "phishing"
+  },
+  {
+    "text": "الستاغ تعلمك أنو فاتورة الكهرباء ما تخلصتش. خلص تو قبل ما يقطعوا عليك الضو",
+    "label": "phishing"
+  },
+  {
+    "text": "حسابك البنكي في البنك الوطني الفلاحي فيه مشكل أمني. لازم تدخل كلمة السر تو",
+    "label": "phishing"
+  },
+  {
+    "text": "بريد تونس: طردك واصل للمكتب. خلص 3.500 دينار مصاريف التوصيل باش يوصلك للدار",
+    "label": "phishing"
+  },
+  {
+    "text": "عاجل من بنك الزيتونة: تم تجميد حسابك مؤقتا. أكد معلوماتك الشخصية فورا",
+    "label": "phishing"
+  },
+  {
+    "text": "الصوناد تعلمك: فاتورة الماء فيها تأخير. خلص أونلاين تو و إلا يقطعوا الماء",
+    "label": "phishing"
+  },
+  {
+    "text": "ربحت سيارة في مسابقة تونسنا! أرسل رقم CIN و معلومات حسابك البنكي",
+    "label": "phishing"
+  },
+  {
+    "text": "خلي بالك! راهم يسرقوا فلوسك من حسابك. ادخل على الرابط هذا تو و غير كلمة السر",
+    "label": "phishing"
+  },
+  {
+    "text": "تم اختيارك للحصول على قرض بدون فائدة من البنك المركزي. أرسل معلوماتك و CIN",
+    "label": "phishing"
+  },
+  {
+    "text": "حسابك في بريد تونس الإلكتروني باش ينتهي. أدخل كلمة السر باش تجدد الاشتراك",
+    "label": "phishing"
+  },
+  {
+    "text": "أخطر! لازم تحدث تطبيق البريد تو و إلا ما تنجمش تدخل لحسابك. اضغط هنا",
+    "label": "phishing"
+  },
+  {
+    "text": "تنبيه من بنك تونس العربي الدولي: حدث معلوماتك قبل 48 ساعة و إلا حسابك يتسكر",
+    "label": "phishing"
+  },
+  {
+    "text": "عندك رصيد مجاني من أوريدو! ادخل رقم هاتفك و الكود السري باش تستفاد",
+    "label": "phishing"
+  },
+  {
+    "text": "تهانينا! تم اختيارك للفوز بهاتف جديد من اتصالات تونس. أكمل التسجيل هنا",
+    "label": "phishing"
+  },
+  {
+    "text": "البنك التونسي الكويتي يعلمك بتحديث إجباري لبيانات حسابك. اضغط هنا للتحديث",
+    "label": "phishing"
+  },
+  {
+    "text": "أمان بنك: تم رصد عملية مشبوهة على حسابك. أدخل بياناتك لتأكيد هويتك",
+    "label": "phishing"
+  },
+  {
+    "text": "تطبيق e-DINAR الجديد جاهز! حمله من هالرابط و ادخل بيانات حسابك البريدي",
+    "label": "phishing"
+  },
+  {
+    "text": "عرض حصري: اربح 200 دينار رصيد مجاني! أرسل رقم بطاقة الشحن متاعك هنا",
+    "label": "phishing"
+  },
+  {
+    "text": "وزارة الشؤون الاجتماعية: تم قبول ملفك للمساعدة. أرسل CIN و RIB لتحويل المبلغ",
+    "label": "phishing"
+  },
+  {
+    "text": "CNAM تعلمك: بطاقة العلاج متاعك باش تنتهي. أدخل معلوماتك الشخصية للتجديد",
+    "label": "phishing"
+  },
+  {
+    "text": "عاجل من البريد التونسي: حوالتك جاهزة. أدخل رقم CIN و رمز التأكيد لاستلامها",
+    "label": "phishing"
+  },
+  {
+    "text": "فاتورة الستاغ متاعك فيها خطأ و تستحق تعويض 150 دينار. أدخل RIB متاعك",
+    "label": "phishing"
+  },
+  {
+    "text": "Félicitations! Vous avez gagné un smartphone de Tunisie Telecom. Entrez vos coordonnées bancaires.",
+    "label": "phishing"
+  },
+  {
+    "text": "Alerte sécurité La Poste Tunisienne: Votre compte e-DINAR a été compromis. Vérifiez immédiatement.",
+    "label": "phishing"
+  },
+  {
+    "text": "STEG alerte: Votre facture est impayée. Payez via ce lien ou votre service sera coupé dans 24h.",
+    "label": "phishing"
+  },
+  {
+    "text": "Banque de Tunisie: Activité suspecte détectée. Confirmez vos informations en cliquant sur ce lien.",
+    "label": "phishing"
+  },
+  {
+    "text": "Ooredoo Tunisie: Entrez votre numéro et code secret pour bénéficier du rechargement gratuit.",
+    "label": "phishing"
+  },
+  {
+    "text": "Votre colis La Poste Tunisienne est arrivé. Payez 4.900 DT frais de livraison.",
+    "label": "phishing"
+  },
+  {
+    "text": "BNA alerte: Tentative de connexion suspecte à votre compte. Vérifiez vos identifiants maintenant.",
+    "label": "phishing"
+  },
+  {
+    "text": "URGENT: Your Amen Bank account shows unauthorized transactions. Verify at amenbank-secure.tk",
+    "label": "phishing"
+  },
+  {
+    "text": "Tunisie Telecom: Votre ligne sera suspendue pour impayé. Régularisez via ce lien.",
+    "label": "phishing"
+  },
+  {
+    "text": "SONEDE: Coupure d'eau si facture non réglée. Cliquez ici pour payer immédiatement.",
+    "label": "phishing"
+  },
+  {
+    "text": "Banque Zitouna: Mise à jour obligatoire de votre compte en ligne. Cliquez ici pour confirmer.",
+    "label": "phishing"
+  },
+  {
+    "text": "BIAT vous informe: Votre carte bancaire expire bientôt. Renouvelez en cliquant sur ce lien sécurisé.",
+    "label": "phishing"
+  },
+  {
+    "text": "La Poste Tunisienne: Un mandat vous attend. Payez 2.500 DT de frais pour le recevoir.",
+    "label": "phishing"
+  },
+  {
+    "text": "Offre spéciale Ooredoo: Double crédit gratuit! Envoyez votre code de recharge par SMS au 12345.",
+    "label": "phishing"
+  },
+  {
+    "text": "STB Bank: Votre compte sera fermé pour inactivité. Connectez-vous via ce lien pour le maintenir actif.",
+    "label": "phishing"
+  },
+  {
+    "text": "Ministère des Finances: Votre remboursement d'impôt de 850 DT est prêt. Entrez votre RIB.",
+    "label": "phishing"
+  },
+  {
+    "text": "CNSS alerte: Votre dossier de retraite nécessite une mise à jour. Envoyez vos documents via ce lien.",
+    "label": "phishing"
+  },
+  {
+    "text": "تطبيق MyTT فيه تحديث أمني عاجل. حمل النسخة الجديدة من هالرابط و ادخل بياناتك",
+    "label": "phishing"
+  },
+  {
+    "text": "بنك الإسكان يعلمك: القسط متاعك ما تخلصش. خلص تو عبر الرابط هذا باش ما يصيرش مشاكل",
+    "label": "phishing"
+  },
+  {
+    "text": "مبروك عليك! ربحت في سحب على جوائز موبيليس. أرسل معلوماتك باش نبعثولك الجائزة",
+    "label": "phishing"
+  },
+  {
+    "text": "وكالة التشغيل و العمل المستقل: تم قبول ملفك. أرسل CIN و RIB للتحويل",
+    "label": "phishing"
+  },
+  {
+    "text": "ANETI: Vous êtes sélectionné pour une formation rémunérée. Envoyez CIN et RIB pour finaliser.",
+    "label": "phishing"
+  },
+  {
+    "text": "فضيحة: الحكومة التونسية تبيع أراضي البلاد للأجانب في السر! وثائق مسربة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "اكتشاف علاج للسرطان في تونس لكن اللوبيات الصيدلانية منعت نشره!",
+    "label": "disinformation"
+  },
+  {
+    "text": "خطير: ماء الحنفية في تونس فيه مواد سامة و الصوناد تخبي الحقيقة",
+    "label": "disinformation"
+  },
+  {
+    "text": "معلومة خطيرة: شبكة 5G في تونس تسبب أمراض خطيرة. الحكومة ما تعترف!",
+    "label": "disinformation"
+  },
+  {
+    "text": "وثائق مسربة تكشف مخطط لبيع شركات الدولة التونسية بأثمان بخسة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "طبيب تونسي يكتشف علاج طبيعي للسكري يشفي في أسبوع! الأطباء يخبيوها!",
+    "label": "disinformation"
+  },
+  {
+    "text": "صادم: الخبز في تونس فيه مواد كيميائية خطيرة. الحقيقة المخفية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الزيت النباتي اللي نستعملوه في تونس يسبب السرطان! شاركوا باش يعرف الكل",
+    "label": "disinformation"
+  },
+  {
+    "text": "مؤامرة كبرى ضد تونس! قوى أجنبية تتحكم في سياسات البلاد!",
+    "label": "disinformation"
+  },
+  {
+    "text": "100% مثبت: وصفة جدتي التونسية تشفي من كل الأمراض!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الحقيقة اللي ما يحبوكش تعرفها: التلاقيح في تونس خطيرة و فيها مواد مشبوهة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "عالم الفلك يتنبأ بكارثة طبيعية في تونس! الحكومة تعرف و ساكتة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الحقيقة الصادمة: الحليب المباع في تونس مغشوش و يسبب أمراض خطيرة للأطفال!",
+    "label": "disinformation"
+  },
+  {
+    "text": "فضيحة: الفرينة اللي نستعملوها في تونس مستوردة من بلاد ملوثة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "طبيب فرنسي كشف أنو الهريسة التونسية تشفي من كورونا! الحقيقة المخفية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "أثبتت الدراسات أنو التن التونسي يقضي على السرطان في 30 يوم!",
+    "label": "disinformation"
+  },
+  {
+    "text": "اكتشفوا أنو الأكل المعلب في تونس فيه مواد مسرطنة! وزارة الصحة ساكتة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الدينار التونسي باش ينهار الأسبوع الجاي! معلومة من مصدر داخل البنك المركزي!",
+    "label": "disinformation"
+  },
+  {
+    "text": "وثائق سرية تكشف أنو شركات أجنبية تتحكم في ثروات تونس الطبيعية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "خبير أمريكي يكشف: المناخ في تونس يتغير بسبب تجارب سرية حكومية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "السبب الحقيقي لنقص المياه في تونس: مؤامرة لبيع الماء لشركات أجنبية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "طبيب تونسي: زيت الزيتون يشفي من كل الأمراض و الأطباء يخبيوها عليكم!",
+    "label": "disinformation"
+  },
+  {
+    "text": "اكتشاف مادة خطيرة في السجائر التونسية غير موجودة في سجائر دول أخرى!",
+    "label": "disinformation"
+  },
+  {
+    "text": "خطير: الأدوية الجنيسة في تونس مغشوشة و لا تعالج شيئا! فضيحة صيدلانية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "عالم تونسي مقيم بالخارج يكتشف أنو الفلور في معجون الأسنان يسبب الغباء!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Les vaccins distribués en Tunisie sont périmés! Le ministère cache la vérité!",
+    "label": "disinformation"
+  },
+  {
+    "text": "EXCLUSIF: Des documents prouvent que le FMI contrôle l'économie tunisienne!",
+    "label": "disinformation"
+  },
+  {
+    "text": "La vérité sur la crise de l'eau en Tunisie que les médias cachent!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Le dinar tunisien va s'effondrer! Information exclusive que personne ne publie!",
+    "label": "disinformation"
+  },
+  {
+    "text": "RÉVÉLATION: Un complot international vise à déstabiliser la Tunisie!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Scandale sanitaire en Tunisie: Les produits importés contiennent des substances interdites!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Un médecin tunisien découvre que l'huile de nigelle guérit toutes les maladies! Big Pharma le censure!",
+    "label": "disinformation"
+  },
+  {
+    "text": "La vérité choquante sur le lait en Tunisie: contaminé par des antibiotiques dangereux!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Des scientifiques tunisiens prouvent que le jeûne guérit le cancer! L'industrie pharmaceutique bloque!",
+    "label": "disinformation"
+  },
+  {
+    "text": "EXCLUSIF: Les antennes relais en Tunisie émettent des ondes dangereuses intentionnellement!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Revealed: Tunisian water supply contaminated with industrial chemicals! Government cover-up!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Secret documents show international corporations are buying Tunisia's resources for pennies!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الحقيقة وراء غلاء الأسعار في تونس: مخطط دولي لإفقار الشعب!",
+    "label": "disinformation"
+  },
+  {
+    "text": "باحث تونسي يكتشف أنو الويفي يسبب العقم! المعلومة اللي يخبيوها عليكم!",
+    "label": "disinformation"
+  },
+  {
+    "text": "فضيحة في المدارس التونسية: المناهج تحتوي على أفكار سامة لعقول أطفالنا!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الشاي الأخضر التونسي مغشوش بمواد كيميائية! تحقيق يكشف الحقيقة الصادمة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "وزارة التربية التونسية تعلن عن رزنامة الامتحانات للثلاثي الثاني",
+    "label": "safe"
+  },
+  {
+    "text": "بلدية تونس تعلن عن مشروع جديد لتحسين النقل العمومي في العاصمة",
+    "label": "safe"
+  },
+  {
+    "text": "الجامعة التونسية لكرة القدم تعلن عن موعد انطلاق الموسم الجديد",
+    "label": "safe"
+  },
+  {
+    "text": "معرض الكتاب الدولي بتونس يفتح أبوابه للزوار بداية من الأسبوع القادم",
+    "label": "safe"
+  },
+  {
+    "text": "وزارة الصحة تعلن عن حملة تلقيح مجانية في جميع المستشفيات العمومية",
+    "label": "safe"
+  },
+  {
+    "text": "الخطوط التونسية تعلن عن رحلات جديدة نحو أوروبا بأسعار تنافسية",
+    "label": "safe"
+  },
+  {
+    "text": "اليوم الطقس مشمس في أغلب المناطق مع درجات حرارة بين 25 و 30 درجة",
+    "label": "safe"
+  },
+  {
+    "text": "المعهد الوطني للإحصاء ينشر تقريره السنوي حول النمو الاقتصادي",
+    "label": "safe"
+  },
+  {
+    "text": "جامعة تونس المنار تنظم ملتقى علمي حول الذكاء الاصطناعي",
+    "label": "safe"
+  },
+  {
+    "text": "السوق المركزية في تونس تشهد استقرارا في أسعار الخضر و الغلال",
+    "label": "safe"
+  },
+  {
+    "text": "برنامج جديد لدعم المشاريع الصغرى في الجهات الداخلية",
+    "label": "safe"
+  },
+  {
+    "text": "افتتاح مستشفى جديد في سيدي بوزيد لتحسين الخدمات الصحية",
+    "label": "safe"
+  },
+  {
+    "text": "الديوان الوطني للسياحة يعلن عن أرقام إيجابية للموسم السياحي",
+    "label": "safe"
+  },
+  {
+    "text": "مهرجان قرطاج الدولي يعلن عن برنامجه لهذا الصيف",
+    "label": "safe"
+  },
+  {
+    "text": "وزارة الفلاحة تعلن عن موسم حصاد جيد للحبوب هذا العام",
+    "label": "safe"
+  },
+  {
+    "text": "انطلاق مشروع المترو الخفيف في صفاقس لتحسين النقل الحضري",
+    "label": "safe"
+  },
+  {
+    "text": "المنتخب التونسي يفوز في مباراة ودية استعدادا لتصفيات كأس أفريقيا",
+    "label": "safe"
+  },
+  {
+    "text": "مدينة العلوم بتونس تنظم أبواب مفتوحة للتلاميذ و الطلبة",
+    "label": "safe"
+  },
+  {
+    "text": "وزارة النقل تعلن عن تحسينات جديدة في خطوط المترو و الحافلات",
+    "label": "safe"
+  },
+  {
+    "text": "البنك المركزي التونسي ينشر التقرير السنوي حول الوضع الاقتصادي",
+    "label": "safe"
+  },
+  {
+    "text": "مهرجان الحامة الدولي ينطلق بمشاركة فنانين من عدة دول",
+    "label": "safe"
+  },
+  {
+    "text": "جمعية تونسية تنظم حملة تنظيف الشواطئ بمشاركة المتطوعين",
+    "label": "safe"
+  },
+  {
+    "text": "اتصالات تونس تعلن عن عروض جديدة للأنترنت بأسعار مناسبة",
+    "label": "safe"
+  },
+  {
+    "text": "المعهد الوطني للأرصاد الجوية: طقس مستقر الأيام القادمة",
+    "label": "safe"
+  },
+  {
+    "text": "وزارة الثقافة تعلن عن دعم المشاريع الثقافية في الجهات",
+    "label": "safe"
+  },
+  {
+    "text": "الترجي الرياضي التونسي يتأهل لدور المجموعات في دوري الأبطال",
+    "label": "safe"
+  },
+  {
+    "text": "مركز البحوث في الفلاحة ينظم يوم دراسي حول الزراعة المستدامة",
+    "label": "safe"
+  },
+  {
+    "text": "La municipalité de Tunis annonce l'ouverture d'un nouveau parc urbain.",
+    "label": "safe"
+  },
+  {
+    "text": "Le ministère de l'Éducation publie le calendrier des examens du baccalauréat.",
+    "label": "safe"
+  },
+  {
+    "text": "Météo Tunisie: Temps ensoleillé demain avec des températures autour de 28°C.",
+    "label": "safe"
+  },
+  {
+    "text": "L'Université de Tunis organise un colloque sur les énergies renouvelables.",
+    "label": "safe"
+  },
+  {
+    "text": "La Fédération Tunisienne de Football annonce le début de la nouvelle saison.",
+    "label": "safe"
+  },
+  {
+    "text": "Le marché central de Tunis affiche des prix stables pour les légumes.",
+    "label": "safe"
+  },
+  {
+    "text": "Tunisair annonce de nouvelles lignes vers Paris et Istanbul à prix compétitifs.",
+    "label": "safe"
+  },
+  {
+    "text": "L'Institut National de la Statistique publie son rapport trimestriel.",
+    "label": "safe"
+  },
+  {
+    "text": "Le Festival de Carthage annonce sa programmation pour cet été.",
+    "label": "safe"
+  },
+  {
+    "text": "Le Salon International du Livre de Tunis ouvre ses portes ce weekend.",
+    "label": "safe"
+  },
+  {
+    "text": "La Cité des Sciences de Tunis organise des ateliers gratuits pour les jeunes.",
+    "label": "safe"
+  },
+  {
+    "text": "Le ministère du Tourisme lance une campagne de promotion du tourisme intérieur.",
+    "label": "safe"
+  },
+  {
+    "text": "L'Espérance Sportive de Tunis remporte le championnat national de football.",
+    "label": "safe"
+  },
+  {
+    "text": "La STEG annonce des travaux de maintenance dans la zone industrielle de Ben Arous.",
+    "label": "safe"
+  },
+  {
+    "text": "L'ONAT publie les chiffres encourageants du tourisme pour le premier semestre.",
+    "label": "safe"
+  },
+  {
+    "text": "Le Club Africain organise un match caritatif pour soutenir les enfants malades.",
+    "label": "safe"
+  },
+  {
+    "text": "La Banque Centrale de Tunisie maintient son taux directeur inchangé.",
+    "label": "safe"
+  },
+  {
+    "text": "Today's weather in Tunis is sunny with temperatures around 28 degrees.",
+    "label": "safe"
+  },
+  {
+    "text": "The Tunisian Football Federation announced the new season schedule.",
+    "label": "safe"
+  },
+  {
+    "text": "A new study from University of Tunis examines renewable energy in North Africa.",
+    "label": "safe"
+  },
+  {
+    "text": "Carthage International Festival announces this summer's lineup of performers.",
+    "label": "safe"
+  },
+  {
+    "text": "Tunisia's olive oil exports reach record levels this year.",
+    "label": "safe"
+  },
+  {
+    "text": "The new Tunis-Sfax highway project is progressing on schedule.",
+    "label": "safe"
+  },
+  {
+    "text": "Tunisian startups secure funding at the international tech conference.",
+    "label": "safe"
+  },
+  {
+    "text": "The national library hosts a free photography exhibition this month.",
+    "label": "safe"
+  },
+  {
+    "text": "مدرسة تونسية تفوز بجائزة دولية في مسابقة الروبوتيك",
+    "label": "safe"
+  },
+  {
+    "text": "افتتاح خط مترو جديد يربط بين ضاحية أريانة و وسط العاصمة",
+    "label": "safe"
+  },
+  {
+    "text": "وزارة التعليم العالي تعلن عن منح دراسية للطلبة المتفوقين",
+    "label": "safe"
+  },
+  {
+    "text": "نجاح عملية زراعة كلى في مستشفى شارل نيكول بتونس",
+    "label": "safe"
+  },
+  {
+    "text": "مؤتمر دولي حول الأمن السيبراني ينعقد في تونس بمشاركة خبراء من 20 دولة",
+    "label": "safe"
+  },
+  {
+    "text": "الديوان الوطني للتطهير يعلن عن مشروع جديد لمعالجة المياه المستعملة",
+    "label": "safe"
+  },
+  {
+    "text": "Last day! This offer won't come back! Miss it and it's gone forever!",
+    "label": "manipulation"
+  },
+  {
+    "text": "This opportunity comes once in a lifetime! Don't regret missing it!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Registration closes tomorrow! If you don't sign up now you lose everything!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Only 50 seats left! Thousands registered and you're still thinking!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Very limited spots! First come first served, the rest will cry!",
+    "label": "manipulation"
+  },
+  {
+    "text": "This is the chance of a lifetime! Don't waste it like you wasted previous ones!",
+    "label": "manipulation"
+  },
+  {
+    "text": "People who missed this opportunity are crying now! Don't be one of them!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Spots filling fast! Register before it's full! Don't regret it tomorrow!",
+    "label": "manipulation"
+  },
+  {
+    "text": "The offer ends in one hour! Hurry before you lose your chance forever!",
+    "label": "manipulation"
+  },
+  {
+    "text": "If you don't register today you'll regret it 100 times! Decide now!",
+    "label": "manipulation"
+  },
+  {
+    "text": "آخر يوم! العرض هذا ما يتعاودش! اللي فاتو فاتو و ما ثمش رجوع!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الفرصة هاذي ما تجيش كل يوم! اللي ما يستغلهاش باش يندم عمرو الكل!",
+    "label": "manipulation"
+  },
+  {
+    "text": "غدوة يسكروا التسجيل! اللي ما سجلش تو خسر كل شي!",
+    "label": "manipulation"
+  },
+  {
+    "text": "آخر 50 مقعد متبقي! الآلاف سجلوا و أنت باقي تفكر! سجل تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "العدد محدود جدا! اللي يلحق يلحق و اللي ما يلحقش يبكي!",
+    "label": "manipulation"
+  },
+  {
+    "text": "هاذي فرصة العمر! ما تضيعهاش كيما ضيعت الفرص اللي فاتوا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "ثمة ناس فاتتهم الفرصة و هوما يبكيوا تو! ما تكونش واحد منهم!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الأماكن تنقص بسرعة! سجل قبل ما يكمل الكل! ما تندمش باكر!",
+    "label": "manipulation"
+  },
+  {
+    "text": "العرض ينتهي بعد ساعة! سارع قبل ما تخسر فرصتك للأبد!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اللي ما يسجلش اليوم باش يندم 100 مرة! خذ قرارك تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "عيب عليك ما تساعدش! الناس في ضيقة و أنت عندك و ما تعطيش!",
+    "label": "manipulation"
+  },
+  {
+    "text": "حرام عليك تاكل و خوك جوعان! شارك و ساعد ولا ضميرك يحاسبك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كيفاش تنام مرتاح و ثمة ناس ما عندهمش فراش؟ ساعد تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "ربي يشوف فيك! اللي عندو و ما يساعدش الناس ربي يحاسبو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "تتفرج في التلفزة و أخوك التونسي يموت بردا؟ عيب عليك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "إذا ما تبعثش هالرسالة لـ 20 واحد ربي ما يقبلش صلاتك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كل واحد يقرا هالكلام و ما يشاركوش ربي يحاسبو يوم القيامة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "أنت تاكل خبز و لحم و ثمة عائلات تونسية ما لقاتش الخبز! حشمة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "ولادك ياكلوا الزايد و ثمة ولاد ما عندهمش حتى حليب! ضميرك وين؟",
+    "label": "manipulation"
+  },
+  {
+    "text": "كيفاش تشري حوايج جداد و جارك ما يلقاش الدواء متاع ولدو؟",
+    "label": "manipulation"
+  },
+  {
+    "text": "كل تونسي شهم يعمل شير! اللي ما يعملش شير ماهوش تونسي!",
+    "label": "manipulation"
+  },
+  {
+    "text": "نحنا التوانسة ما نسكتوش على الظلم! إذا كنت تونسي بين روحك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "أنا فخور بأصلي التونسي! اللي يحب تونس يعمل لايك و شير!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الدم التونسي ما يبردش! كل واحد يحب بلادو يشارك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "التوانسة الأحرار ما يخافوش! بين إنك حر و شارك هالحقيقة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا ابن تونس الخضراء! ما تخليش بلادك تطيح! شارك و دافع!",
+    "label": "manipulation"
+  },
+  {
+    "text": "تونسي و تسكت على الباطل؟ أجدادك يستحيوا فيك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "تونس تناديك! إذا ما تلبيش النداء ماكش ابنها!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا ولد تونس! بلادك تستاهل تدافع عليها مش تتفرج من بعيد!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اللي يحب وطنو يثبت بالفعل مش بالكلام! شارك و بين!",
+    "label": "manipulation"
+  },
+  {
+    "text": "لو كنت تحبني تشارك هالبوست! اللي يحبني يعمل شير!",
+    "label": "manipulation"
+  },
+  {
+    "text": "أمك ربتك و تعبت عليك! شارك هالبوست احتراما ليها!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اللي يحب أمو يكتب ماشاء الله! اللي ما يكتبش ما يحبهاش!",
+    "label": "manipulation"
+  },
+  {
+    "text": "إذا عندك قلب تشارك! إذا ما عندكش قلب ما تشاركش!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اكتب آمين إذا تحب خير لعايلتك! اللي ما يكتبش ما يحبهمش!",
+    "label": "manipulation"
+  },
+  {
+    "text": "شارك و ربي يحقق أمنيتك! اللي ما يشاركش ما عندو حظ!",
+    "label": "manipulation"
+  },
+  {
+    "text": "لو تحب ولادك حقيقي ما تسكتش على هالشي! شارك تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اللي عندو مشاعر يتأثر بهالفيديو! اللي ما يتأثرش ماعندوش قلب!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يلعن أبو هالظلم! كيفاش يعيش الغني و الفقير يموت؟ فيقوا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "حسبي الله و نعم الوكيل! يسرقوا في الشعب و يتمتعوا بفلوسنا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الشعب التونسي ما يستاهلش هالمعاملة! كفى إهانة! قاوموا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يحقروا فينا! يعاملونا كالحيوانات! وقتاش نتحركوا؟",
+    "label": "manipulation"
+  },
+  {
+    "text": "غضب! كيفاش المسؤول يسرق الملايين و المواطن ما يلقاش يأكل؟",
+    "label": "manipulation"
+  },
+  {
+    "text": "ما بقاش وقت للكلام! لازم نغضبوا و نبينوا إنا موجودين!",
+    "label": "manipulation"
+  },
+  {
+    "text": "دمي يغلي! كيفاش يصير هالشي في بلاد الثورة؟ فيقوا يا ناس!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كيفاش تقبل الإهانة هاذي؟ إذا عندك كرامة قوم و تحرك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الشعب جوعان و هوما يعيشوا في القصور! ما نسكتوش!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كفى ذل! كفى هوان! لازم نبينوا إنو الشعب فاق!",
+    "label": "manipulation"
+  },
+  {
+    "text": "دكتور مشهور يقول: المنتوج هذا يقتل! لازم تشارك باش تحمي عايلتك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "خبير اقتصادي يكشف: الأزمة جاية و ما ثمش حل! خزن ما تلقى!",
+    "label": "manipulation"
+  },
+  {
+    "text": "مصدر موثوق من الداخل يقول: باش يزيدوا الأسعار 50%! سارع!",
+    "label": "manipulation"
+  },
+  {
+    "text": "أستاذ جامعي يحذر: المنظومة التعليمية باش تنهار! شاركوا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "معلومة سرية من مسؤول كبير: باش يكون حظر تجول! حضر روحك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "خبير صحي يقول: المنتوج هذا فيه سموم! لازم الكل يعرف!",
+    "label": "manipulation"
+  },
+  {
+    "text": "طبيب عالمي يحذر: هالعادة اليومية تقتل ببطء! شارك باش تنقذ حياة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اكتب سبحان الله 3 مرات و شارك و إلا تصيبك مصيبة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "هالدعاء إذا شاركتو ربي يستجيب ليك! إذا ما شاركتوش حاجة باش تصير!",
+    "label": "manipulation"
+  },
+  {
+    "text": "شارك هالصورة و ربي يفتحلك أبواب الرزق! اللي ما يشاركش يضيق عليه!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اكتب الله أكبر و شارك و شوف شنوة يصير بعد 5 دقايق! مجربة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "بعث هالرسالة لـ 7 ناس و الخير يجيك! اللي ما يبعثهاش يقطع الخير عليه!",
+    "label": "manipulation"
+  },
+  {
+    "text": "هالآية شاركها و ربي يشفيك! اللي ما يشاركش ما يحب الخير!",
+    "label": "manipulation"
+  },
+  {
+    "text": "شارك و في 24 ساعة تجيك أخبار زينة! مجربة و مضمونة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اللي يشوف هالبوست و ما يشاركوش باش يصيبو الحسد! احمي روحك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "عاجل! المواد الأساسية باش تنقص من السوق! اشري كمية كبيرة تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "حالة طوارئ! لازم تخزن المواد الغذائية قبل فوات الأوان!",
+    "label": "manipulation"
+  },
+  {
+    "text": "خبر عاجل: ثمة أزمة اقتصادية قادمة! سحب فلوسك من البنك تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "تحذير من كارثة! لازم الكل يحضر حالو! ما عادش وقت!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الدينار باش ينهار غدوة! بدل فلوسك بالعملة الصعبة تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "عاجل: نقص في الأدوية الأسبوع الجاي! اشري ما تحتاج تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كارثة اقتصادية قادمة! اللي ما يحضرش حالو باش يندم!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Vous n'etes pas de vrais Tunisiens si vous ignorez ce message!",
+    "label": "manipulation"
+  },
+  {
+    "text": "HONTE a ceux qui restent silencieux! La Tunisie a besoin de vous!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Votre silence vous rend complice! Un vrai patriote partage!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Si vous avez un coeur vous ne pouvez pas ignorer ceci! Partagez!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Les Tunisiens se reveillent! Et vous? Restez-vous endormi?",
+    "label": "manipulation"
+  },
+  {
+    "text": "Chaque seconde de silence est une trahison envers le peuple tunisien!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Nos ancetres se sont battus pour notre liberte et vous restez les bras croises?",
+    "label": "manipulation"
+  },
+  {
+    "text": "Un expert confirme: si vous ne partagez pas vous etes responsable!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Dernier avertissement! Apres ce sera trop tard! Partagez!",
+    "label": "manipulation"
+  },
+  {
+    "text": "La jeunesse tunisienne merite mieux! Partagez si vous etes d'accord!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Vous mangez tranquillement pendant que des familles meurent de faim? Honte!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Ceux qui se taisent aujourd'hui regretteront demain!",
+    "label": "manipulation"
+  },
+  {
+    "text": "URGENT! Plus que 24h pour sauver ce projet! Agissez maintenant!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Partagez si vous avez du courage! Ignorez si vous avez peur!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Le sang des martyrs tunisiens coule dans vos veines! Honorez leur sacrifice!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Ne laissez pas vos enfants dans l'ignorance! Partagez cette verite!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Chaque parent tunisien responsable doit partager ceci!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Si tu es tunisien et fier prouve-le en partageant!",
+    "label": "manipulation"
+  },
+  {
+    "text": "On nous manipule depuis des annees! Ouvrez les yeux!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Votre inaction coute des vies! Agissez maintenant!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Comment pouvez-vous dormir la nuit en sachant cela? PARTAGEZ!",
+    "label": "manipulation"
+  },
+  {
+    "text": "NE SOYEZ PAS LACHES! Partagez cette information VITALE!",
+    "label": "manipulation"
+  },
+  {
+    "text": "EVERY Tunisian who stays silent is a TRAITOR! Share now!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Share this NOW or face the consequences! Tunisia needs you!",
+    "label": "manipulation"
+  },
+  {
+    "text": "If you scroll past this without sharing you're part of the problem!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Your ancestors fought for Tunisia's freedom! Don't dishonor them!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Only 2% have the courage to share this. Are you one of them?",
+    "label": "manipulation"
+  },
+  {
+    "text": "LAST WARNING! After today you can't say you didn't know!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Tunisians are being manipulated and you're just watching?",
+    "label": "manipulation"
+  },
+  {
+    "text": "If you have children you MUST share this! Their future depends on it!",
+    "label": "manipulation"
+  },
+  {
+    "text": "They want you to stay quiet! Don't let them silence you!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Are you a sheep or a lion? Real Tunisians don't stay silent!",
+    "label": "manipulation"
+  },
+  {
+    "text": "This message will self-destruct! Screenshot and share before they remove it!",
+    "label": "manipulation"
+  },
+  {
+    "text": "99% won't share because they're scared. Be the brave 1%!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Don't be a sheep! Wake up and share the truth about Tunisia!",
+    "label": "manipulation"
+  },
+  {
+    "text": "97% will ignore this. Only 3% care enough to share. Which are you?",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا جماعة urgent! لازم تشاركوا avant qu'ils suppriment!",
+    "label": "manipulation"
+  },
+  {
+    "text": "C'est honteux والله! كيفاش نسكتوا sur cette injustice؟",
+    "label": "manipulation"
+  },
+  {
+    "text": "Wake up يا تونسي! They're stealing باش يخليوك فقير!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Partagez هالفيديو قبل ما يتمسح! C'est la derniere chance!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا أمهات! Attention a vos enfants! هالمنتوج خطير!",
+    "label": "manipulation"
+  },
+  {
+    "text": "شوف هالخبر shocking! لازم share باش الكل يعرف!",
+    "label": "manipulation"
+  },
+  {
+    "text": "C'est urgent يا توانسة! Share this قبل ما يمسحوه!",
+    "label": "manipulation"
+  },
+  {
+    "text": "أنت كأب مسؤول لازم تشارك هالتحذير! سلامة ولادك أهم!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كل ثانية تمر و أنت ساكت هي ثانية خسارة لبلادك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "اصحى يا نايم! بلادك تحترق و أنت في غفلة! شارك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "خليك راجل و قول الحق! اللي ما يقولش الحق مش راجل!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا تونسية يا حرة! ولادك يستاهلوا تدافعي عليهم! شاركي!",
+    "label": "manipulation"
+  },
+  {
+    "text": "الصمت خيانة! التاريخ ما يرحمش اللي سكتوا على الظلم!",
+    "label": "manipulation"
+  },
+  {
+    "text": "إذا ما تنشرش هالحقيقة أنت مسؤول على كل شي يصير بعد!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا شباب! مستقبلكم يتسرق و أنتم تلعبوا في التلفون! فيقوا!",
+    "label": "manipulation"
+  },
+  {
+    "text": "صوتك قوة! سكوتك ضعف! اختار: تشارك ولا تبقى ساكت!",
+    "label": "manipulation"
+  },
+  {
+    "text": "بالله عليك شارك هالمعلومة مع كل عائلتك! حياتهم في خطر!",
+    "label": "manipulation"
+  },
+  {
+    "text": "ما تقولش ما يعنينيش! غدوة يجيك الدور و ما تلقاش من يساعدك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "شوف شنوة صار في البلدان اللي سكتت! تحب تونس تولي كيفهم؟",
+    "label": "manipulation"
+  },
+  {
+    "text": "اللي ما يعملش شير ما يحبش تونس و هذا رأيي الشخصي!",
+    "label": "manipulation"
+  },
+  {
+    "text": "هاني نقولك الحقيقة و أنت حر تشارك ولا تسكت كيما العادة!",
+    "label": "manipulation"
+  },
+  {
+    "text": "ما ثمش وقت نستناو! كل دقيقة تمر الوضع يزيد يتعفن!",
+    "label": "manipulation"
+  },
+  {
+    "text": "إذا أنت أب حقيقي ما تسكتش على هالشي! شارك و حامي على ولادك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كان جدك يشوف حالك تو كان يبكي عليك! قوم و تحرك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا عبد الله شارك هالحديث و ربي يجازيك خير!",
+    "label": "manipulation"
+  },
+  {
+    "text": "إذا ما تعملش شير في الساعة الجاية حاجة خايبة باش تصير!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كل واحد يقرا و يعمل تجاهل ربي يحاسبو! شارك ولا ندم!",
+    "label": "manipulation"
+  },
+  {
+    "text": "بنك الأمان: تم حظر بطاقتك. أدخل رقم البطاقة و الكود السري لرفع الحظر",
+    "label": "phishing"
+  },
+  {
+    "text": "مبروك عليك! ربحت في السحب العشوائي 10000 دينار. أرسل معلوماتك البنكية",
+    "label": "phishing"
+  },
+  {
+    "text": "البريد التونسي: حسابك e-DINAR فيه خطأ. أدخل كلمة السر لتصحيح المشكل",
+    "label": "phishing"
+  },
+  {
+    "text": "تنبيه أمني: حاولوا يدخلوا لحسابك. غير كلمة السر فورا عبر هالرابط",
+    "label": "phishing"
+  },
+  {
+    "text": "الكنام: بطاقة العلاج منتهية الصلاحية. جدد بياناتك أونلاين تو",
+    "label": "phishing"
+  },
+  {
+    "text": "عرض خاص من أوريدو: انترنت مجاني لشهر! أدخل رقمك و كلمة السر",
+    "label": "phishing"
+  },
+  {
+    "text": "الضمان الاجتماعي: مستحقاتك جاهزة. أرسل RIB و CIN فورا",
+    "label": "phishing"
+  },
+  {
+    "text": "ربحت تلفزة من كارفور تونس! أكد مشاركتك بإدخال بياناتك",
+    "label": "phishing"
+  },
+  {
+    "text": "اتصالات تونس: خطك باش يتسكر في 24 ساعة. خلص عبر هالرابط",
+    "label": "phishing"
+  },
+  {
+    "text": "QNB تونس: عملية مشبوهة بقيمة 2500 دينار. أكد أو ألغي عبر الرابط",
+    "label": "phishing"
+  },
+  {
+    "text": "وزارة المالية: استرجاع الضريبة جاهز. أرسل RIB للتحويل",
+    "label": "phishing"
+  },
+  {
+    "text": "Attijari Bank: Compte bloque dans 48h. Mettez a jour vos informations.",
+    "label": "phishing"
+  },
+  {
+    "text": "UIB: Transaction suspecte de 3000 DT. Cliquez pour confirmer.",
+    "label": "phishing"
+  },
+  {
+    "text": "BH Bank: Credit immobilier necessite mise a jour urgente.",
+    "label": "phishing"
+  },
+  {
+    "text": "Carrefour Tunisie: Carte cadeau de 500 DT! Reclamez-la maintenant.",
+    "label": "phishing"
+  },
+  {
+    "text": "ABC Bank: Activite inhabituelle. Verifiez en entrant vos identifiants.",
+    "label": "phishing"
+  },
+  {
+    "text": "Monoprix Tunisie: Bon d'achat gratuit. Entrez vos donnees.",
+    "label": "phishing"
+  },
+  {
+    "text": "BTK: Carte CIB expire. Renouvelez en entrant numero et code.",
+    "label": "phishing"
+  },
+  {
+    "text": "La Poste: Virement bloque. Envoyez CIN et code secret.",
+    "label": "phishing"
+  },
+  {
+    "text": "STEG: Facture impayee 450 DT. Payez maintenant ou coupure.",
+    "label": "phishing"
+  },
+  {
+    "text": "طلبك من جوميا واصل! خلص 8 دينار مصاريف جمركية. اضغط هنا",
+    "label": "phishing"
+  },
+  {
+    "text": "عندك رسالة صوتية. ادخل رقمك و كلمة السر باش تسمعها",
+    "label": "phishing"
+  },
+  {
+    "text": "بنك تونس العربي: تحديث إلزامي لحسابك. اضغط الرابط",
+    "label": "phishing"
+  },
+  {
+    "text": "Wifak Bank: Mise a jour securite obligatoire. Entrez identifiants.",
+    "label": "phishing"
+  },
+  {
+    "text": "Orange Tunisie: Double credit! Envoyez code de recharge!",
+    "label": "phishing"
+  },
+  {
+    "text": "حسابك في D17 محظور. أدخل CIN و كلمة السر لإعادة التفعيل",
+    "label": "phishing"
+  },
+  {
+    "text": "بنك الإسكان: القسط ما وصلش. ادخل بيانات البطاقة للتسوية",
+    "label": "phishing"
+  },
+  {
+    "text": "ربحت رحلة مجانية من نوفوتيل الحمامات! سجل ببياناتك",
+    "label": "phishing"
+  },
+  {
+    "text": "CNRPS: Pension suspendue. Envoyez CIN et RIB.",
+    "label": "phishing"
+  },
+  {
+    "text": "Jumia Tunisie: Paiement de 5 DT requis. Coordonnees bancaires.",
+    "label": "phishing"
+  },
+  {
+    "text": "تطبيق Flouci: عملية مشبوهة. أكد حسابك بإدخال رقمك و كلمة السر",
+    "label": "phishing"
+  },
+  {
+    "text": "AMEN BANK: Account locked. Click link to verify identity.",
+    "label": "phishing"
+  },
+  {
+    "text": "حسابك البريدي فيه مشكل أمني! غير كلمة السر تو عبر هالرابط",
+    "label": "phishing"
+  },
+  {
+    "text": "منحة 300 دينار لكل مواطن. سجل بـ CIN و RIB تو",
+    "label": "phishing"
+  },
+  {
+    "text": "تنبيه من الكهرباء: فاتورتك مضاعفة بالغلط. أدخل RIB للاسترجاع",
+    "label": "phishing"
+  },
+  {
+    "text": "Lycamobile: SIM desactivee. Envoyez informations personnelles.",
+    "label": "phishing"
+  },
+  {
+    "text": "BNA: Epargne menacee. Connectez-vous via ce lien securise.",
+    "label": "phishing"
+  },
+  {
+    "text": "AMEN BANK: Action requise dans 2h. Confirmez identite ou compte gele.",
+    "label": "phishing"
+  },
+  {
+    "text": "STB: Compte ferme pour inactivite. Connectez-vous via ce lien.",
+    "label": "phishing"
+  },
+  {
+    "text": "Ministere des Finances: Remboursement impot 850 DT. Entrez RIB.",
+    "label": "phishing"
+  },
+  {
+    "text": "عاجل: اكتشفوا أنو القهوة التونسية فيها مواد مخدرة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "وثيقة سرية: الحكومة باش تبيع جربة لدولة أجنبية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "طبيب مشهور يكشف: الهاتف الجوال يسبب سرطان المخ في 5 سنين!",
+    "label": "disinformation"
+  },
+  {
+    "text": "خطير: المكيفات في تونس تنشر فيروسات خطيرة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "صدمة: اللحم المستورد من حيوانات مريضة! وزارة الفلاحة ساكتة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "مصدر مطلع: الانتخابات مزورة من البداية! كل شي مخطط!",
+    "label": "disinformation"
+  },
+  {
+    "text": "مياه معدنية شهيرة في تونس ملوثة بالزرنيخ! نتائج مسربة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "عالم فيزياء تونسي: كهرباء الستاغ فيها ذبذبات تسبب الاكتئاب!",
+    "label": "disinformation"
+  },
+  {
+    "text": "فضيحة: المدارس الخاصة تبيع شهادات وهمية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الحلوى التونسية التقليدية فيها مواد مسرطنة! دراسة أمريكية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "ثمة كنز بترول كبير في تونس و القوى الأجنبية تخبيه!",
+    "label": "disinformation"
+  },
+  {
+    "text": "خبير عسكري: طائرات مسيرة أجنبية ترش مواد كيميائية فوق تونس!",
+    "label": "disinformation"
+  },
+  {
+    "text": "السميد في تونس مخلوط بالجبس! مخابر أوروبية أثبتت!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الجامعات التونسية تدرس مناهج فاسدة بأوامر أجنبية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "أدوية الصداع الشائعة في تونس تسبب فقدان الذاكرة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "شركات أجنبية تسرق الرمل التونسي و تبيعه بملايين!",
+    "label": "disinformation"
+  },
+  {
+    "text": "فضيحة: مصانع الألبسة تستعمل مواد سامة في القماش!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الشامبو اللي يتباع في تونس يسبب تساقط الشعر! شركات تستغل التوانسة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "مخطط لتدمير الفلاحة التونسية! المبيدات المستوردة تقتل الأرض!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الطماطم المعلبة مصنوعة من مواد بلاستيكية! دراسة تكشف!",
+    "label": "disinformation"
+  },
+  {
+    "text": "الفسفاط التونسي يتباع للأجانب بدينار واحد!",
+    "label": "disinformation"
+  },
+  {
+    "text": "مخطط سري لتغيير خارطة تونس! جزء من الجنوب ينعطى لدولة مجاورة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "البنزين في تونس مخلوط بالماء! محطات الوقود تغش المواطنين!",
+    "label": "disinformation"
+  },
+  {
+    "text": "دراسة سرية: السكر المباع في تونس فيه مادة تسبب الإدمان!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Scandale: Eau de robinet contient du plomb en quantites dangereuses!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Plan secret pour privatiser les plages tunisiennes aux etrangers!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Fruits importes traites avec pesticides interdits!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Chercheur tunisien prouve: Couscous guerit le diabete! Big Pharma censure!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Antennes 5G en Tunisie sont des outils de surveillance etrangere!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Tunisie possede reserves d'uranium que les puissances veulent voler!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Pain tunisien contient additif chimique qui provoque l'obesite!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Harissa tunisienne contient metaux lourds cancerigenes!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Systeme bancaire tunisien controle par puissances etrangeres!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Chemtrails au-dessus de Tunis: programme secret de modification du climat!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Huile vegetale en Tunisie contient perturbateurs endocriniens!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Examens nationaux vendus a l'avance! Scandale!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Tunisie secretement utilisee comme depotoir nucleaire!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Complot pour empoisonner l'agriculture avec des semences OGM!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Tunisia's tap water contains mind-control chemicals!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Tunisian olive oil secretly replaced with fake oil from China!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Secret documents show corporations buying Tunisia's resources for pennies!",
+    "label": "disinformation"
+  },
+  {
+    "text": "النادي الصفاقسي يستقبل النجم الساحلي في الجولة 15 من البطولة",
+    "label": "safe"
+  },
+  {
+    "text": "وزارة السياحة تعلن ارتفاع عدد السياح بنسبة 20%",
+    "label": "safe"
+  },
+  {
+    "text": "مدينة قابس تحتضن المعرض الوطني للحرف اليدوية",
+    "label": "safe"
+  },
+  {
+    "text": "طلبة من جامعة تونس يشاركون في مسابقة دولية للبرمجة",
+    "label": "safe"
+  },
+  {
+    "text": "وزارة الشباب تعلن عن برنامج جديد لدعم الرياضيين الشبان",
+    "label": "safe"
+  },
+  {
+    "text": "افتتاح مركز ثقافي جديد في سوسة",
+    "label": "safe"
+  },
+  {
+    "text": "الجمعية التونسية للتنمية المستدامة تنظم حملة لغراسة الأشجار",
+    "label": "safe"
+  },
+  {
+    "text": "انطلاق مهرجان المدينة للفنون المعاصرة في تونس العاصمة",
+    "label": "safe"
+  },
+  {
+    "text": "رقم قياسي في تصدير التمور التونسية هذا الموسم",
+    "label": "safe"
+  },
+  {
+    "text": "مصنع جديد للسيارات الكهربائية يفتح أبوابه في بنزرت",
+    "label": "safe"
+  },
+  {
+    "text": "وزارة التجهيز تعلن تقدم أشغال الطريق السيارة الجديدة",
+    "label": "safe"
+  },
+  {
+    "text": "جمعية حماية الطبيعة تنظم رحلة بيئية لجزيرة جالطة",
+    "label": "safe"
+  },
+  {
+    "text": "إطلاق منصة رقمية جديدة لخدمات البلدية إلكترونيا",
+    "label": "safe"
+  },
+  {
+    "text": "فريق كرة اليد التونسي يتأهل لنصف نهائي البطولة الأفريقية",
+    "label": "safe"
+  },
+  {
+    "text": "اليوم الوطني للبيئة: أنشطة توعوية في كل الولايات",
+    "label": "safe"
+  },
+  {
+    "text": "معرض الصناعات الغذائية الدولي ينطلق بمشاركة 200 عارض",
+    "label": "safe"
+  },
+  {
+    "text": "وزارة التعليم العالي تعلن نتائج مناظرة الدكتوراه",
+    "label": "safe"
+  },
+  {
+    "text": "مشروع جديد لتحلية مياه البحر في جربة",
+    "label": "safe"
+  },
+  {
+    "text": "شركة تونسية ناشئة تفوز بجائزة الابتكار",
+    "label": "safe"
+  },
+  {
+    "text": "الطقس غدوة مشمس في أغلب المناطق مع رياح خفيفة",
+    "label": "safe"
+  },
+  {
+    "text": "نتائج الباكالوريا: نسبة نجاح مرتفعة هذا العام",
+    "label": "safe"
+  },
+  {
+    "text": "المركز الوطني للإعلامية يطلق خدمات رقمية جديدة",
+    "label": "safe"
+  },
+  {
+    "text": "معرض الفلاحة و الصيد البحري ينطلق بمشاركة 300 عارض",
+    "label": "safe"
+  },
+  {
+    "text": "وزارة المرأة تنظم ملتقى حول المساواة بين الجنسين",
+    "label": "safe"
+  },
+  {
+    "text": "الوكالة الوطنية لحماية المحيط تعلن نتائج مراقبة جودة الهواء",
+    "label": "safe"
+  },
+  {
+    "text": "تونس تستضيف البطولة العربية للسباحة بمشاركة 15 دولة",
+    "label": "safe"
+  },
+  {
+    "text": "مشروع تهيئة كورنيش الحمامات يدخل مرحلته النهائية",
+    "label": "safe"
+  },
+  {
+    "text": "الاتحاد التونسي للشغل يعقد مؤتمره السنوي",
+    "label": "safe"
+  },
+  {
+    "text": "اليوم العالمي للمرأة: تكريم نساء تونسيات رائدات",
+    "label": "safe"
+  },
+  {
+    "text": "مبادرة شبابية لتنظيف شواطئ الحمامات",
+    "label": "safe"
+  },
+  {
+    "text": "تونس تحتضن القمة الأفريقية للتكنولوجيا",
+    "label": "safe"
+  },
+  {
+    "text": "ولاية نابل تشهد موسم حصاد زهر النارنج بإنتاج وفير",
+    "label": "safe"
+  },
+  {
+    "text": "الاتحاد التونسي للصناعة ينظم ملتقى اقتصادي دولي",
+    "label": "safe"
+  },
+  {
+    "text": "برنامج تدريبي مجاني في البرمجة للشباب العاطل عن العمل",
+    "label": "safe"
+  },
+  {
+    "text": "سباق الماراثون الدولي بتونس يجمع 5000 مشارك",
+    "label": "safe"
+  },
+  {
+    "text": "معمل الطاقة الشمسية في توزر يحقق أرقام إنتاج قياسية",
+    "label": "safe"
+  },
+  {
+    "text": "Le musee du Bardo accueille nouvelle exposition art contemporain.",
+    "label": "safe"
+  },
+  {
+    "text": "Tunisie participe aux Jeux Olympiques avec 45 athletes.",
+    "label": "safe"
+  },
+  {
+    "text": "Inauguration nouvelle ligne tramway Tunis-La Marsa.",
+    "label": "safe"
+  },
+  {
+    "text": "Association tunisienne des TIC organise hackathon pour jeunes.",
+    "label": "safe"
+  },
+  {
+    "text": "Port de Rades enregistre augmentation du trafic maritime.",
+    "label": "safe"
+  },
+  {
+    "text": "Centre Culturel Hammamet accueille Festival International Jazz.",
+    "label": "safe"
+  },
+  {
+    "text": "Foire Internationale de Tunis ouvre portes avec 800 exposants.",
+    "label": "safe"
+  },
+  {
+    "text": "Festival de Dougga propose programme riche en theatre et musique.",
+    "label": "safe"
+  },
+  {
+    "text": "Nouveau campus universitaire ouvre portes a Monastir.",
+    "label": "safe"
+  },
+  {
+    "text": "Salon automobile Tunis presente dernieres nouveautes.",
+    "label": "safe"
+  },
+  {
+    "text": "Tunisia's tech sector grows 15% as new startups emerge.",
+    "label": "safe"
+  },
+  {
+    "text": "New solar energy plant in Tozeur producing electricity for 50000 homes.",
+    "label": "safe"
+  },
+  {
+    "text": "Tunisian olive oil wins gold medal at international competition.",
+    "label": "safe"
+  },
+  {
+    "text": "University of Sfax publishes breakthrough paper on AI in healthcare.",
+    "label": "safe"
+  },
+  {
+    "text": "Carthage International Festival announces summer lineup.",
+    "label": "safe"
+  },
+  {
+    "text": "Tunisian startups secure funding at international tech conference.",
+    "label": "safe"
+  },
+  {
+    "text": "The national library hosts free photography exhibition.",
+    "label": "safe"
+  },
+  {
+    "text": "اليوم الطقس باهي في تونس، نهار ملاح للخروج",
+    "label": "safe"
+  },
+  {
+    "text": "الكسكسي التونسي أحسن ماكلة في العالم",
+    "label": "safe"
+  },
+  {
+    "text": "رحت للسوق و شريت خضرة و غلة طازجة",
+    "label": "safe"
+  },
+  {
+    "text": "نحب القهوة التركية الصباح مع كعكة",
+    "label": "safe"
+  },
+  {
+    "text": "الولاد رجعوا من المدرسة و قراوا دروسهم",
+    "label": "safe"
+  },
+  {
+    "text": "قريت كتاب جديد هالأسبوع، حكاية باهية بالحق",
+    "label": "safe"
+  },
+  {
+    "text": "مبروك على صاحبي اللي نجح في الباكالوريا",
+    "label": "safe"
+  },
+  {
+    "text": "الحمد لله على كل شيء، الصحة نعمة كبيرة",
+    "label": "safe"
+  },
+  {
+    "text": "عملت بسيسة تونسية للفطور، طعمها خيال",
+    "label": "safe"
+  },
+  {
+    "text": "نحبوا نتفرجوا في ماتش الترجي مع العايلة",
+    "label": "safe"
+  },
+  {
+    "text": "ماشي للحمامات هالويكاند مع صحابي",
+    "label": "safe"
+  },
+  {
+    "text": "عرس خويا الشهر الجاي، حفل كبير إن شاء الله",
+    "label": "safe"
+  },
+  {
+    "text": "الحر هالصيف قوي بزاف، لازم نشربوا ماء بكثرة",
+    "label": "safe"
+  },
+  {
+    "text": "سيدي بوسعيد مكان جميل للتصوير",
+    "label": "safe"
+  },
+  {
+    "text": "المدينة العتيقة في تونس عندها تاريخ كبير",
+    "label": "safe"
+  },
+  {
+    "text": "نحب الموسيقى التونسية التراثية، المالوف خاصة",
+    "label": "safe"
+  },
+  {
+    "text": "الليلة عندنا عشاء عائلي في الدار",
+    "label": "safe"
+  },
+  {
+    "text": "صاحبتي ولدت بنية اسمها مريم، الله يبارك",
+    "label": "safe"
+  },
+  {
+    "text": "مشيت للطبيب للفحص السنوي، كل شيء لاباس",
+    "label": "safe"
+  },
+  {
+    "text": "الكرة في تونس تجمع الناس كل، خاصة الداربي",
+    "label": "safe"
+  },
+  {
+    "text": "تعلمت طبخة جديدة من يوتوب، طلعت ناجحة",
+    "label": "safe"
+  },
+  {
+    "text": "نحب نقرا الكتب بالعربي و بالفرنساوي",
+    "label": "safe"
+  },
+  {
+    "text": "هالشهر بديت رياضة، نجري كل صباح",
+    "label": "safe"
+  },
+  {
+    "text": "رحنا لجربة في العطلة، شواطئ خيالية",
+    "label": "safe"
+  },
+  {
+    "text": "المطعم الجديد في المرسى ماكلتو باهية",
+    "label": "safe"
+  },
+  {
+    "text": "Le marché central de Tunis est toujours animé le dimanche matin.",
+    "label": "safe"
+  },
+  {
+    "text": "J'ai visité le musée du Bardo, la collection est impressionnante.",
+    "label": "safe"
+  },
+  {
+    "text": "La plage de Hammamet est magnifique en été.",
+    "label": "safe"
+  },
+  {
+    "text": "Le couscous tunisien est un plat traditionnel délicieux.",
+    "label": "safe"
+  },
+  {
+    "text": "Les résultats du baccalauréat seront publiés la semaine prochaine.",
+    "label": "safe"
+  },
+  {
+    "text": "La température à Tunis aujourd'hui est de 28 degrés.",
+    "label": "safe"
+  },
+  {
+    "text": "Le festival de Carthage commence en juillet cette année.",
+    "label": "safe"
+  },
+  {
+    "text": "J'apprends la programmation Python pour mon projet universitaire.",
+    "label": "safe"
+  },
+  {
+    "text": "Le nouveau tramway de Tunis facilite le transport quotidien.",
+    "label": "safe"
+  },
+  {
+    "text": "Les oliviers tunisiens produisent une huile d'olive de qualité mondiale.",
+    "label": "safe"
+  },
+  {
+    "text": "L'équipe nationale de football a un match amical samedi.",
+    "label": "safe"
+  },
+  {
+    "text": "Le café turc est une tradition tunisienne qu'on adore.",
+    "label": "safe"
+  },
+  {
+    "text": "Ma grand-mère fait le meilleur makroudh de toute la famille.",
+    "label": "safe"
+  },
+  {
+    "text": "Le Ramadan est un mois de partage et de spiritualité en Tunisie.",
+    "label": "safe"
+  },
+  {
+    "text": "L'université de Tunis El Manar propose de nouvelles formations.",
+    "label": "safe"
+  },
+  {
+    "text": "Tunisia has beautiful Mediterranean beaches and amazing culture.",
+    "label": "safe"
+  },
+  {
+    "text": "The old medina of Tunis is a UNESCO World Heritage Site.",
+    "label": "safe"
+  },
+  {
+    "text": "Tunisian olive oil is among the best in the world.",
+    "label": "safe"
+  },
+  {
+    "text": "The weather in Tunis is sunny and warm today.",
+    "label": "safe"
+  },
+  {
+    "text": "The startup ecosystem in Tunisia is growing rapidly.",
+    "label": "safe"
+  },
+  {
+    "text": "Tunisian students excel in international science competitions.",
+    "label": "safe"
+  },
+  {
+    "text": "The Carthage Film Festival showcases amazing Arab cinema.",
+    "label": "safe"
+  },
+  {
+    "text": "Learning Arabic and French is common for Tunisian students.",
+    "label": "safe"
+  },
+  {
+    "text": "The local football league has exciting matches this weekend.",
+    "label": "safe"
+  },
+  {
+    "text": "Traditional Tunisian crafts include ceramics and carpet weaving.",
+    "label": "safe"
+  },
+  {
+    "text": "وزير التربية أعلن على رزنامة الامتحانات للسنة الدراسية",
+    "label": "safe"
+  },
+  {
+    "text": "تونس تستضيف مؤتمر دولي حول التكنولوجيا الخضراء الشهر الجاي",
+    "label": "safe"
+  },
+  {
+    "text": "افتتاح خط ميترو جديد في العاصمة يربط بين باب سعدون و المنزه",
+    "label": "safe"
+  },
+  {
+    "text": "البنك المركزي التونسي نشر التقرير السنوي حول الاقتصاد الوطني",
+    "label": "safe"
+  },
+  {
+    "text": "معرض الكتاب الدولي بتونس يستقبل آلاف الزوار هالعام",
+    "label": "safe"
+  },
+  {
+    "text": "الفلاحون في الشمال بداو في موسم جني الزيتون",
+    "label": "safe"
+  },
+  {
+    "text": "La STEG annonce des travaux de maintenance dans la banlieue nord.",
+    "label": "safe"
+  },
+  {
+    "text": "Le taux de chômage a légèrement baissé selon les dernières statistiques.",
+    "label": "safe"
+  },
+  {
+    "text": "La Tunisie a exporté 200 000 tonnes d'huile d'olive cette saison.",
+    "label": "safe"
+  },
+  {
+    "text": "Le nouveau parc technologique de Sousse crée 500 emplois.",
+    "label": "safe"
+  },
+  {
+    "text": "خرجت من la fac et j'ai mangé بريك في المطعم الصغير",
+    "label": "safe"
+  },
+  {
+    "text": "Weekend prochain نمشيو للبحر en famille إن شاء الله",
+    "label": "safe"
+  },
+  {
+    "text": "Mon ami تونسي et il fait les meilleurs مقروض",
+    "label": "safe"
+  },
+  {
+    "text": "J'ai commencé un stage في شركة IT à la Marsa",
+    "label": "safe"
+  },
+  {
+    "text": "الخدمة today كانت normale, rien de spécial",
+    "label": "safe"
+  },
+  {
+    "text": "تعلم البرمجة أونلاين مجاني على مواقع كثيرة",
+    "label": "safe"
+  },
+  {
+    "text": "الذكاء الاصطناعي يتطور بسرعة و فيه فرص كبيرة",
+    "label": "safe"
+  },
+  {
+    "text": "الجامعة التونسية تقدم شهادات معترف بها دوليا",
+    "label": "safe"
+  },
+  {
+    "text": "التلامذة التوانسة يشاركوا في أولمبياد الرياضيات العالمي",
+    "label": "safe"
+  },
+  {
+    "text": "Le hackathon de Tunis rassemble des développeurs talentueux.",
+    "label": "safe"
+  },
+  {
+    "text": "إذا ما شاركتش هالبوست، معناها ما تحبش بلادك! تونسي حقيقي يشارك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "كل واحد ما يعملش شير هو خاين و ما عندوش ضمير",
+    "label": "manipulation"
+  },
+  {
+    "text": "أنا نعرف الحقيقة و اللي ما يآمنش بيا ضد الشعب",
+    "label": "manipulation"
+  },
+  {
+    "text": "ما تكونش جبان! شارك الحقيقة و إلا إنت جزء من المشكل!",
+    "label": "manipulation"
+  },
+  {
+    "text": "99% من التوانسة ما عندهمش الشجاعة باش يشاركوا هذا. وإنت؟",
+    "label": "manipulation"
+  },
+  {
+    "text": "Si tu ne partages pas, tu fais partie du problème! La Tunisie a besoin de toi!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Chaque Tunisien patriote doit partager ce message MAINTENANT!",
+    "label": "manipulation"
+  },
+  {
+    "text": "حرام عليك إذا قريت هذا و ما عملتش شير! فكر في ولادك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "ربي يحاسبك إذا ما وقفتش مع الحق! شارك تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "آخر مرة نقول: اللي ما يشاركش هو عدو الشعب التونسي!",
+    "label": "manipulation"
+  },
+  {
+    "text": "يا تونسي يا خاين! ما فماش وسط! شارك باش تثبت وطنيتك!",
+    "label": "manipulation"
+  },
+  {
+    "text": "Un vrai Tunisien ne resterait pas silencieux! Partagez ou vous êtes complice!",
+    "label": "manipulation"
+  },
+  {
+    "text": "هذا المعلومة باش تتمسح بعد ساعة! شاركها قبل ما يفوت الوقت!",
+    "label": "manipulation"
+  },
+  {
+    "text": "90% اللي قراو هالبوست شاركوه. إنت من العشرة في المية الباقية؟",
+    "label": "manipulation"
+  },
+  {
+    "text": "أمك و بوك يستاهلوا تحميهم! شارك هالتحذير تو!",
+    "label": "manipulation"
+  },
+  {
+    "text": "تنبيه أمني عاجل: حسابك في بنك الأمان تم اختراقه! غير كلمة السر فورا عبر هذا الرابط المؤمن",
+    "label": "phishing"
+  },
+  {
+    "text": "Alerte Banque de Tunisie: Transaction non autorisée de 500 DT. Confirmez via bt-securite.com",
+    "label": "phishing"
+  },
+  {
+    "text": "بريد تونس: ربحت جائزة 10000 دينار! أدخل معلومات حسابك البريدي لاستلام المبلغ",
+    "label": "phishing"
+  },
+  {
+    "text": "STEG: Votre compteur sera coupé dans 2h. Payez immédiatement via steg-urgence.tn",
+    "label": "phishing"
+  },
+  {
+    "text": "حسابك في e-DINAR Smart معلق. أدخل رقم البطاقة و الرمز السري لإعادة التفعيل فورا",
+    "label": "phishing"
+  },
+  {
+    "text": "Ooredoo: Vous avez gagné un iPhone 15! Réclamez votre prix en entrant vos données sur ooredoo-cadeau.com",
+    "label": "phishing"
+  },
+  {
+    "text": "البنك الوطني الفلاحي: تم حظر بطاقتك. أرسل رقم CIN و رمز البطاقة للإلغاء الفوري",
+    "label": "phishing"
+  },
+  {
+    "text": "CNAM alerte: Votre carte de soins expire demain. Mettez à jour via cnam-renouvellement.tn",
+    "label": "phishing"
+  },
+  {
+    "text": "عاجل: لازم تأكد حسابك البنكي في الـ24 ساعة الجاية و إلا يتسكر نهائيا!",
+    "label": "phishing"
+  },
+  {
+    "text": "Votre colis Aramex est bloqué en douane. Payez 15 DT de frais via aramex-tunisie-paiement.com",
+    "label": "phishing"
+  },
+  {
+    "text": "تحقيق حصري: الطماطم في تونس فيها هرمونات خطيرة! الحكومة تعرف و ساكتة!",
+    "label": "disinformation"
+  },
+  {
+    "text": "EXCLUSIF: L'eau du robinet en Tunisie contient du plomb! Les analyses le prouvent!",
+    "label": "disinformation"
+  },
+  {
+    "text": "فضيحة مدوية: اكتشاف أن الأدوية في الصيدليات التونسية مزورة! شاركوا!",
+    "label": "disinformation"
+  },
+  {
+    "text": "خبر مؤكد: الدينار التونسي باش يولي ما يسواش شيء الشهر الجاي! بيعوا كل شيء!",
+    "label": "disinformation"
+  },
+  {
+    "text": "RÉVÉLATION: Les universités tunisiennes vont fermer l'année prochaine! Plan secret du gouvernement!",
+    "label": "disinformation"
+  },
+  {
+    "text": "عاجل: اكتشاف مادة سامة في الحليب التونسي تسبب العقم! انشروا التحذير!",
+    "label": "disinformation"
+  },
+  {
+    "text": "معلومة مسربة: الحكومة تخطط لبيع جزيرة جربة لشركة أجنبية! وثائق سرية!",
+    "label": "disinformation"
+  },
+  {
+    "text": "Les médias tunisiens sont tous payés par des lobbys étrangers! La preuve ici!",
+    "label": "disinformation"
+  },
+  {
+    "text": "صدمة: تم اكتشاف أن شبكات الواي فاي في تونس تسبب سرطان الدماغ!",
+    "label": "disinformation"
+  },
+  {
+    "text": "URGENT: La Banque Centrale va confisquer l'épargne des Tunisiens! Retirez votre argent!",
+    "label": "disinformation"
+  }
 ]
