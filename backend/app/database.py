@@ -33,6 +33,19 @@ def init_db():
             timestamp TEXT NOT NULL
         )
     """)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS request_logs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            method TEXT NOT NULL,
+            path TEXT NOT NULL,
+            status_code INTEGER NOT NULL,
+            client_ip TEXT,
+            duration_ms REAL,
+            request_body TEXT,
+            response_summary TEXT,
+            timestamp TEXT NOT NULL
+        )
+    """)
     conn.commit()
     conn.close()
 
@@ -88,6 +101,66 @@ def get_logs(limit: int = 100) -> list[dict]:
             "explanation": json.loads(row["explanation"]),
             "confidence": row["confidence"],
             "user_decision": row["user_decision"],
+            "timestamp": row["timestamp"],
+        }
+        for row in rows
+    ]
+
+
+def log_request(
+    method: str,
+    path: str,
+    status_code: int,
+    client_ip: str,
+    duration_ms: float,
+    request_body: str = "",
+    response_summary: str = "",
+) -> int:
+    """Log an HTTP request to the database."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        """
+        INSERT INTO request_logs (method, path, status_code, client_ip, duration_ms, request_body, response_summary, timestamp)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (
+            method,
+            path[:500],
+            status_code,
+            client_ip,
+            round(duration_ms, 2),
+            request_body[:2000],
+            response_summary[:1000],
+            datetime.utcnow().isoformat(),
+        ),
+    )
+    log_id = cursor.lastrowid
+    conn.commit()
+    conn.close()
+    return log_id
+
+
+def get_request_logs(limit: int = 200) -> list[dict]:
+    """Retrieve recent request logs."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT * FROM request_logs ORDER BY id DESC LIMIT ?",
+        (limit,),
+    )
+    rows = cursor.fetchall()
+    conn.close()
+    return [
+        {
+            "id": row["id"],
+            "method": row["method"],
+            "path": row["path"],
+            "status_code": row["status_code"],
+            "client_ip": row["client_ip"],
+            "duration_ms": row["duration_ms"],
+            "request_body": row["request_body"],
+            "response_summary": row["response_summary"],
             "timestamp": row["timestamp"],
         }
         for row in rows
