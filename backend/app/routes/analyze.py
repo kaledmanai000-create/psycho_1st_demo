@@ -36,6 +36,7 @@ async def analyze_content(request: Request, body: AnalyzeRequest):
         threat_type=result["threat_type"],
         explanation=result["explanation"],
         confidence=result["confidence"],
+        details=result.get("details"),
     )
 
 

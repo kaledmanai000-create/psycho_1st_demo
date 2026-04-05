@@ -14,6 +14,7 @@ class ExplainabilityLayer:
         ml_label: str,
         ml_confidence: float,
         features: dict,
+        fusion_reasoning: list[str] | None = None,
     ) -> list[str]:
         """
         Generate a combined list of human-readable explanations.
@@ -33,6 +34,10 @@ class ExplainabilityLayer:
             explanations.append(
                 f"AI classification model {confidence_word} identifies this content as '{ml_label}'"
             )
+
+        if fusion_reasoning:
+            for reason in fusion_reasoning:
+                explanations.append(f"Fusion logic: {reason}")
 
         # If no explanations were generated but there are some signals
         if not explanations:

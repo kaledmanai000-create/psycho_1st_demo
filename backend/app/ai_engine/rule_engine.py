@@ -46,7 +46,34 @@ class RuleEngine:
             "scores": scores,
             "rule_score": max_score,
             "explanations": explanations,
+            "triggered_rules": self._collect_triggered_rules(features),
         }
+
+    def _collect_triggered_rules(self, features: dict) -> list[dict]:
+        triggered = []
+
+        def add_if(name: str, feature_key: str, severity: str = "medium"):
+            feature = features.get(feature_key, {})
+            if feature.get("score", 0) > 0:
+                triggered.append({
+                    "rule": name,
+                    "severity": severity,
+                    "score": feature.get("score", 0),
+                    "evidence": feature.get("matched", [])[:5],
+                })
+
+        add_if("credential_harvest_request", "credential_requests", "high")
+        add_if("suspicious_url_signal", "suspicious_urls", "high")
+        add_if("payment_request_pressure", "payment_requests", "high")
+        add_if("account_suspension_language", "account_suspension", "medium")
+        add_if("giveaway_or_prize_bait", "prize_giveaway", "medium")
+        add_if("impersonation_cues", "impersonation", "high")
+        add_if("urgency_language", "urgency", "medium")
+        add_if("fear_tactics", "fear", "medium")
+        add_if("social_pressure", "social_pressure", "medium")
+        add_if("disinformation_markers", "disinformation_indicators", "medium")
+
+        return triggered
 
     def _check_phishing(self, features: dict, preprocessed: dict) -> list[str]:
         explanations = []
@@ -59,9 +86,35 @@ class RuleEngine:
 
         # Suspicious URL detection
         suspicious_urls = features["suspicious_urls"]["matched"]
+        url_signals = features["suspicious_urls"].get("url_signals", {})
         if suspicious_urls:
             for url in suspicious_urls[:3]:
                 explanations.append(f"Suspicious domain detected: '{url}' - may impersonate a trusted website")
+        for url, signals in list(url_signals.items())[:3]:
+            signal_str = ", ".join(signals[:3])
+            explanations.append(
+                f"URL risk signals for '{url}': {signal_str}"
+            )
+
+        if features.get("impersonation", {}).get("score", 0) > 0:
+            explanations.append(
+                "Impersonation indicators detected (brand or official-source mimicry language)"
+            )
+
+        if features.get("payment_requests", {}).get("score", 0) > 0:
+            explanations.append(
+                "Requests urgent payment action (including gift card/crypto patterns seen in scam campaigns)"
+            )
+
+        if features.get("account_suspension", {}).get("score", 0) > 0:
+            explanations.append(
+                "Account suspension/lockout language detected, commonly used to force rushed clicks"
+            )
+
+        if features.get("prize_giveaway", {}).get("score", 0) > 0:
+            explanations.append(
+                "Prize or giveaway bait detected, a common social engineering lure"
+            )
 
         # URL + urgency combination (strong phishing signal)
         if features["suspicious_urls"]["score"] > 0 and features["urgency"]["score"] > 0:

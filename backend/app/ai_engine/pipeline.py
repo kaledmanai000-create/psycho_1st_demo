@@ -52,6 +52,7 @@ class AnalysisPipeline:
             ml_label=ml_result["label"],
             ml_confidence=ml_result["confidence"],
             features=features,
+            fusion_reasoning=combined["fusion_reasoning"],
         )
 
         return {
@@ -59,70 +60,76 @@ class AnalysisPipeline:
             "threat_type": combined["threat_type"],
             "explanation": explanation,
             "confidence": combined["confidence"],
+            "details": {
+                "subsystem_scores": combined["subsystem_scores"],
+                "fusion_reasoning": combined["fusion_reasoning"],
+                "triggered_rules": rule_result.get("triggered_rules", []),
+                "ml_probabilities": ml_result.get("probabilities", {}),
+                "ml_top_features": ml_result.get("top_features", []),
+                "retrieved_patterns": rag_result.get("matches", []),
+                "model_version": ml_result.get("model_version", "unknown"),
+            },
         }
 
     def _combine_results(
         self, rule_result: dict, ml_result: dict, rag_result: dict, features: dict
     ) -> dict:
-        """
-        Combine scores from all components using weighted average.
-        Weights: Rule engine (40%), ML classifier (30%), RAG (30%)
-        """
-        # Get individual scores
-        rule_score = rule_result.get("rule_score", 0)
-        rag_score = rag_result.get("rag_score", 0)
+        """Combine subsystems with confidence-aware per-class fusion and safe gating."""
+        classes = ["phishing", "manipulation", "disinformation"]
+        ml_probs = ml_result.get("probabilities", {})
+        rule_scores = rule_result.get("scores", {})
+        rag_scores = rag_result.get("category_scores", {})
 
-        # Convert ML confidence to a risk score
-        ml_label = ml_result["label"]
-        ml_confidence = ml_result["confidence"]
-        ml_risk = 0
-        if ml_label != "safe":
-            ml_risk = ml_confidence * 100
+        weights = {"rule": 0.35, "ml": 0.40, "rag": 0.25}
+        fusion_reasoning = []
+        ml_conf = float(ml_result.get("confidence", 0.0))
+
+        if ml_result.get("label") != "safe" and ml_conf >= 0.80:
+            weights = {"rule": 0.25, "ml": 0.55, "rag": 0.20}
+            fusion_reasoning.append("High-confidence ML prediction increased ML weight")
+        elif rule_result.get("rule_score", 0) >= 70:
+            weights = {"rule": 0.50, "ml": 0.30, "rag": 0.20}
+            fusion_reasoning.append("Strong rule-based evidence increased rule weight")
+
+        fused_per_class = {}
+        for c in classes:
+            rule_component = float(rule_scores.get(c, 0.0))
+            ml_component = float(ml_probs.get(c, 0.0)) * 100
+            rag_component = float(rag_scores.get(c, 0.0)) * 100
+            fused_per_class[c] = (
+                rule_component * weights["rule"]
+                + ml_component * weights["ml"]
+                + rag_component * weights["rag"]
+            )
+
+        best_class = max(fused_per_class, key=fused_per_class.get)
+        best_score = fused_per_class[best_class]
+        safe_prob = float(ml_probs.get("safe", 0.0))
+
+        if best_score < 30 and safe_prob >= 0.35 and rule_result.get("rule_score", 0) < 20:
+            threat_type = "safe"
+            fusion_reasoning.append("Low fused threat score with moderate safe probability triggered safe gating")
         else:
-            ml_risk = (1 - ml_confidence) * 30  # Low risk if predicted safe
+            threat_type = best_class
 
-        # Weighted combination
-        risk_score = int(
-            rule_score * 0.40
-            + ml_risk * 0.30
-            + rag_score * 0.30
-        )
-        risk_score = max(0, min(100, risk_score))
+        non_safe_prob_mass = sum(float(ml_probs.get(c, 0.0)) for c in classes)
+        risk_score = int(min(max((best_score * 0.8) + (non_safe_prob_mass * 20), 0), 100))
 
-        # Determine threat type from consensus
-        threat_type = self._determine_threat_type(rule_result, ml_result, features)
-
-        # Confidence is average of individual confidences
-        rule_confidence = min(rule_score / 100, 1.0) if rule_score > 0 else 0.3
-        rag_confidence = min(rag_score / 100, 1.0) if rag_score > 0 else 0.2
         confidence = round(
-            (rule_confidence * 0.4 + ml_confidence * 0.3 + rag_confidence * 0.3), 2
+            min(max(best_score / 100, 0.0), 1.0),
+            2,
         )
 
         return {
             "risk_score": risk_score,
             "threat_type": threat_type,
-            "confidence": max(0.0, min(1.0, confidence)),
+            "confidence": confidence,
+            "subsystem_scores": {
+                "weights": weights,
+                "rule": rule_scores,
+                "ml": {k: float(v) for k, v in ml_probs.items()},
+                "rag": rag_scores,
+                "fused": fused_per_class,
+            },
+            "fusion_reasoning": fusion_reasoning,
         }
-
-    def _determine_threat_type(self, rule_result: dict, ml_result: dict, features: dict) -> str:
-        """Determine the primary threat type based on all signals."""
-        scores = {
-            "phishing": features.get("phishing_score", 0),
-            "manipulation": features.get("manipulation_score", 0),
-            "disinformation": features.get("disinformation_score", 0),
-        }
-
-        # Boost the ML prediction's category
-        ml_label = ml_result["label"]
-        if ml_label in scores:
-            scores[ml_label] += ml_result["confidence"] * 30
-
-        # Get highest scoring category
-        threat_type = max(scores, key=scores.get)
-        max_score = scores[threat_type]
-
-        if max_score < 10:
-            return "safe"
-
-        return threat_type

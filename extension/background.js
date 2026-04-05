@@ -35,7 +35,7 @@ async function handleAnalyze(text) {
   try {
     const resp = await fetch(`${api}/analyze`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "X-API-Key": key },
       body: JSON.stringify({ text: text.substring(0, 15000) }),
       signal: controller.signal
     });
@@ -60,7 +60,7 @@ async function handleLog(payload) {
   try {
     await fetch(`${api}/log`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "X-API-Key": key },
       body: JSON.stringify(payload)
     });
     return { ok: true };

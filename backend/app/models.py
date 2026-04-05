@@ -13,6 +13,7 @@ class AnalyzeResponse(BaseModel):
     threat_type: str = Field(..., description="Type of threat detected")
     explanation: list[str] = Field(default_factory=list, description="Human-readable explanations")
     confidence: float = Field(..., ge=0.0, le=1.0, description="Confidence level of the analysis")
+    details: Optional[dict] = Field(default=None, description="Optional subsystem and fusion debug details")
 
 
 class BatchAnalyzeRequest(BaseModel):

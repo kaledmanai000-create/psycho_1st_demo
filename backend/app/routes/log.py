@@ -1,12 +1,12 @@
-"""Logging endpoints - stores user decisions and exports history."""
+"""POST /log endpoint - stores user decisions for transparency."""
 
 import csv
 import io
+
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from app.models import LogRequest, LogResponse
 from app.database import log_decision, get_logs, get_connection
-import json
 
 router = APIRouter()
 
@@ -45,9 +45,7 @@ async def get_log_history(limit: int = 50):
 
 @router.get("/export")
 async def export_logs_csv():
-    """
-    Export all analysis logs as a downloadable CSV file.
-    """
+    """Export all analysis logs as a downloadable CSV file."""
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM analysis_logs ORDER BY id DESC")
@@ -56,7 +54,16 @@ async def export_logs_csv():
 
     output = io.StringIO()
     writer = csv.writer(output)
-    writer.writerow(["id", "input_text", "risk_score", "threat_type", "explanation", "confidence", "user_decision", "timestamp"])
+    writer.writerow([
+        "id",
+        "input_text",
+        "risk_score",
+        "threat_type",
+        "explanation",
+        "confidence",
+        "user_decision",
+        "timestamp",
+    ])
 
     for row in rows:
         writer.writerow([

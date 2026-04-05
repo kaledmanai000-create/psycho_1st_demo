@@ -57,10 +57,18 @@ class Preprocessor:
 
     def extract_urls(self, text: str) -> list[str]:
         """Extract all URLs from text."""
+        if not isinstance(text, str):
+            return []
+
         url_pattern = re.compile(
-            r"https?://[^\s<>\"']+|www\.[^\s<>\"']+|[a-zA-Z0-9-]+\.(com|org|net|bank|secure|login|account)[^\s<>\"']*"
+            r"(?:https?://[^\s<>\"']+|www\.[^\s<>\"']+|"
+            r"(?:[a-zA-Z0-9-]+\.)+(?:com|org|net|info|biz|xyz|top|site|online|club|tk|ml|ga|cf|gq)\S*|"
+            r"(?:\d{1,3}\.){3}\d{1,3}(?:/\S*)?)",
+            re.IGNORECASE,
         )
-        return url_pattern.findall(text) if isinstance(text, str) else []
+        matches = url_pattern.findall(text)
+        # Preserve order while deduplicating.
+        return list(dict.fromkeys(matches))
 
     def detect_language(self, text: str) -> str:
         """

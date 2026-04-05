@@ -1,0 +1,17 @@
+{
+  "model_version": "2.0.0",
+  "training_seconds": 0.134,
+  "sample_count": 606,
+  "label_distribution": {
+    "manipulation": 237,
+    "phishing": 96,
+    "disinformation": 92,
+    "safe": 181
+  },
+  "validation": {
+    "accuracy": 0.9098,
+    "macro_precision": 0.8985,
+    "macro_recall": 0.8915,
+    "macro_f1": 0.8933
+  }
+}

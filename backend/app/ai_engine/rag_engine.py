@@ -6,7 +6,10 @@ import numpy as np
 import faiss
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from app.config import get_settings
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data")
+PHISHING_PATTERNS_PATH = os.path.join(DATA_DIR, "phishing_patterns.json")
+DISINFO_PATTERNS_PATH = os.path.join(DATA_DIR, "disinfo_patterns.json")
+TRAINING_DATA_PATH = os.path.join(DATA_DIR, "training_data.json")
 
 
 class RAGEngine:
@@ -21,7 +24,6 @@ class RAGEngine:
         self.pattern_texts: list[str] = []
         self.vectorizer: TfidfVectorizer | None = None
         self.index: faiss.IndexFlatIP | None = None
-        self.settings = get_settings()
         self._build_index()
 
     def _load_patterns(self) -> list[dict]:
@@ -29,21 +31,51 @@ class RAGEngine:
         patterns = []
 
         for path, category in [
-            (self.settings.phishing_patterns_path, "phishing"),
-            (self.settings.disinfo_patterns_path, "disinformation"),
+            (PHISHING_PATTERNS_PATH, "phishing"),
+            (DISINFO_PATTERNS_PATH, "disinformation"),
         ]:
             if os.path.exists(path):
                 with open(path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 for item in data:
                     item["category"] = category
+                    item["source"] = os.path.basename(path)
                     patterns.append(item)
+
+        # Add a curated subset of manipulation samples from the labeled dataset
+        # to ensure retrieval can support all non-safe classes.
+        if os.path.exists(TRAINING_DATA_PATH):
+            with open(TRAINING_DATA_PATH, "r", encoding="utf-8") as f:
+                train_data = json.load(f)
+            for item in train_data:
+                label = item.get("label")
+                if label in {"phishing", "manipulation", "disinformation"}:
+                    patterns.append({
+                        "text": item.get("text", ""),
+                        "category": label,
+                        "template": f"train_{label}",
+                        "source": "training_data.json",
+                    })
+
+        patterns = self._deduplicate_patterns(patterns)
 
         # Fallback patterns if no files exist
         if not patterns:
             patterns = self._get_default_patterns()
 
         return patterns
+
+    def _deduplicate_patterns(self, patterns: list[dict]) -> list[dict]:
+        seen = set()
+        deduped = []
+        for item in patterns:
+            text = " ".join(str(item.get("text", "")).lower().split())
+            key = (text, item.get("category", "unknown"))
+            if not text or key in seen:
+                continue
+            seen.add(key)
+            deduped.append(item)
+        return deduped
 
     def _get_default_patterns(self) -> list[dict]:
         """Default patterns if no data files are available."""
@@ -65,7 +97,13 @@ class RAGEngine:
             return
 
         # Use TF-IDF for vectorization (lightweight, no external model needed)
-        self.vectorizer = TfidfVectorizer(max_features=3000, ngram_range=(1, 2), stop_words="english")
+        self.vectorizer = TfidfVectorizer(
+            max_features=6000,
+            ngram_range=(1, 3),
+            min_df=1,
+            sublinear_tf=True,
+            strip_accents="unicode",
+        )
         tfidf_matrix = self.vectorizer.fit_transform(self.pattern_texts)
 
         # Convert to dense numpy array and normalize for cosine similarity
@@ -95,6 +133,7 @@ class RAGEngine:
         matches = []
         explanations = []
 
+        category_scores = {"phishing": 0.0, "manipulation": 0.0, "disinformation": 0.0}
         for score, idx in zip(scores[0], indices[0]):
             if idx < 0 or score < 0.1:
                 continue
@@ -105,8 +144,10 @@ class RAGEngine:
                 "category": pattern["category"],
                 "template": pattern.get("template", "unknown"),
                 "similarity": float(score),
+                "source": pattern.get("source", "unknown"),
             }
             matches.append(match)
+            category_scores[pattern["category"]] = max(category_scores[pattern["category"]], float(score))
 
             if score >= 0.3:
                 explanations.append(
@@ -115,10 +156,14 @@ class RAGEngine:
                 )
 
         max_sim = float(max(scores[0])) if len(scores[0]) > 0 else 0.0
+        avg_sim = float(np.mean([m["similarity"] for m in matches])) if matches else 0.0
+        # Combine max and average similarity to reduce one-off spurious match spikes.
+        rag_score = min(max((0.65 * max_sim + 0.35 * avg_sim) * 100, 0.0), 100)
 
         return {
             "matches": matches,
             "max_similarity": max(max_sim, 0.0),
+            "category_scores": category_scores,
             "explanations": explanations,
-            "rag_score": min(max(max_sim, 0.0) * 100, 100),
+            "rag_score": rag_score,
         }
