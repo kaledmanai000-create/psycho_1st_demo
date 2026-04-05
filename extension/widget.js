@@ -12,8 +12,6 @@
   const DEFAULT_KEY = "changeme-cognitive-shield-key";
   const SCAN_MS = 1000;
 
-  let apiBase = DEFAULT_API;
-  let apiKey = DEFAULT_KEY;
   let lastHash = "";
   let busy = false;
   let currentResult = null;
@@ -142,20 +140,19 @@
     return String(h);
   }
 
-  // ===== API =====
-  async function analyze(text) {
-    const c = new AbortController();
-    const t = setTimeout(() => c.abort(), 8000);
-    try {
-      const r = await fetch(`${apiBase}/analyze`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-API-Key": apiKey },
-        body: JSON.stringify({ text: text.substring(0, 15000) }),
-        signal: c.signal,
-      });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      return await r.json();
-    } finally { clearTimeout(t); }
+  // ===== API via background service worker =====
+  function analyze(text) {
+    return new Promise((resolve, reject) => {
+      if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.sendMessage) {
+        chrome.runtime.sendMessage({ type: "analyze", text: text.substring(0, 15000) }, (resp) => {
+          if (chrome.runtime.lastError) { reject(new Error(chrome.runtime.lastError.message)); return; }
+          if (resp && resp.error) { reject(new Error(resp.error)); return; }
+          resolve(resp);
+        });
+      } else {
+        reject(new Error("No chrome runtime"));
+      }
+    });
   }
 
   function offlineAnalyze(text) {
@@ -185,11 +182,12 @@
     const loggedEl = source === "alert" ? "cs-alert-logged" : "cs-explain-logged";
     document.querySelectorAll(`${container} button`).forEach(b => b.disabled = true);
     try {
-      await fetch(`${apiBase}/log`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-API-Key": apiKey },
-        body: JSON.stringify({ input_text: currentText.substring(0, 5000), ai_decision: currentResult, user_decision: decision }),
-      });
+      if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.sendMessage) {
+        chrome.runtime.sendMessage({
+          type: "logDecision",
+          payload: { input_text: currentText.substring(0, 5000), ai_decision: currentResult, user_decision: decision }
+        });
+      }
     } catch (e) { /* silent */ }
     document.getElementById(loggedEl).style.display = "block";
     // If alert, dismiss after 1.5s
@@ -303,13 +301,7 @@
 
   // ===== Init =====
   function loadAndStart() {
-    if (typeof chrome !== "undefined" && chrome.storage) {
-      chrome.storage.local.get(["backendUrl", "apiKey"], (d) => {
-        apiBase = d.backendUrl || DEFAULT_API;
-        apiKey = d.apiKey || DEFAULT_KEY;
-        go();
-      });
-    } else { go(); }
+    go();
   }
 
   function go() {
