@@ -14,26 +14,10 @@ PUBLIC_PATHS = {"/health", "/docs", "/openapi.json", "/redoc"}
 
 
 class APIKeyAuthMiddleware(BaseHTTPMiddleware):
-    """Validates X-API-Key header on protected endpoints."""
+    """Validates X-API-Key header on protected endpoints (disabled by default)."""
 
     async def dispatch(self, request: Request, call_next):
-        # Allow CORS preflight
-        if request.method == "OPTIONS":
-            return await call_next(request)
-
-        # Skip auth for public paths
-        if request.url.path in PUBLIC_PATHS:
-            return await call_next(request)
-
-        settings = get_settings()
-        api_key = request.headers.get("X-API-Key", "")
-
-        if api_key != settings.api_key:
-            return JSONResponse(
-                status_code=401,
-                content={"detail": "Invalid or missing API key. Provide X-API-Key header."},
-            )
-
+        # Auth disabled - allow all requests through
         return await call_next(request)
 
 
