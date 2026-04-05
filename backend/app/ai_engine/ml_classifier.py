@@ -7,6 +7,7 @@ import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
+from sklearn.model_selection import StratifiedKFold, cross_val_score
 
 from app.config import get_settings
 
@@ -29,34 +30,68 @@ class MLClassifier:
 
     def _load_or_train(self):
         """Load existing model or train a new one from training data."""
-        if os.path.exists(self.settings.model_path):
+        # Always retrain if training data is newer than model
+        model_exists = os.path.exists(self.settings.model_path)
+        data_exists = os.path.exists(self.settings.training_data_path)
+
+        if model_exists and data_exists:
+            model_mtime = os.path.getmtime(self.settings.model_path)
+            data_mtime = os.path.getmtime(self.settings.training_data_path)
+            if data_mtime > model_mtime:
+                # Data is newer, retrain
+                self._train_from_data()
+                return
+
+        if model_exists:
             try:
                 self.model = joblib.load(self.settings.model_path)
                 return
             except Exception:
                 pass
 
-        # Train from scratch
-        if os.path.exists(self.settings.training_data_path):
+        if data_exists:
             self._train_from_data()
         else:
-            # Create a minimal default model
             self._train_default()
 
     def _train_from_data(self):
-        """Train model from training_data.json."""
+        """Train model from training_data.json with improved parameters."""
         with open(self.settings.training_data_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         texts = [item["text"] for item in data]
         labels = [LABEL_MAP.get(item["label"], 0) for item in data]
 
+        # No stop_words since we have Arabic/French/English multilingual data
+        # Use sublinear_tf for better feature scaling
+        # Use char_wb analyzer alongside word for better Arabic handling
         self.model = Pipeline([
-            ("tfidf", TfidfVectorizer(max_features=5000, ngram_range=(1, 2), stop_words="english")),
-            ("clf", LogisticRegression(max_iter=1000, C=1.0)),
+            ("tfidf", TfidfVectorizer(
+                max_features=10000,
+                ngram_range=(1, 3),
+                sublinear_tf=True,
+                analyzer="word",
+                min_df=2,
+                max_df=0.95,
+            )),
+            ("clf", LogisticRegression(
+                max_iter=2000,
+                C=5.0,
+                class_weight="balanced",
+                solver="lbfgs",
+            )),
         ])
 
         self.model.fit(texts, labels)
+
+        # Print training accuracy
+        try:
+            cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+            scores = cross_val_score(self.model, texts, labels, cv=cv, scoring="accuracy")
+            print(f"ML Classifier: Trained on {len(texts)} samples, "
+                  f"CV accuracy: {scores.mean():.3f} (+/- {scores.std():.3f})")
+        except Exception:
+            print(f"ML Classifier: Trained on {len(texts)} samples")
 
         os.makedirs(self.settings.model_dir, exist_ok=True)
         joblib.dump(self.model, self.settings.model_path)
