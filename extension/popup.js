@@ -1,8 +1,7 @@
 /**
  * Cognitive Shield TN - Popup Script
  * Reads real-time results from widget.js via chrome.storage.local.
- * The widget (content script) does all the scanning and API calls.
- * This popup just displays the latest result.
+ * Provides start/stop toggle for the monitoring.
  */
 
 const DEFAULT_API_BASE = "http://localhost:8000";
@@ -14,6 +13,7 @@ let apiKey = DEFAULT_API_KEY;
 // DOM Elements
 const liveStatus = document.getElementById("live-status");
 const liveLabel = document.getElementById("live-label");
+const toggleBtn = document.getElementById("toggle-btn");
 const loadingSection = document.getElementById("loading-section");
 const resultsSection = document.getElementById("results-section");
 const errorSection = document.getElementById("error-section");
@@ -30,10 +30,23 @@ const explanationList = document.getElementById("explanation-list");
 
 let currentResult = null;
 let pollInterval = null;
+let isRunning = true;
 
 // --- Init ---
 (async function init() {
   await loadSettings();
+
+  // Read saved monitoring state
+  if (typeof chrome !== "undefined" && chrome.storage) {
+    chrome.storage.local.get(["csMonitorEnabled"], (data) => {
+      isRunning = data.csMonitorEnabled !== false; // default true
+      updateToggleUI();
+      if (isRunning) startPolling();
+      else showStopped();
+    });
+  } else {
+    startPolling();
+  }
 
   if (settingsBtn) {
     settingsBtn.addEventListener("click", () => {
@@ -41,12 +54,11 @@ let pollInterval = null;
     });
   }
 
+  toggleBtn.addEventListener("click", toggleMonitoring);
+
   document.querySelectorAll(".btn-action").forEach((btn) => {
     btn.addEventListener("click", () => handleDecision(btn.dataset.decision));
   });
-
-  // Start polling storage for widget results
-  startPolling();
 })();
 
 function loadSettings() {
@@ -63,15 +75,63 @@ function loadSettings() {
   });
 }
 
+// --- Toggle monitoring ---
+function toggleMonitoring() {
+  isRunning = !isRunning;
+
+  // Save state
+  if (typeof chrome !== "undefined" && chrome.storage) {
+    chrome.storage.local.set({ csMonitorEnabled: isRunning });
+  }
+
+  // Notify all content scripts via storage change (widget.js listens)
+  if (isRunning) {
+    startPolling();
+  } else {
+    stopPolling();
+    showStopped();
+  }
+
+  updateToggleUI();
+}
+
+function updateToggleUI() {
+  if (isRunning) {
+    toggleBtn.innerHTML = "&#9209; Stop";
+    toggleBtn.className = "btn-toggle active";
+    toggleBtn.title = "Stop monitoring";
+    liveStatus.className = "live-status active";
+  } else {
+    toggleBtn.innerHTML = "&#9654; Start";
+    toggleBtn.className = "btn-toggle inactive";
+    toggleBtn.title = "Start monitoring";
+    liveStatus.className = "live-status stopped";
+  }
+}
+
+function showStopped() {
+  liveLabel.textContent = "Monitoring paused";
+  loadingSection.classList.add("hidden");
+}
+
 // --- Poll storage for widget results ---
 function startPolling() {
   liveLabel.textContent = "Connecting to monitor...";
   liveStatus.classList.add("active");
+  liveStatus.classList.remove("stopped");
   readResult();
   pollInterval = setInterval(readResult, 1000);
 }
 
+function stopPolling() {
+  if (pollInterval) {
+    clearInterval(pollInterval);
+    pollInterval = null;
+  }
+}
+
 function readResult() {
+  if (!isRunning) return;
   if (typeof chrome === "undefined" || !chrome.storage) return;
   chrome.storage.local.get(["csLastResult", "csLastUpdate"], (data) => {
     if (!data.csLastResult) {
@@ -82,7 +142,6 @@ function readResult() {
     const age = Date.now() - (data.csLastUpdate || 0);
     const result = data.csLastResult;
 
-    // Only update if we have a result
     currentResult = result;
     displayResults(result);
 

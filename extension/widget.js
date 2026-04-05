@@ -17,6 +17,8 @@
   let currentResult = null;
   let currentText = "";
   let alertDismissedHash = "";
+  let monitorEnabled = true;
+  let scanTimer = null;
 
   // ===== Build DOM =====
   function build() {
@@ -301,13 +303,45 @@
 
   // ===== Init =====
   function loadAndStart() {
-    go();
+    // Check saved state
+    if (typeof chrome !== "undefined" && chrome.storage) {
+      chrome.storage.local.get(["csMonitorEnabled"], (d) => {
+        monitorEnabled = d.csMonitorEnabled !== false;
+        go();
+      });
+      // Listen for toggle changes from popup
+      chrome.storage.onChanged.addListener((changes) => {
+        if (changes.csMonitorEnabled) {
+          monitorEnabled = changes.csMonitorEnabled.newValue !== false;
+          const widget = document.getElementById("cs-widget");
+          const overlay = document.getElementById("cs-alert-overlay");
+          if (monitorEnabled) {
+            if (widget) widget.style.display = "";
+            // Restart scanning
+            if (!scanTimer) scanTimer = setInterval(scan, SCAN_MS);
+            lastHash = ""; // force re-scan
+            scan();
+          } else {
+            // Hide widget and stop scanning
+            if (widget) widget.style.display = "none";
+            if (overlay) overlay.classList.remove("visible");
+            if (scanTimer) { clearInterval(scanTimer); scanTimer = null; }
+          }
+        }
+      });
+    } else {
+      go();
+    }
   }
 
   function go() {
     build();
-    scan();
-    setInterval(scan, SCAN_MS);
+    if (monitorEnabled) {
+      scan();
+      scanTimer = setInterval(scan, SCAN_MS);
+    } else {
+      document.getElementById("cs-widget").style.display = "none";
+    }
   }
 
   loadAndStart();

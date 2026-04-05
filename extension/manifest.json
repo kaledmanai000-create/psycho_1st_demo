@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cognitive Shield TN",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "AI-powered cybersecurity extension that detects phishing, manipulation, and disinformation in real-time. AI assists. Humans decide.",
   "permissions": ["activeTab", "storage", "scripting"],
   "host_permissions": ["http://localhost:8000/*", "http://127.0.0.1:8000/*"],
