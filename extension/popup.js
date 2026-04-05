@@ -1,40 +1,12 @@
 /**
- * Cognitive Shield TN - Popup Script (Real-Time Monitor)
- * Automatically scans viewport text every second.
- * When content changes, re-analyzes and updates the display live.
+ * Cognitive Shield TN - Popup Script
+ * Reads real-time results from widget.js via chrome.storage.local.
+ * The widget (content script) does all the scanning and API calls.
+ * This popup just displays the latest result.
  */
 
 const DEFAULT_API_BASE = "http://localhost:8000";
 const DEFAULT_API_KEY = "changeme-cognitive-shield-key";
-const SCAN_INTERVAL_MS = 1000; // 1 second
-const MIN_TEXT_LENGTH = 10;
-
-// Offline fallback patterns
-const OFFLINE_PATTERNS = {
-  phishing: [
-    /click\s+here\s+to\s+verify/i,
-    /your\s+account\s+(has\s+been|was)\s+(compromised|suspended|locked)/i,
-    /enter\s+your\s+(password|bank|credit\s+card|cin)/i,
-    /urgent.*verify\s+your\s+(identity|account)/i,
-    /update\s+your\s+(payment|billing)\s+information/i,
-    /congratulations.*you\s+(won|have\s+won)/i,
-  ],
-  manipulation: [
-    /act\s+now\s+or/i,
-    /share\s+(this|before)\s+(before|it\s+gets\s+deleted)/i,
-    /you\s+should\s+be\s+ashamed/i,
-    /everyone\s+(is|knows)/i,
-    /if\s+you\s+(don'?t|really)\s+(care|love)/i,
-  ],
-  disinformation: [
-    /they\s+don'?t\s+want\s+you\s+to\s+know/i,
-    /mainstream\s+media\s+is\s+hiding/i,
-    /miracle\s+cure/i,
-    /government\s+is\s+secretly/i,
-    /doctors?\s+(hate|don'?t\s+want)/i,
-    /before\s+(they|it\s+gets?)\s+delete/i,
-  ],
-};
 
 let apiBase = DEFAULT_API_BASE;
 let apiKey = DEFAULT_API_KEY;
@@ -55,15 +27,9 @@ const riskBar = document.getElementById("risk-bar");
 const threatType = document.getElementById("threat-type");
 const confidenceEl = document.getElementById("confidence");
 const explanationList = document.getElementById("explanation-list");
-const errorMessage = document.getElementById("error-message");
 
-// State
 let currentResult = null;
-let currentText = "";
-let lastTextHash = "";
-let scanInterval = null;
-let isAnalyzing = false;
-let scanCount = 0;
+let pollInterval = null;
 
 // --- Init ---
 (async function init() {
@@ -79,11 +45,10 @@ let scanCount = 0;
     btn.addEventListener("click", () => handleDecision(btn.dataset.decision));
   });
 
-  // Start real-time monitoring
-  startMonitoring();
+  // Start polling storage for widget results
+  startPolling();
 })();
 
-// --- Settings ---
 function loadSettings() {
   return new Promise((resolve) => {
     if (typeof chrome !== "undefined" && chrome.storage) {
@@ -98,156 +63,39 @@ function loadSettings() {
   });
 }
 
-// --- Real-Time Monitoring ---
-function startMonitoring() {
-  liveLabel.textContent = "Live monitor active";
+// --- Poll storage for widget results ---
+function startPolling() {
+  liveLabel.textContent = "Connecting to monitor...";
   liveStatus.classList.add("active");
-
-  // Run first scan immediately
-  performScan();
-
-  // Then scan every second
-  scanInterval = setInterval(performScan, SCAN_INTERVAL_MS);
+  readResult();
+  pollInterval = setInterval(readResult, 1000);
 }
 
-async function performScan() {
-  if (isAnalyzing) return; // Skip if previous analysis still running
-
-  try {
-    const text = await extractViewportText();
-    const hash = simpleHash(text);
-
-    // Only re-analyze if content actually changed
-    if (hash === lastTextHash) {
-      scanCount++;
-      liveLabel.textContent = `Monitoring... (${scanCount}s)`;
+function readResult() {
+  if (typeof chrome === "undefined" || !chrome.storage) return;
+  chrome.storage.local.get(["csLastResult", "csLastUpdate"], (data) => {
+    if (!data.csLastResult) {
+      liveLabel.textContent = "Waiting for first scan...";
       return;
     }
 
-    lastTextHash = hash;
-    currentText = text;
-    scanCount = 0;
+    const age = Date.now() - (data.csLastUpdate || 0);
+    const result = data.csLastResult;
 
-    if (!text || text.length < MIN_TEXT_LENGTH) {
-      liveLabel.textContent = "Waiting for content...";
-      return;
-    }
-
-    // Analyze the new content
-    isAnalyzing = true;
-    liveLabel.textContent = "Analyzing new content...";
-
-    let result;
-    try {
-      result = await analyzeText(text);
-    } catch (apiErr) {
-      result = offlineAnalyze(text);
-    }
-
+    // Only update if we have a result
     currentResult = result;
     displayResults(result);
 
-    // Show results, hide loading
     loadingSection.classList.add("hidden");
     resultsSection.classList.remove("hidden");
     errorSection.classList.add("hidden");
 
-    // Re-enable action buttons for new content
-    resetActionButtons();
-    loggedSection.classList.add("hidden");
-
-    liveLabel.textContent = "Live monitor active";
-    isAnalyzing = false;
-  } catch (err) {
-    isAnalyzing = false;
-    liveLabel.textContent = "Monitor active (page access limited)";
-  }
-}
-
-// --- Text Extraction ---
-function extractViewportText() {
-  return new Promise((resolve, reject) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (!tabs[0]) {
-        reject(new Error("No active tab"));
-        return;
-      }
-
-      chrome.tabs.sendMessage(tabs[0].id, { action: "extractViewportText" }, (response) => {
-        if (chrome.runtime.lastError) {
-          // Inject content script and retry
-          chrome.scripting.executeScript(
-            { target: { tabId: tabs[0].id }, files: ["content.js"] },
-            () => {
-              setTimeout(() => {
-                chrome.tabs.sendMessage(tabs[0].id, { action: "extractViewportText" }, (resp) => {
-                  resolve(resp?.text || "");
-                });
-              }, 300);
-            }
-          );
-          return;
-        }
-        resolve(response?.text || "");
-      });
-    });
+    if (age < 5000) {
+      liveLabel.textContent = "Live monitor active";
+    } else {
+      liveLabel.textContent = `Last scan ${Math.round(age / 1000)}s ago`;
+    }
   });
-}
-
-// --- API Analysis ---
-async function analyzeText(text) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 8000);
-
-  try {
-    const response = await fetch(`${apiBase}/analyze`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-API-Key": apiKey,
-      },
-      body: JSON.stringify({ text: text.substring(0, 15000) }),
-      signal: controller.signal,
-    });
-
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      throw new Error(err.detail || `Server error (${response.status})`);
-    }
-
-    return response.json();
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
-function offlineAnalyze(text) {
-  const explanations = ["Offline mode: limited analysis (backend unreachable)"];
-  let maxScore = 0;
-  let detectedType = "safe";
-
-  for (const [category, patterns] of Object.entries(OFFLINE_PATTERNS)) {
-    let matchCount = 0;
-    for (const pattern of patterns) {
-      if (pattern.test(text)) matchCount++;
-    }
-    if (matchCount > 0) {
-      const score = Math.min(matchCount * 25, 80);
-      explanations.push(`Detected ${matchCount} ${category} pattern(s)`);
-      if (score > maxScore) {
-        maxScore = score;
-        detectedType = category;
-      }
-    }
-  }
-
-  return {
-    risk_score: maxScore,
-    threat_type: detectedType,
-    explanation: explanations,
-    confidence: maxScore > 0 ? 0.4 : 0.2,
-    offline: true,
-  };
 }
 
 // --- Decision Logging ---
@@ -267,7 +115,7 @@ async function handleDecision(decision) {
         "X-API-Key": apiKey,
       },
       body: JSON.stringify({
-        input_text: currentText.substring(0, 5000),
+        input_text: "viewport-text",
         ai_decision: currentResult,
         user_decision: decision,
       }),
@@ -277,14 +125,6 @@ async function handleDecision(decision) {
   }
 
   loggedSection.classList.remove("hidden");
-  // Buttons will re-enable on next content change
-}
-
-function resetActionButtons() {
-  document.querySelectorAll(".btn-action").forEach((btn) => {
-    btn.disabled = false;
-    btn.style.opacity = "1";
-  });
 }
 
 // --- UI Display ---
@@ -309,8 +149,6 @@ function displayResults(result) {
     labelText = "Critical Risk";
   }
 
-  if (result.offline) labelText += " (Offline)";
-
   riskCard.className = `card risk-${level}`;
   riskLabel.textContent = labelText;
   threatType.textContent = result.threat_type;
@@ -328,16 +166,4 @@ function displayResults(result) {
     li.textContent = "No specific threats identified.";
     explanationList.appendChild(li);
   }
-}
-
-// --- Helpers ---
-function simpleHash(str) {
-  if (!str) return "";
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    const chr = str.charCodeAt(i);
-    hash = ((hash << 5) - hash) + chr;
-    hash |= 0;
-  }
-  return String(hash);
 }

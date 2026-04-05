@@ -1,202 +1,189 @@
 /**
- * Cognitive Shield TN - In-Page Widget
- * Injects a floating monitor in the bottom-right of every page.
- * Shows a center-screen alert when risk > 50.
- * Scans viewport text every 1 second.
+ * Cognitive Shield TN - In-Page Widget v2
+ * 3 modes based on risk score:
+ *   < 30  → Small circle with % in bottom-right
+ *   30-50 → Expanded text explanation card in bottom-right
+ *   > 50  → Big center-screen alert popup
  */
-
 (() => {
-  // Prevent double injection
   if (document.getElementById("cs-widget")) return;
 
-  const DEFAULT_API_BASE = "http://localhost:8000";
-  const DEFAULT_API_KEY = "changeme-cognitive-shield-key";
-  const SCAN_INTERVAL = 1000;
-  const HIGH_RISK_THRESHOLD = 50;
+  const DEFAULT_API = "http://localhost:8000";
+  const DEFAULT_KEY = "changeme-cognitive-shield-key";
+  const SCAN_MS = 1000;
 
-  let apiBase = DEFAULT_API_BASE;
-  let apiKey = DEFAULT_API_KEY;
-  let lastTextHash = "";
-  let isAnalyzing = false;
+  let apiBase = DEFAULT_API;
+  let apiKey = DEFAULT_KEY;
+  let lastHash = "";
+  let busy = false;
   let currentResult = null;
   let currentText = "";
-  let alertDismissedForHash = "";
+  let alertDismissedHash = "";
 
-  // ---- Build the DOM ----
-  function buildWidget() {
-    // Bottom-right widget
-    const widget = document.createElement("div");
-    widget.id = "cs-widget";
-    widget.innerHTML = `
-      <div class="cs-pill" id="cs-pill">
-        <div class="cs-dot safe" id="cs-dot"></div>
-        <span class="cs-pill-label" id="cs-pill-label">Scanning...</span>
-        <span class="cs-pill-score" id="cs-pill-score">--</span>
+  // ===== Build DOM =====
+  function build() {
+    const w = document.createElement("div");
+    w.id = "cs-widget";
+
+    // --- Mode 1: Circle (< 30) ---
+    const circ = 2 * Math.PI * 24;
+    w.innerHTML = `
+      <div id="cs-circle">
+        <svg viewBox="0 0 56 56">
+          <circle class="cs-ring-bg" cx="28" cy="28" r="24"/>
+          <circle class="cs-ring-fill" id="cs-ring" cx="28" cy="28" r="24"
+            stroke-dasharray="${circ}" stroke-dashoffset="${circ}"/>
+        </svg>
+        <span class="cs-circle-score" id="cs-circle-score">0</span>
+        <span class="cs-circle-pct">%</span>
       </div>
-      <div class="cs-card" id="cs-card">
-        <div class="cs-card-header">
-          <span class="cs-title">&#128737; Cognitive Shield TN</span>
-          <button class="cs-close" id="cs-close">&times;</button>
+
+      <div id="cs-explain">
+        <div class="cs-explain-header">
+          <div class="cs-explain-title">&#9888;&#65039; Caution</div>
+          <span class="cs-explain-score" id="cs-explain-score">0</span>
         </div>
-        <div class="cs-risk" id="cs-risk-section">
-          <div class="cs-risk-score" id="cs-risk-score">0</div>
-          <div class="cs-risk-label" id="cs-risk-label">Scanning...</div>
-          <div class="cs-risk-bar"><div class="cs-risk-bar-fill" id="cs-risk-bar-fill" style="width:0%"></div></div>
+        <div class="cs-explain-bar"><div class="cs-explain-bar-fill" id="cs-explain-bar" style="width:0%"></div></div>
+        <div class="cs-explain-body">
+          <div class="cs-explain-label">What we found</div>
+          <div class="cs-explain-text" id="cs-explain-text">Analyzing...</div>
+          <span class="cs-explain-type" id="cs-explain-type">--</span>
         </div>
-        <div class="cs-meta">
-          <span id="cs-threat-type">--</span>
-          <span id="cs-confidence">--</span>
+        <div class="cs-explain-actions" id="cs-explain-actions">
+          <button class="cs-btn-ignore" data-d="ignore">&#10004; Ignore</button>
+          <button class="cs-btn-investigate" data-d="investigate">&#128270; Investigate</button>
+          <button class="cs-btn-threat" data-d="mark_as_threat">&#9888; Threat</button>
         </div>
-        <div class="cs-explanations" id="cs-explanations">
-          <ul id="cs-explanation-list"></ul>
-        </div>
-        <div class="cs-actions" id="cs-actions">
-          <button class="cs-act-ignore" data-decision="ignore">&#10004; Ignore</button>
-          <button class="cs-act-investigate" data-decision="investigate">&#128270; Investigate</button>
-          <button class="cs-act-threat" data-decision="mark_as_threat">&#9888; Threat</button>
-        </div>
-        <div class="cs-logged" id="cs-logged">&#9989; Decision logged</div>
+        <div class="cs-explain-logged" id="cs-explain-logged">&#9989; Decision logged</div>
       </div>
     `;
-    document.body.appendChild(widget);
+    document.body.appendChild(w);
 
-    // Center-screen alert overlay
-    const overlay = document.createElement("div");
-    overlay.id = "cs-alert-overlay";
-    overlay.innerHTML = `
+    // --- Mode 3: Big alert overlay (> 50) ---
+    const ov = document.createElement("div");
+    ov.id = "cs-alert-overlay";
+    ov.innerHTML = `
       <div id="cs-alert-box">
-        <div class="cs-alert-icon">&#9888;</div>
-        <div class="cs-alert-title">HIGH RISK DETECTED</div>
-        <div class="cs-alert-subtitle">This page may contain dangerous content</div>
-        <div class="cs-alert-score" id="cs-alert-score">0</div>
-        <div class="cs-alert-type" id="cs-alert-type">--</div>
-        <button class="cs-alert-dismiss" id="cs-alert-dismiss">I Understand</button>
+        <div class="cs-alert-top">
+          <div class="cs-alert-icon">&#128680;</div>
+          <div class="cs-alert-title">HIGH RISK DETECTED</div>
+          <div class="cs-alert-subtitle">This page may contain dangerous content</div>
+          <div class="cs-alert-score-ring">
+            <div class="cs-alert-score-circle">
+              <span class="cs-alert-score-num" id="cs-alert-score">0</span>
+              <span class="cs-alert-score-label">Risk Score</span>
+            </div>
+          </div>
+          <span class="cs-alert-type-badge" id="cs-alert-type">--</span>
+        </div>
+        <div class="cs-alert-body">
+          <div class="cs-alert-explain-title">Why this was flagged</div>
+          <ul class="cs-alert-explain-list" id="cs-alert-explain-list"></ul>
+        </div>
+        <div class="cs-alert-actions" id="cs-alert-actions">
+          <button class="cs-alert-act-ignore" data-d="ignore">&#10004; Ignore</button>
+          <button class="cs-alert-act-investigate" data-d="investigate">&#128270; Investigate</button>
+          <button class="cs-alert-act-threat" data-d="mark_as_threat">&#9888; Threat</button>
+        </div>
+        <div class="cs-alert-logged" id="cs-alert-logged">&#9989; Decision logged</div>
       </div>
     `;
-    document.body.appendChild(overlay);
+    document.body.appendChild(ov);
 
-    // Event listeners
-    document.getElementById("cs-pill").addEventListener("click", () => {
-      widget.classList.add("expanded");
-    });
-    document.getElementById("cs-close").addEventListener("click", (e) => {
-      e.stopPropagation();
-      widget.classList.remove("expanded");
-    });
-    document.getElementById("cs-alert-dismiss").addEventListener("click", () => {
-      overlay.classList.remove("visible");
-      alertDismissedForHash = lastTextHash;
+    // Click outside alert box to dismiss
+    ov.addEventListener("click", (e) => {
+      if (e.target === ov) dismissAlert();
     });
 
     // Decision buttons
-    document.querySelectorAll("#cs-actions button").forEach((btn) => {
-      btn.addEventListener("click", () => handleDecision(btn.dataset.decision));
+    document.querySelectorAll("#cs-explain-actions button").forEach(b => {
+      b.addEventListener("click", () => logDecision(b.dataset.d, "explain"));
+    });
+    document.querySelectorAll("#cs-alert-actions button").forEach(b => {
+      b.addEventListener("click", () => logDecision(b.dataset.d, "alert"));
     });
   }
 
-  // ---- Viewport text extraction ----
-  function extractViewportText() {
-    const vh = window.innerHeight;
-    const vw = window.innerWidth;
-    const texts = [];
-    const seen = new Set();
-
+  // ===== Viewport text extraction =====
+  function getViewportText() {
+    const vh = window.innerHeight, vw = window.innerWidth;
+    const texts = [], seen = new Set();
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-      acceptNode: (node) => {
+      acceptNode(node) {
         const p = node.parentElement;
         if (!p) return NodeFilter.FILTER_REJECT;
         const tag = p.tagName.toLowerCase();
         if (["script","style","noscript","iframe","svg","meta","link"].includes(tag)) return NodeFilter.FILTER_REJECT;
-        // Skip our own widget
         if (p.closest("#cs-widget") || p.closest("#cs-alert-overlay")) return NodeFilter.FILTER_REJECT;
         const t = node.textContent.trim();
         if (!t || t.length < 2) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
-      },
+      }
     });
-
     let n;
     while ((n = walker.nextNode())) {
       const p = n.parentElement;
       if (!p) continue;
       const r = p.getBoundingClientRect();
       if (r.bottom > 0 && r.top < vh && r.right > 0 && r.left < vw && r.width > 0 && r.height > 0) {
-        const style = window.getComputedStyle(p);
-        if (style.display === "none" || style.visibility === "hidden" || style.opacity === "0") continue;
+        const s = window.getComputedStyle(p);
+        if (s.display === "none" || s.visibility === "hidden" || s.opacity === "0") continue;
         const t = n.textContent.trim();
-        if (t.length >= 2 && !seen.has(t)) {
-          seen.add(t);
-          texts.push(t);
-        }
+        if (t.length >= 2 && !seen.has(t)) { seen.add(t); texts.push(t); }
       }
     }
-
     return texts.join(" ").replace(/\s+/g, " ").trim().substring(0, 15000);
   }
 
-  // ---- Simple hash ----
-  function simpleHash(str) {
-    if (!str) return "";
+  function hash(s) {
+    if (!s) return "";
     let h = 0;
-    for (let i = 0; i < str.length; i++) {
-      h = ((h << 5) - h) + str.charCodeAt(i);
-      h |= 0;
-    }
+    for (let i = 0; i < s.length; i++) { h = ((h << 5) - h) + s.charCodeAt(i); h |= 0; }
     return String(h);
   }
 
-  // ---- Risk level helper ----
-  function riskLevel(score) {
-    if (score <= 25) return "safe";
-    if (score <= 50) return "medium";
-    if (score <= 75) return "high";
-    return "critical";
-  }
-
-  // ---- API call ----
-  async function analyzeText(text) {
-    const ctrl = new AbortController();
-    const timeout = setTimeout(() => ctrl.abort(), 8000);
+  // ===== API =====
+  async function analyze(text) {
+    const c = new AbortController();
+    const t = setTimeout(() => c.abort(), 8000);
     try {
-      const resp = await fetch(`${apiBase}/analyze`, {
+      const r = await fetch(`${apiBase}/analyze`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-API-Key": apiKey },
         body: JSON.stringify({ text: text.substring(0, 15000) }),
-        signal: ctrl.signal,
+        signal: c.signal,
       });
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      return await resp.json();
-    } finally {
-      clearTimeout(timeout);
-    }
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return await r.json();
+    } finally { clearTimeout(t); }
   }
 
-  // ---- Offline fallback ----
   function offlineAnalyze(text) {
-    const patterns = {
+    const pats = {
       phishing: [/click\s+here\s+to\s+verify/i, /your\s+account\s+(has\s+been|was)\s+(compromised|suspended)/i, /enter\s+your\s+(password|bank|credit)/i, /urgent.*verify/i],
       manipulation: [/act\s+now\s+or/i, /share\s+(this|before)/i, /you\s+should\s+be\s+ashamed/i],
       disinformation: [/they\s+don'?t\s+want\s+you\s+to\s+know/i, /mainstream\s+media\s+is\s+hiding/i, /miracle\s+cure/i, /government\s+is\s+secretly/i],
     };
-    let maxScore = 0, detectedType = "safe";
-    const explanations = [];
-    for (const [cat, pats] of Object.entries(patterns)) {
+    let maxS = 0, typ = "safe";
+    const expl = [];
+    for (const [c, ps] of Object.entries(pats)) {
       let m = 0;
-      for (const p of pats) if (p.test(text)) m++;
+      for (const p of ps) if (p.test(text)) m++;
       if (m > 0) {
         const s = Math.min(m * 25, 80);
-        explanations.push(`${m} ${cat} pattern(s) detected`);
-        if (s > maxScore) { maxScore = s; detectedType = cat; }
+        expl.push(`${m} ${c} pattern(s) detected`);
+        if (s > maxS) { maxS = s; typ = c; }
       }
     }
-    return { risk_score: maxScore, threat_type: detectedType, explanation: explanations, confidence: maxScore > 0 ? 0.4 : 0.2 };
+    return { risk_score: maxS, threat_type: typ, explanation: expl, confidence: maxS > 0 ? 0.4 : 0.2 };
   }
 
-  // ---- Decision logging ----
-  async function handleDecision(decision) {
+  // ===== Decision logging =====
+  async function logDecision(decision, source) {
     if (!currentResult) return;
-    const btns = document.querySelectorAll("#cs-actions button");
-    btns.forEach((b) => { b.disabled = true; });
+    const container = source === "alert" ? "#cs-alert-actions" : "#cs-explain-actions";
+    const loggedEl = source === "alert" ? "cs-alert-logged" : "cs-explain-logged";
+    document.querySelectorAll(`${container} button`).forEach(b => b.disabled = true);
     try {
       await fetch(`${apiBase}/log`, {
         method: "POST",
@@ -204,113 +191,132 @@
         body: JSON.stringify({ input_text: currentText.substring(0, 5000), ai_decision: currentResult, user_decision: decision }),
       });
     } catch (e) { /* silent */ }
-    document.getElementById("cs-logged").style.display = "block";
+    document.getElementById(loggedEl).style.display = "block";
+    // If alert, dismiss after 1.5s
+    if (source === "alert") {
+      setTimeout(dismissAlert, 1500);
+    }
   }
 
-  // ---- Update UI ----
-  function updateWidget(result) {
-    const score = result.risk_score;
-    const level = riskLevel(score);
+  function dismissAlert() {
+    document.getElementById("cs-alert-overlay").classList.remove("visible");
+    alertDismissedHash = lastHash;
+  }
 
-    // Pill
-    const dot = document.getElementById("cs-dot");
-    dot.className = `cs-dot ${level}`;
-    document.getElementById("cs-pill-label").textContent =
-      level === "safe" ? "Safe" : level === "medium" ? "Medium" : level === "high" ? "High Risk" : "DANGER";
-    document.getElementById("cs-pill-score").textContent = score;
-    document.getElementById("cs-pill-score").className = `cs-pill-score cs-color-${level}`;
-
-    // Card
-    document.getElementById("cs-risk-score").textContent = score;
-    document.getElementById("cs-risk-score").className = `cs-risk-score cs-color-${level}`;
-    document.getElementById("cs-risk-label").textContent =
-      level === "safe" ? "Low Risk" : level === "medium" ? "Medium Risk" : level === "high" ? "High Risk" : "Critical Risk";
-    document.getElementById("cs-risk-label").className = `cs-risk-label cs-color-${level}`;
-
-    const barFill = document.getElementById("cs-risk-bar-fill");
-    barFill.style.width = `${score}%`;
-    barFill.className = `cs-risk-bar-fill cs-fill-${level}`;
-
-    document.getElementById("cs-threat-type").textContent = result.threat_type;
-    document.getElementById("cs-confidence").textContent = `${Math.round(result.confidence * 100)}% conf.`;
-
-    // Explanations
-    const list = document.getElementById("cs-explanation-list");
-    list.innerHTML = "";
+  // ===== Build explanation text from result =====
+  function buildExplainText(result) {
     if (result.explanation && result.explanation.length > 0) {
-      result.explanation.forEach((e) => {
-        const li = document.createElement("li");
-        li.textContent = e;
-        list.appendChild(li);
-      });
-    } else {
-      const li = document.createElement("li");
-      li.textContent = "No specific threats identified.";
-      list.appendChild(li);
+      return result.explanation.join(". ") + ".";
     }
+    const score = result.risk_score;
+    if (score < 30) return "Content appears mostly safe. Minor signals detected.";
+    if (score < 50) return "Some suspicious patterns were found. Exercise caution with this content.";
+    return "Significant risk indicators detected. Review this content carefully.";
+  }
 
-    // Reset action buttons
-    document.querySelectorAll("#cs-actions button").forEach((b) => { b.disabled = false; });
-    document.getElementById("cs-logged").style.display = "none";
+  // ===== UI Update =====
+  function updateUI(result) {
+    const score = result.risk_score;
+    const circle = document.getElementById("cs-circle");
+    const explain = document.getElementById("cs-explain");
+    const overlay = document.getElementById("cs-alert-overlay");
+    const circ = 2 * Math.PI * 24;
 
-    // Center alert for high risk
-    if (score > HIGH_RISK_THRESHOLD && alertDismissedForHash !== lastTextHash) {
-      const overlay = document.getElementById("cs-alert-overlay");
-      document.getElementById("cs-alert-score").textContent = score;
-      document.getElementById("cs-alert-type").textContent = result.threat_type;
-      overlay.classList.add("visible");
+    if (score < 30) {
+      // MODE 1: Circle only
+      circle.style.display = "flex";
+      explain.style.display = "none";
+
+      const color = score <= 10 ? "#22c55e" : score <= 20 ? "#4ade80" : "#a3e635";
+      circle.style.borderColor = color;
+      document.getElementById("cs-circle-score").textContent = score;
+      document.getElementById("cs-circle-score").style.color = color;
+      circle.querySelector(".cs-circle-pct").style.color = color;
+      const ring = document.getElementById("cs-ring");
+      const offset = circ - (score / 100) * circ;
+      ring.setAttribute("stroke-dashoffset", offset);
+      ring.setAttribute("stroke", color);
+
+    } else if (score <= 50) {
+      // MODE 2: Text explanation card
+      circle.style.display = "none";
+      explain.style.display = "block";
+      explain.style.animation = "none";
+      void explain.offsetHeight; // reflow
+      explain.style.animation = "cs-slideUp 0.3s ease";
+
+      document.getElementById("cs-explain-score").textContent = score;
+      document.getElementById("cs-explain-bar").style.width = `${score}%`;
+      document.getElementById("cs-explain-text").textContent = buildExplainText(result);
+      document.getElementById("cs-explain-type").textContent = result.threat_type;
+      document.querySelectorAll("#cs-explain-actions button").forEach(b => b.disabled = false);
+      document.getElementById("cs-explain-logged").style.display = "none";
+
+    } else {
+      // MODE 3: Big center popup
+      circle.style.display = "none";
+      explain.style.display = "none";
+
+      if (alertDismissedHash !== lastHash) {
+        document.getElementById("cs-alert-score").textContent = score;
+        document.getElementById("cs-alert-type").textContent = result.threat_type;
+
+        const list = document.getElementById("cs-alert-explain-list");
+        list.innerHTML = "";
+        const items = result.explanation && result.explanation.length > 0
+          ? result.explanation
+          : ["High risk content detected on this page"];
+        items.forEach(e => {
+          const li = document.createElement("li");
+          li.textContent = e;
+          list.appendChild(li);
+        });
+
+        document.querySelectorAll("#cs-alert-actions button").forEach(b => b.disabled = false);
+        document.getElementById("cs-alert-logged").style.display = "none";
+        overlay.classList.add("visible");
+      }
     }
   }
 
-  // ---- Main scan loop ----
+  // ===== Scan loop =====
   async function scan() {
-    if (isAnalyzing) return;
-
-    const text = extractViewportText();
-    const hash = simpleHash(text);
-
-    if (hash === lastTextHash) return;
-    if (!text || text.length < 10) return;
-
-    lastTextHash = hash;
+    if (busy) return;
+    const text = getViewportText();
+    const h = hash(text);
+    if (h === lastHash || !text || text.length < 10) return;
+    lastHash = h;
     currentText = text;
-    isAnalyzing = true;
-
+    busy = true;
     try {
       let result;
-      try {
-        result = await analyzeText(text);
-      } catch (e) {
-        result = offlineAnalyze(text);
-      }
+      try { result = await analyze(text); } catch (e) { result = offlineAnalyze(text); }
       currentResult = result;
-      updateWidget(result);
-    } catch (e) {
-      // silent
-    }
-
-    isAnalyzing = false;
+      updateUI(result);
+      // Share result with popup via storage
+      if (typeof chrome !== "undefined" && chrome.storage) {
+        chrome.storage.local.set({ csLastResult: result, csLastScore: result.risk_score, csLastUpdate: Date.now() });
+      }
+    } catch (e) { /* silent */ }
+    busy = false;
   }
 
-  // ---- Load settings and start ----
-  function loadSettingsAndStart() {
+  // ===== Init =====
+  function loadAndStart() {
     if (typeof chrome !== "undefined" && chrome.storage) {
-      chrome.storage.local.get(["backendUrl", "apiKey"], (data) => {
-        apiBase = data.backendUrl || DEFAULT_API_BASE;
-        apiKey = data.apiKey || DEFAULT_API_KEY;
-        start();
+      chrome.storage.local.get(["backendUrl", "apiKey"], (d) => {
+        apiBase = d.backendUrl || DEFAULT_API;
+        apiKey = d.apiKey || DEFAULT_KEY;
+        go();
       });
-    } else {
-      start();
-    }
+    } else { go(); }
   }
 
-  function start() {
-    buildWidget();
+  function go() {
+    build();
     scan();
-    setInterval(scan, SCAN_INTERVAL);
+    setInterval(scan, SCAN_MS);
   }
 
-  // Go
-  loadSettingsAndStart();
+  loadAndStart();
 })();

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognitive Shield TN - Live Demo</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f5f5f5; margin: 0; padding: 40px; color: #333; }
+    .demo { max-width: 700px; margin: 0 auto; }
+    .demo h1 { font-size: 26px; margin-bottom: 6px; }
+    .demo p { line-height: 1.8; color: #555; margin-bottom: 14px; }
+    .note { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 14px 18px; border-radius: 4px; font-size: 14px; margin: 20px 0; }
+    .warn { background: #fff3e0; border-left: 4px solid #f59e0b; padding: 14px 18px; border-radius: 4px; font-size: 14px; margin: 20px 0; }
+    .danger { background: #fde8e8; border-left: 4px solid #ef4444; padding: 14px 18px; border-radius: 4px; font-size: 14px; margin: 20px 0; }
+    .tabs { display: flex; gap: 0; margin: 30px 0 0; border-bottom: 2px solid #ddd; }
+    .tab {
+      padding: 10px 24px; cursor: pointer; font-weight: 600; font-size: 14px; color: #888;
+      border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s;
+    }
+    .tab:hover { color: #555; }
+    .tab.active { color: #333; border-bottom-color: #333; }
+    .tab-content { display: none; padding: 24px 0; }
+    .tab-content.active { display: block; }
+    #status-bar {
+      position: fixed; top: 0; left: 0; right: 0; background: #1a1f25; color: #e7e9ea;
+      padding: 8px 20px; font-size: 12px; display: flex; align-items: center; gap: 12px; z-index: 10000;
+    }
+    #status-bar .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; animation: pulse 1s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    #status-bar .sep { color: #444; }
+  </style>
+  <link rel="stylesheet" href="widget.css">
+</head>
+<body>
+  <!-- Status bar -->
+  <div id="status-bar">
+    <span class="dot"></span>
+    <span>LIVE — Scanning every 1s</span>
+    <span class="sep">|</span>
+    <span id="scan-status">Initializing...</span>
+    <span class="sep">|</span>
+    <span>Backend: <span id="api-status">checking...</span></span>
+  </div>
+
+  <div class="demo" style="margin-top: 40px;">
+    <h1>Cognitive Shield TN — Live Demo</h1>
+    <p style="color:#999;margin-top:0;">Real-time analysis running. The widget in the bottom-right updates automatically.</p>
+
+    <div class="note">
+      The widget at the <strong>bottom-right</strong> is scanning this page text in <strong>real-time</strong>.
+      Switch tabs below to see the widget react to different risk levels of content.
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="safe">Safe Content</div>
+      <div class="tab" data-tab="medium">Medium Risk</div>
+      <div class="tab" data-tab="high">High Risk</div>
+    </div>
+
+    <div class="tab-content active" id="tab-safe">
+      <h2>Today's News: Local Community Events</h2>
+      <p>The city council announced new parks and recreation programs for the upcoming summer season. Families are encouraged to register early for swimming lessons, art workshops, and community garden plots.</p>
+      <p>Local schools reported improved test scores across all grade levels. The superintendent credited new tutoring programs and parent engagement initiatives for the positive results.</p>
+      <p>The weather forecast calls for sunny skies and mild temperatures throughout the week. A great time to enjoy outdoor activities and explore the recently renovated downtown walking trails.</p>
+      <p>The annual charity marathon is accepting registrations. All proceeds go to the children's hospital. Volunteers are also needed for water stations along the route.</p>
+    </div>
+
+    <div class="tab-content" id="tab-medium">
+      <div class="warn">
+        <strong>Simulated Medium-Risk Content</strong> — This text contains patterns that trigger caution-level detection.
+      </div>
+      <h2>URGENT: Act Now Before It's Too Late!</h2>
+      <p>You should be ashamed if you haven't shared this information yet. Everyone needs to know the truth about what's really happening. Share this before they take it down!</p>
+      <p>Act now or you'll miss this once-in-a-lifetime opportunity. They don't want you to see this. This information is being actively suppressed by powerful interests who want to keep you in the dark.</p>
+      <p>Share this with everyone you know. The more people who see this, the harder it will be for them to hide the truth. Don't be a sheep — wake up and spread the word!</p>
+    </div>
+
+    <div class="tab-content" id="tab-high">
+      <div class="danger">
+        <strong>Simulated High-Risk Content</strong> — This text contains patterns that trigger critical-level detection.
+      </div>
+      <h2>URGENT SECURITY ALERT: Your Account Has Been Compromised!</h2>
+      <p>Your account has been suspended due to suspicious activity. Click here to verify your identity immediately or your account will be permanently deleted within 24 hours.</p>
+      <p>Enter your password, bank details, and credit card number to verify your identity and restore access. This is an urgent security measure — failure to comply will result in permanent account termination.</p>
+      <p>The government is secretly monitoring all your communications. The mainstream media is hiding the truth about a miracle cure that they don't want you to know about. Wake up! They don't want you to know the real story.</p>
+      <p>Act now or lose everything. Your personal data has been exposed. Urgent: verify your credentials immediately at this secure link. Enter your bank account details for immediate protection.</p>
+    </div>
+  </div>
+
+  <script>
+    // ===== Tab switching =====
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+        // Force immediate re-scan by resetting hash
+        lastHash = "";
+        scan();
+      });
+    });
+
+    // ===== Widget + Real-time scanning (self-contained) =====
+    const API_BASE = "http://localhost:8000";
+    const API_KEY = "changeme-cognitive-shield-key";
+    const SCAN_MS = 1000;
+    const circ = 2 * Math.PI * 24;
+
+    let lastHash = "";
+    let busy = false;
+    let currentResult = null;
+    let currentText = "";
+    let alertDismissedHash = "";
+    let scanCount = 0;
+
+    function buildWidget() {
+      const w = document.createElement("div");
+      w.id = "cs-widget";
+      w.innerHTML = `
+        <div id="cs-circle">
+          <svg viewBox="0 0 56 56">
+            <circle class="cs-ring-bg" cx="28" cy="28" r="24"/>
+            <circle class="cs-ring-fill" id="cs-ring" cx="28" cy="28" r="24"
+              stroke-dasharray="${circ}" stroke-dashoffset="${circ}"/>
+          </svg>
+          <span class="cs-circle-score" id="cs-circle-score">0</span>
+          <span class="cs-circle-pct">%</span>
+        </div>
+        <div id="cs-explain">
+          <div class="cs-explain-header">
+            <div class="cs-explain-title">&#9888;&#65039; Caution</div>
+            <span class="cs-explain-score" id="cs-explain-score">0</span>
+          </div>
+          <div class="cs-explain-bar"><div class="cs-explain-bar-fill" id="cs-explain-bar" style="width:0%"></div></div>
+          <div class="cs-explain-body">
+            <div class="cs-explain-label">What we found</div>
+            <div class="cs-explain-text" id="cs-explain-text">Analyzing...</div>
+            <span class="cs-explain-type" id="cs-explain-type">--</span>
+          </div>
+          <div class="cs-explain-actions" id="cs-explain-actions">
+            <button class="cs-btn-ignore" data-d="ignore">&#10004; Ignore</button>
+            <button class="cs-btn-investigate" data-d="investigate">&#128270; Investigate</button>
+            <button class="cs-btn-threat" data-d="mark_as_threat">&#9888; Threat</button>
+          </div>
+          <div class="cs-explain-logged" id="cs-explain-logged">&#9989; Decision logged</div>
+        </div>
+      `;
+      document.body.appendChild(w);
+
+      const ov = document.createElement("div");
+      ov.id = "cs-alert-overlay";
+      ov.innerHTML = `
+        <div id="cs-alert-box">
+          <div class="cs-alert-top">
+            <div class="cs-alert-icon">&#128680;</div>
+            <div class="cs-alert-title">HIGH RISK DETECTED</div>
+            <div class="cs-alert-subtitle">This page may contain dangerous content</div>
+            <div class="cs-alert-score-ring">
+              <div class="cs-alert-score-circle">
+                <span class="cs-alert-score-num" id="cs-alert-score">0</span>
+                <span class="cs-alert-score-label">Risk Score</span>
+              </div>
+            </div>
+            <span class="cs-alert-type-badge" id="cs-alert-type">--</span>
+          </div>
+          <div class="cs-alert-body">
+            <div class="cs-alert-explain-title">Why this was flagged</div>
+            <ul class="cs-alert-explain-list" id="cs-alert-explain-list"></ul>
+          </div>
+          <div class="cs-alert-actions" id="cs-alert-actions">
+            <button class="cs-alert-act-ignore" data-d="ignore">&#10004; Ignore</button>
+            <button class="cs-alert-act-investigate" data-d="investigate">&#128270; Investigate</button>
+            <button class="cs-alert-act-threat" data-d="mark_as_threat">&#9888; Threat</button>
+          </div>
+          <div class="cs-alert-logged" id="cs-alert-logged">&#9989; Decision logged</div>
+        </div>
+      `;
+      document.body.appendChild(ov);
+
+      ov.addEventListener("click", (e) => {
+        if (e.target === ov) { ov.classList.remove("visible"); alertDismissedHash = lastHash; }
+      });
+      document.querySelectorAll("#cs-explain-actions button").forEach(b => {
+        b.addEventListener("click", () => {
+          document.querySelectorAll("#cs-explain-actions button").forEach(x => x.disabled = true);
+          document.getElementById("cs-explain-logged").style.display = "block";
+        });
+      });
+      document.querySelectorAll("#cs-alert-actions button").forEach(b => {
+        b.addEventListener("click", () => {
+          document.querySelectorAll("#cs-alert-actions button").forEach(x => x.disabled = true);
+          document.getElementById("cs-alert-logged").style.display = "block";
+          setTimeout(() => { ov.classList.remove("visible"); alertDismissedHash = lastHash; }, 1200);
+        });
+      });
+    }
+
+    // Extract viewport text
+    function getViewportText() {
+      const vh = window.innerHeight, vw = window.innerWidth;
+      const texts = [], seen = new Set();
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          const p = node.parentElement;
+          if (!p) return NodeFilter.FILTER_REJECT;
+          const tag = p.tagName.toLowerCase();
+          if (["script","style","noscript","iframe","svg","meta","link"].includes(tag)) return NodeFilter.FILTER_REJECT;
+          if (p.closest("#cs-widget") || p.closest("#cs-alert-overlay") || p.closest("#status-bar") || p.closest(".controls") || p.closest(".tabs")) return NodeFilter.FILTER_REJECT;
+          const t = node.textContent.trim();
+          if (!t || t.length < 2) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      let n;
+      while ((n = walker.nextNode())) {
+        const p = n.parentElement;
+        if (!p) continue;
+        const r = p.getBoundingClientRect();
+        if (r.bottom > 0 && r.top < vh && r.right > 0 && r.left < vw && r.width > 0 && r.height > 0) {
+          const s = window.getComputedStyle(p);
+          if (s.display === "none" || s.visibility === "hidden" || s.opacity === "0") continue;
+          const t = n.textContent.trim();
+          if (t.length >= 2 && !seen.has(t)) { seen.add(t); texts.push(t); }
+        }
+      }
+      return texts.join(" ").replace(/\s+/g, " ").trim().substring(0, 15000);
+    }
+
+    function hash(s) {
+      if (!s) return "";
+      let h = 0;
+      for (let i = 0; i < s.length; i++) { h = ((h << 5) - h) + s.charCodeAt(i); h |= 0; }
+      return String(h);
+    }
+
+    // Call real backend API
+    async function analyzeAPI(text) {
+      const ctrl = new AbortController();
+      const timeout = setTimeout(() => ctrl.abort(), 8000);
+      try {
+        const resp = await fetch(`${API_BASE}/analyze`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-API-Key": API_KEY },
+          body: JSON.stringify({ text }),
+          signal: ctrl.signal,
+        });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        return await resp.json();
+      } finally { clearTimeout(timeout); }
+    }
+
+    // Update widget UI based on score
+    function updateUI(result) {
+      const score = result.risk_score;
+      const circle = document.getElementById("cs-circle");
+      const explain = document.getElementById("cs-explain");
+      const overlay = document.getElementById("cs-alert-overlay");
+
+      if (score < 30) {
+        circle.style.display = "flex";
+        explain.style.display = "none";
+        if (score <= 50) overlay.classList.remove("visible");
+        const color = score <= 10 ? "#22c55e" : score <= 20 ? "#4ade80" : "#a3e635";
+        circle.style.borderColor = color;
+        document.getElementById("cs-circle-score").textContent = score;
+        document.getElementById("cs-circle-score").style.color = color;
+        circle.querySelector(".cs-circle-pct").style.color = color;
+        const ring = document.getElementById("cs-ring");
+        ring.setAttribute("stroke-dashoffset", circ - (score / 100) * circ);
+        ring.setAttribute("stroke", color);
+
+      } else if (score <= 50) {
+        circle.style.display = "none";
+        explain.style.display = "block";
+        overlay.classList.remove("visible");
+        explain.style.animation = "none"; void explain.offsetHeight;
+        explain.style.animation = "cs-slideUp 0.3s ease";
+        document.getElementById("cs-explain-score").textContent = score;
+        document.getElementById("cs-explain-bar").style.width = `${score}%`;
+        const txt = result.explanation && result.explanation.length ? result.explanation.join(". ") + "." : "Suspicious patterns detected. Exercise caution.";
+        document.getElementById("cs-explain-text").textContent = txt;
+        document.getElementById("cs-explain-type").textContent = result.threat_type;
+        document.querySelectorAll("#cs-explain-actions button").forEach(b => b.disabled = false);
+        document.getElementById("cs-explain-logged").style.display = "none";
+
+      } else {
+        circle.style.display = "none";
+        explain.style.display = "none";
+        if (alertDismissedHash !== lastHash) {
+          document.getElementById("cs-alert-score").textContent = score;
+          document.getElementById("cs-alert-type").textContent = result.threat_type;
+          const list = document.getElementById("cs-alert-explain-list");
+          list.innerHTML = "";
+          (result.explanation && result.explanation.length ? result.explanation : ["High risk content detected"]).forEach(e => {
+            const li = document.createElement("li"); li.textContent = e; list.appendChild(li);
+          });
+          document.querySelectorAll("#cs-alert-actions button").forEach(b => b.disabled = false);
+          document.getElementById("cs-alert-logged").style.display = "none";
+          overlay.classList.add("visible");
+        }
+      }
+    }
+
+    // Main scan
+    async function scan() {
+      if (busy) return;
+      const text = getViewportText();
+      if (!text || text.length < 10) { document.getElementById("scan-status").textContent = "No text found"; return; }
+      const h = hash(text);
+      if (h === lastHash) { return; }
+      lastHash = h;
+      currentText = text;
+      busy = true;
+      scanCount++;
+      document.getElementById("scan-status").textContent = `Analyzing... (scan #${scanCount})`;
+      try {
+        const result = await analyzeAPI(text);
+        currentResult = result;
+        updateUI(result);
+        document.getElementById("scan-status").textContent = `Score: ${result.risk_score}% | Type: ${result.threat_type} (scan #${scanCount})`;
+        document.getElementById("api-status").textContent = "connected";
+        document.getElementById("api-status").style.color = "#22c55e";
+      } catch (e) {
+        document.getElementById("scan-status").textContent = `API error: ${e.message}`;
+        document.getElementById("api-status").textContent = "error";
+        document.getElementById("api-status").style.color = "#ef4444";
+      }
+      busy = false;
+    }
+
+    // Init
+    buildWidget();
+    scan();
+    setInterval(scan, SCAN_MS);
+  </script>
+</body>
+</html>
