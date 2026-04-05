@@ -1,7 +1,7 @@
 /**
  * Cognitive Shield TN - Content Script
- * Extracts visible text content from the current web page.
- * Runs in the context of the web page.
+ * Extracts visible text from the current VIEWPORT (what's on screen),
+ * not the full page. Supports real-time monitoring.
  */
 
 (() => {
@@ -11,12 +11,82 @@
       const text = extractVisibleText();
       sendResponse({ text: text, url: window.location.href, title: document.title });
     }
-    return true; // Keep message channel open for async response
+    if (request.action === "extractViewportText") {
+      const text = extractViewportText();
+      sendResponse({ text: text, url: window.location.href, title: document.title });
+    }
+    return true;
   });
 
   /**
-   * Extract visible text content from the page.
-   * Focuses on meaningful content, skipping scripts, styles, and hidden elements.
+   * Extract text ONLY from elements visible in the current viewport.
+   * This means when the user scrolls or navigates, different text is returned.
+   */
+  function extractViewportText() {
+    const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
+    const texts = [];
+    const seen = new Set();
+
+    // Get all text-containing elements
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode: (node) => {
+          const parent = node.parentElement;
+          if (!parent) return NodeFilter.FILTER_REJECT;
+          const tag = parent.tagName.toLowerCase();
+          // Skip invisible/non-content elements
+          if (["script", "style", "noscript", "iframe", "svg", "meta", "link"].includes(tag)) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          const text = node.textContent.trim();
+          if (!text || text.length < 2) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        },
+      }
+    );
+
+    let node;
+    while ((node = walker.nextNode())) {
+      const parent = node.parentElement;
+      if (!parent) continue;
+
+      const rect = parent.getBoundingClientRect();
+
+      // Check if element is within the visible viewport
+      if (
+        rect.bottom > 0 &&
+        rect.top < viewportHeight &&
+        rect.right > 0 &&
+        rect.left < viewportWidth &&
+        rect.width > 0 &&
+        rect.height > 0
+      ) {
+        // Check element is actually visible (not hidden via CSS)
+        const style = window.getComputedStyle(parent);
+        if (
+          style.display === "none" ||
+          style.visibility === "hidden" ||
+          style.opacity === "0"
+        ) {
+          continue;
+        }
+
+        const text = node.textContent.trim();
+        if (text.length >= 2 && !seen.has(text)) {
+          seen.add(text);
+          texts.push(text);
+        }
+      }
+    }
+
+    return cleanText(texts.join(" "));
+  }
+
+  /**
+   * Fallback: Extract visible text content from the full page.
    */
   function extractVisibleText() {
     const selectors = [
@@ -29,7 +99,6 @@
       ".content",
     ];
 
-    // Try to find main content area first
     for (const selector of selectors) {
       const el = document.querySelector(selector);
       if (el && el.innerText.trim().length > 100) {
@@ -37,11 +106,9 @@
       }
     }
 
-    // Fallback: extract from body, filtering out noise
     const body = document.body;
     if (!body) return "";
 
-    // Clone body and remove non-content elements
     const clone = body.cloneNode(true);
     const removeSelectors = [
       "script", "style", "noscript", "iframe", "svg",
@@ -67,6 +134,6 @@
       .replace(/\s+/g, " ")
       .replace(/\n{3,}/g, "\n\n")
       .trim()
-      .substring(0, 15000); // Limit to 15K chars
+      .substring(0, 15000);
   }
 })();

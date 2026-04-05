@@ -8,9 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 
-MODEL_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data")
-MODEL_PATH = os.path.join(MODEL_DIR, "ml_model.joblib")
-TRAINING_DATA_PATH = os.path.join(MODEL_DIR, "training_data.json")
+from app.config import get_settings
 
 LABEL_MAP = {
     "safe": 0,
@@ -26,19 +24,20 @@ class MLClassifier:
 
     def __init__(self):
         self.model: Pipeline | None = None
+        self.settings = get_settings()
         self._load_or_train()
 
     def _load_or_train(self):
         """Load existing model or train a new one from training data."""
-        if os.path.exists(MODEL_PATH):
+        if os.path.exists(self.settings.model_path):
             try:
-                self.model = joblib.load(MODEL_PATH)
+                self.model = joblib.load(self.settings.model_path)
                 return
             except Exception:
                 pass
 
         # Train from scratch
-        if os.path.exists(TRAINING_DATA_PATH):
+        if os.path.exists(self.settings.training_data_path):
             self._train_from_data()
         else:
             # Create a minimal default model
@@ -46,7 +45,7 @@ class MLClassifier:
 
     def _train_from_data(self):
         """Train model from training_data.json."""
-        with open(TRAINING_DATA_PATH, "r", encoding="utf-8") as f:
+        with open(self.settings.training_data_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         texts = [item["text"] for item in data]
@@ -59,8 +58,8 @@ class MLClassifier:
 
         self.model.fit(texts, labels)
 
-        os.makedirs(MODEL_DIR, exist_ok=True)
-        joblib.dump(self.model, MODEL_PATH)
+        os.makedirs(self.settings.model_dir, exist_ok=True)
+        joblib.dump(self.model, self.settings.model_path)
 
     def _train_default(self):
         """Train a minimal model with built-in examples."""
@@ -89,8 +88,8 @@ class MLClassifier:
         ])
         self.model.fit(texts, labels)
 
-        os.makedirs(MODEL_DIR, exist_ok=True)
-        joblib.dump(self.model, MODEL_PATH)
+        os.makedirs(self.settings.model_dir, exist_ok=True)
+        joblib.dump(self.model, self.settings.model_path)
 
     def predict(self, text: str) -> dict:
         """

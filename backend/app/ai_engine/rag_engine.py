@@ -6,9 +6,7 @@ import numpy as np
 import faiss
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data")
-PHISHING_PATTERNS_PATH = os.path.join(DATA_DIR, "phishing_patterns.json")
-DISINFO_PATTERNS_PATH = os.path.join(DATA_DIR, "disinfo_patterns.json")
+from app.config import get_settings
 
 
 class RAGEngine:
@@ -23,6 +21,7 @@ class RAGEngine:
         self.pattern_texts: list[str] = []
         self.vectorizer: TfidfVectorizer | None = None
         self.index: faiss.IndexFlatIP | None = None
+        self.settings = get_settings()
         self._build_index()
 
     def _load_patterns(self) -> list[dict]:
@@ -30,8 +29,8 @@ class RAGEngine:
         patterns = []
 
         for path, category in [
-            (PHISHING_PATTERNS_PATH, "phishing"),
-            (DISINFO_PATTERNS_PATH, "disinformation"),
+            (self.settings.phishing_patterns_path, "phishing"),
+            (self.settings.disinfo_patterns_path, "disinformation"),
         ]:
             if os.path.exists(path):
                 with open(path, "r", encoding="utf-8") as f:

@@ -15,28 +15,21 @@
         <h1>Cognitive Shield <span class="tn">TN</span></h1>
       </div>
       <p class="tagline">AI assists. Humans decide.</p>
+      <button id="settings-btn" class="btn-settings" title="Settings">&#9881;</button>
     </div>
 
-    <!-- Analyze Button -->
-    <div id="analyze-section">
-      <button id="analyze-btn" class="btn-primary">
-        <span class="btn-icon">&#128269;</span> Analyze This Page
-      </button>
-      <p class="hint">Scans visible text for threats</p>
+    <!-- Live Status Indicator -->
+    <div id="live-status" class="live-status">
+      <span class="live-dot"></span>
+      <span id="live-label">Starting live monitor...</span>
     </div>
 
-    <!-- Loading State -->
-    <div id="loading-section" class="hidden">
-      <div class="spinner"></div>
-      <p>Analyzing content...</p>
-    </div>
-
-    <!-- Results Section -->
+    <!-- Results Section (always visible during monitoring) -->
     <div id="results-section" class="hidden">
       <!-- Risk Score -->
       <div id="risk-card" class="card">
         <div class="risk-header">
-          <span id="risk-label" class="risk-label">Risk Level</span>
+          <span id="risk-label" class="risk-label">Scanning...</span>
           <span id="risk-score" class="risk-score">0</span>
         </div>
         <div class="risk-bar-container">
@@ -63,10 +56,10 @@
             &#10004; Ignore
           </button>
           <button class="btn-action btn-investigate" data-decision="investigate">
-            &#128270; Investigate More
+            &#128270; Investigate
           </button>
           <button class="btn-action btn-threat" data-decision="mark_as_threat">
-            &#9888; Mark as Threat
+            &#9888; Threat
           </button>
         </div>
       </div>
@@ -74,9 +67,15 @@
       <!-- Decision Logged Confirmation -->
       <div id="logged-section" class="hidden">
         <div class="logged-msg">
-          <span>&#9989;</span> Your decision has been logged for transparency.
+          <span>&#9989;</span> Decision logged. Monitoring continues...
         </div>
       </div>
+    </div>
+
+    <!-- Loading State (initial only) -->
+    <div id="loading-section">
+      <div class="spinner"></div>
+      <p>Initializing live monitor...</p>
     </div>
 
     <!-- Error Section -->
@@ -84,13 +83,12 @@
       <div class="error-card">
         <span>&#9888;</span>
         <p id="error-message">Something went wrong.</p>
-        <button id="retry-btn" class="btn-secondary">Try Again</button>
       </div>
     </div>
 
     <!-- Footer -->
     <div class="footer">
-      <p>Data stays local. No external tracking.</p>
+      <p>Real-time viewport monitoring active. Data stays local.</p>
     </div>
   </div>
 

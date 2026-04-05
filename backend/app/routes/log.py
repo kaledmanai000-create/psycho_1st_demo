@@ -1,8 +1,12 @@
-"""POST /log endpoint - stores user decisions for transparency."""
+"""Logging endpoints - stores user decisions and exports history."""
 
+import csv
+import io
 from fastapi import APIRouter, HTTPException
+from fastapi.responses import StreamingResponse
 from app.models import LogRequest, LogResponse
-from app.database import log_decision, get_logs
+from app.database import log_decision, get_logs, get_connection
+import json
 
 router = APIRouter()
 
@@ -37,3 +41,38 @@ async def log_user_decision(body: LogRequest):
 async def get_log_history(limit: int = 50):
     """Retrieve recent analysis logs for transparency dashboard."""
     return {"logs": get_logs(limit=min(limit, 200))}
+
+
+@router.get("/export")
+async def export_logs_csv():
+    """
+    Export all analysis logs as a downloadable CSV file.
+    """
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM analysis_logs ORDER BY id DESC")
+    rows = cursor.fetchall()
+    conn.close()
+
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(["id", "input_text", "risk_score", "threat_type", "explanation", "confidence", "user_decision", "timestamp"])
+
+    for row in rows:
+        writer.writerow([
+            row["id"],
+            row["input_text"][:500],
+            row["risk_score"],
+            row["threat_type"],
+            row["explanation"],
+            row["confidence"],
+            row["user_decision"],
+            row["timestamp"],
+        ])
+
+    output.seek(0)
+    return StreamingResponse(
+        iter([output.getvalue()]),
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=cognitive_shield_logs.csv"},
+    )

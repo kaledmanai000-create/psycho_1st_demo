@@ -15,6 +15,15 @@ class AnalyzeResponse(BaseModel):
     confidence: float = Field(..., ge=0.0, le=1.0, description="Confidence level of the analysis")
 
 
+class BatchAnalyzeRequest(BaseModel):
+    texts: list[str] = Field(..., min_length=1, max_length=50, description="List of texts to analyze (max 50)")
+
+
+class BatchAnalyzeResponse(BaseModel):
+    results: list[AnalyzeResponse] = Field(..., description="Analysis results for each text")
+    total: int = Field(..., description="Total number of texts analyzed")
+
+
 class LogRequest(BaseModel):
     input_text: str = Field(..., description="Original text that was analyzed")
     ai_decision: dict = Field(..., description="The AI analysis result")

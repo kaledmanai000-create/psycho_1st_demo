@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognitive Shield TN - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="shield-icon">&#128737;</span>
+      <h1>Cognitive Shield <span class="tn">TN</span></h1>
+    </div>
+    <p class="nav-tagline">AI assists. Humans decide.</p>
+  </nav>
+
+  <main class="container">
+    <!-- Overview Cards -->
+    <section id="overview" class="section">
+      <h2>Overview</h2>
+      <div class="cards-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Analyses</div>
+          <div class="stat-value" id="total-analyses">--</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Avg Risk Score</div>
+          <div class="stat-value" id="avg-risk">--</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Avg Confidence</div>
+          <div class="stat-value" id="avg-confidence">--</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Threats Detected</div>
+          <div class="stat-value" id="threats-count">--</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts Row -->
+    <section class="section">
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3>Threat Distribution</h3>
+          <div id="threat-chart" class="chart-container"></div>
+        </div>
+        <div class="chart-card">
+          <h3>User Decisions</h3>
+          <div id="decision-chart" class="chart-container"></div>
+        </div>
+        <div class="chart-card">
+          <h3>Risk Levels</h3>
+          <div id="risk-chart" class="chart-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section">
+      <div class="chart-card full-width">
+        <h3>Analyses Over Time (Last 30 Days)</h3>
+        <div id="timeline-chart" class="timeline-container"></div>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <section class="section">
+      <div class="actions-row">
+        <button id="export-btn" class="btn btn-primary">Export CSV</button>
+        <button id="retrain-btn" class="btn btn-secondary">Retrain Model</button>
+        <button id="refresh-btn" class="btn btn-outline">Refresh Data</button>
+      </div>
+      <div id="action-status" class="action-status hidden"></div>
+    </section>
+
+    <!-- History Table -->
+    <section id="history" class="section">
+      <h2>Analysis History</h2>
+      <div class="table-controls">
+        <select id="history-limit" class="select-control">
+          <option value="25">Last 25</option>
+          <option value="50" selected>Last 50</option>
+          <option value="100">Last 100</option>
+          <option value="200">Last 200</option>
+        </select>
+        <input type="text" id="history-filter" class="input-control" placeholder="Filter by threat type...">
+      </div>
+      <div class="table-wrapper">
+        <table id="history-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Text (preview)</th>
+              <th>Risk</th>
+              <th>Threat Type</th>
+              <th>Confidence</th>
+              <th>Decision</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="history-body">
+            <tr><td colspan="7" class="empty-msg">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Cognitive Shield TN &mdash; Data stays local. No external tracking.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

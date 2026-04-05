@@ -4,9 +4,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
+from app.config import get_settings
 from app.database import init_db
+from app.middleware import APIKeyAuthMiddleware, RateLimitMiddleware
 from app.routes.analyze import router as analyze_router
 from app.routes.log import router as log_router
+from app.routes.model import router as model_router
+from app.routes.analytics import router as analytics_router
 
 
 @asynccontextmanager
@@ -26,17 +30,23 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS - allow browser extension and local development
+# Middleware (order matters: rate limit first, then auth, then CORS)
+settings = get_settings()
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, restrict to extension origin
+    allow_origins=settings.cors_origins.split(","),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(APIKeyAuthMiddleware)
+app.add_middleware(RateLimitMiddleware)
 
 app.include_router(analyze_router, prefix="/analyze", tags=["Analysis"])
 app.include_router(log_router, prefix="/log", tags=["Logging"])
+app.include_router(model_router, prefix="/model", tags=["Model"])
+app.include_router(analytics_router, prefix="/analytics", tags=["Analytics"])
 
 
 @app.get("/health")
